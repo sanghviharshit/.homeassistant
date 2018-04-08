@@ -1,0 +1,235 @@
+homeassistant:
+  name: Home
+  latitude: !secret homeassistant_latitude
+  longitude: !secret homeassistant_longitude
+  elevation: !secret homeassistant_elevation
+  unit_system: imperial
+  time_zone: America/New_York
+
+  customize: !include_dir_merge_named customize
+  customize_domain:
+    automation:
+      initial_state: 'on'
+  customize_glob:
+    "sensor.dark_sky_*":
+      homebridge_hidden: true
+
+  packages: !include_dir_named packages
+
+# Enables configuration UI
+config:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables a map showing the location of tracked devices
+map:
+
+http:
+  # base_url: !secret http_base_url
+  # server_port: !secret http_port
+  api_password: !secret http_api_password
+  # ssl_certificate: !secret ssl_certificate
+  # ssl_key: !secret ssl_key
+  # trusted_networks:
+    # - 192.168.1.0/24
+    # - !secret external_ip
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+
+# Discover some devices automatically
+discovery:
+  # ignore:
+   # - samsung_tv
+#   - roku
+#   - google_cast
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+  include_used_components: true
+
+ifttt:
+  key: !secret ifttt_key
+
+# View all events in a logbook
+logbook:
+
+history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - binary_sensor
+      - cover
+
+  # exclude:
+  #   entities:
+  #    - sensor.last_boot
+  #    - sensor.date
+  #    - sensor.pihole_ads_blocked_today
+  #    - sensor.pihole_ads_percentage_blocked_today
+  #    - sensor.pihole_dns_queries_today
+  #    - sensor.since_last_boot
+  #    - sensor.since_last_boot_templated
+  #    - sensor.floorplan_date
+  #    - sensor.floorplan_time
+  #    - sensor.ha_uptime
+  #    - sensor.time
+
+# logger: !include logger.yaml
+# recorder: !include recorder.yaml
+
+
+mqtt:
+  broker: 127.0.0.1
+
+# Lights
+light hyperion:
+  - platform: hyperion
+    host: 192.168.1.125
+    name: TV Ambilight
+    priority: 128
+    hdmi_priority: 880
+    default_color: [255, 255, 255]
+    effect_list: ['HDMI', 'Cinema brighten lights', 'Cinema dim lights', 'Knight rider', 'Blue mood blobs', 'Cold mood blobs', 'Full color mood blobs', 'Green mood blobs', 'Red mood blobs', 'Warm mood blobs', 'Police Lights Single', 'Police Lights Solid', 'Rainbow mood', 'Rainbow swirl fast', 'Rainbow swirl', 'Random', 'Running dots', 'System Shutdown', 'Snake', 'Sparks Color', 'Sparks', 'Strobe blue', 'Strobe Raspbmc', 'Strobe white', 'Color traces', 'UDP multicast listener', 'UDP listener', 'X-Mas']
+
+# Lifx
+light lifx:
+  - platform: lifx
+#  - platform: lifx_legacy
+
+light:
+  - platform: mqtt_json
+    name: "Clock LED Strip"
+    state_topic: "sanghvi/clocklight"
+    command_topic: "sanghvi/clocklight/set"
+    effect: true
+    effect_list:
+      - bpm
+      - candy cane  
+      - confetti  
+      - cyclon rainbow  
+      - dots  
+      - fire  
+      - glitter  
+      - juggle  
+      - lightning
+      - noise  
+      - police all  
+      - police one  
+      - rainbow  
+      - rainbow with glitter  
+      - ripple  
+      - sinelon  
+      - solid  
+      - twinkle  
+    brightness: true
+    flash: true
+    rgb: true
+    color_temp: true
+    optimistic: false
+    qos: 0
+
+input_number:
+  clock_animation_speed:
+    name: Clock Animation Speed
+    initial: 150
+    min: 1
+    max: 150
+    step: 10
+
+
+# Cameras
+#camera:
+#- platform: mjpeg
+#  mjpeg_url: http://192.168.1.71:8080/video
+#  name: Entrance Camera
+
+
+#binary_sensor:
+#  - platform: rest
+#    name: Entrance Motion
+#    sensor_class: motion
+#    resource: http://192.168.1.71:8080/sensors.json?sense=motion_active
+#    value_template: '{{ value_json.motion_active.data[0][1][0] | round(0) }}'
+
+
+# android_ip_webcam:
+#   # This should be the ip of your phone
+#   - host: 192.168.1.71
+#     name: "Android IP Camera"
+#     username: harct
+#     password: hetarshit
+#     scan_interval: 4
+#     motion_sensor: true
+#     sensors:
+#     - motion
+#     switches:
+#     - night_vision
+#     - torch
+#     - video_recording
+
+sun:
+
+# mqtt:
+#   broker: 127.0.0.1
+#   port: 1883
+#   client_id: home-assistant-Carlo
+#   username: !secret MQTT_username
+#   password: !secret MQTT_password
+
+# Media Players
+media_player:
+  - platform: cast
+  - platform: plex
+    include_non_clients: true
+    show_all_controls: true
+    use_episode_art: true
+
+# Kodi
+#media_player:
+#  platform: kodi
+#  host: http://192.168.1.80
+#  port: 8090
+#  name: Kodi on TV
+#  user: kodi
+#  password:
+#  turn_off_action: none #The desired turn off action. Options are none, quit, hibernate, suspend, reboot, or shutdown. Default none.
+#  enable_websocket: true
+
+tts:
+  - platform: google
+  # - platform: amazon_polly
+  #   aws_access_key_id: !secret aws_access_key_ID
+  #   aws_secret_access_key: !secret aws_secret_access_key
+  #   region_name: 'us-east-1'
+  #   text_type: ssml
+  #   cache: True
+#    cache_dir: /data/tts
+
+###############################################################
+######  Merge Include Files
+###############################################################
+
+group: !include_dir_merge_named group
+device_tracker: !include_dir_merge_list device_tracker
+sensor: !include_dir_merge_list sensor
+automation: !include_dir_merge_list automation
+scene: !include_dir_merge_list scene
+switch: !include_dir_merge_list switch
+script: !include_dir_merge_named script
+input_boolean: !include_dir_merge_named input_boolean
+shell_command: !include_dir_merge_named shell_command
+

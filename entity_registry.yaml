@@ -1,0 +1,76 @@
+media_player.media_room:
+  name:
+  platform: cast
+  unique_id: 3059b13d-238c-6927-baf0-2bc93be77b3e
+light.bed:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:22:44:b8
+light.skyline:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:22:43:d8
+light.computer:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:22:56:e4
+light.tv:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:22:26:38
+media_player.apple_tv:
+  name:
+  platform: apple_tv
+  unique_id: 7513fa06177d534cbcf33f1199dd45fffa8a1451b7cfe9849acaa5411d338fa5
+remote.apple_tv:
+  name:
+  platform: apple_tv
+  unique_id: 7513fa06177d534cbcf33f1199dd45fffa8a1451b7cfe9849acaa5411d338fa5
+switch.rotimatic:
+  name:
+  platform: wemo
+  unique_id: 221714K0102979
+switch.bedroom_tv:
+  name:
+  platform: wemo
+  unique_id: 221711K0102527
+media_player.apple_tv_2:
+  name:
+  platform: plex
+  unique_id: EC1021E3-8772-4BD7-93F7-3FC90E1D5851
+media_player.chrome:
+  name:
+  platform: plex
+  unique_id: 8qmpsyawt95s6evslk3yr925
+light.passage:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:12:d1:4b
+light.platform:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:12:ba:fc
+light.entrance:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:12:c7:4e
+light.fridge:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:12:c6:52
+media_player.harshits_iphone:
+  name:
+  platform: plex
+  unique_id: 6F2E0990-2562-44F9-9BBB-B110E473A001
+media_player.fire_tv:
+  name:
+  platform: plex
+  unique_id: b0ac2048d14099d0-com-plexapp-android
+media_player.nexus_player:
+  name:
+  platform: plex
+  unique_id: 6f294f6e7ec7459d-com-plexapp-android
+media_player.chrome_2:
+  name:
+  platform: plex
+  unique_id: ux5utk9xrjn140w00tzgefe1
