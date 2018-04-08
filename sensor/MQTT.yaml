@@ -2,10 +2,13 @@
 ## Various MQTT sensors
 ###################################################
 
-# - platform: mqtt
-#   state_topic: "ifttt/rachio/watering_time"
-#   name: "Rachio_watering_time"
-#
-# - platform: mqtt
-#   state_topic: "dash/medicine/medicine_time"
-#   name: "Medicine time"
+- platform: mqtt
+  name: Living Room Temperature
+  unit_of_measurement: '°C'
+  state_topic: "smartthings/Living Room Temperature/temperature"
+
+- platform: mqtt
+  name: Living Room Humidity
+  unit_of_measurement: '%'
+  state_topic: "smartthings/Living Room Temperature/humidity"
+
