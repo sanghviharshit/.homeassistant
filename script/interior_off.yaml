@@ -1,0 +1,12 @@
+######################################################################################################
+###Script to shut interior lights off
+###  Sample Call
+#  action:
+#   - service: script.interior_off
+######################################################################################################
+
+interior_off:
+  sequence:
+    - service: homeassistant.turn_off
+      entity_id:
+        - light.clock_led_strip

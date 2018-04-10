@@ -18,7 +18,9 @@
 #    - visibility
 #    - ozone
     - uv_index
-    - icon
+    # - icon
+
+- platform: moon
 
 #sensor yweather:
 #  platform: yweather

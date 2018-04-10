@@ -1,0 +1,42 @@
+Bedroom lights:
+  entities:
+    - light.computer
+    - light.bed
+
+Kitchen lights:
+  entities:
+    - light.platform
+    - light.fridge
+
+Living Room lights:
+  entities:
+    - light.tv
+    - light.skyline
+
+Living Room Accents:
+  entities:
+    - light.clock_led_strip
+
+Main lights:
+  entities:
+    - light.tv
+    - light.skyline
+    - light.platform
+    - light.fridge
+    - light.passage
+    - light.entrance
+    - light.temple
+
+Dinette lights:
+  entities:
+    - light.entrance
+
+Hallway lights:
+  entities:
+    - light.passage
+    - light.entrance
+    - light.temple
+
+Bedroom Media Center:
+  entities:
+    - switch.bedroom_tv
