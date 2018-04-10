@@ -1,0 +1,177 @@
+#-------------------------------------------
+#  This is the configuration account for @BearStoneHA - My Home's automated twitter account.
+# @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+#-------------------------------------------
+# homeassistant:
+#   customize_glob:
+#     "input_select.log_*":
+#       icon: mdi:bug
+#
+#       hidden: False
+
+#Random number - https://www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new
+
+notify:
+  - name: SanghviHA
+    platform: twitter
+    consumer_key: !secret twitter_consumer_key
+    consumer_secret: !secret twitter_consumer_secret
+    access_token: !secret twitter_access_token
+    access_token_secret: !secret twitter_access_token_secret
+
+### Building out some Historical stats for tweeting. #####################
+sensor:
+
+  # - platform: sql
+  #   db_url: sqlite:///home-assistant_v2.db
+  #   queries:
+  #     - name: "Solar 24h"
+  #       column: 'solar_kwh'
+  #       unit_of_measurement: 'kWh'
+  #       query: >-
+  #         SELECT ROUND(SUM(solar_kwh), 2) AS solar_kwh
+  #         FROM (
+  #           SELECT AVG(state) AS solar_kwh
+  #           FROM states
+  #           WHERE entity_id = 'sensor.solar_now'
+  #           AND state != 'unknown'
+  #           AND last_updated >= DATE_SUB(UTC_TIMESTAMP(), INTERVAL 24 HOUR)
+  #           GROUP BY HOUR(last_updated)
+  #         ) AS total_kwh;
+
+  - platform: history_stats
+    name: Main Door Opened
+    entity_id: binary_sensor.main_door
+    state: 'open'
+    type: count
+    end: '{{ now() }}'
+    duration:
+      hours: 24
+
+  - platform: history_stats
+    name: TV time
+    entity_id: media_player.apple_tv
+    state: 'playing'
+    type: time
+    end: '{{ now() }}'
+    duration:
+      hours: 24
+
+### Building some interesting stats for tweeting. ###
+  - platform: template
+    sensors:
+      sensor_count:
+        friendly_name: 'Number of Sensors'
+        value_template: >
+          {%- set domains = ['sensor'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+      automation_count:
+        friendly_name: 'Number of Automations'
+        value_template: >
+          {%- set domains = ['automation'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+      script_count:
+        friendly_name: 'Number of Scripts'
+        value_template: >
+          {%- set domains = ['script'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+      binary_sensor_count:
+        friendly_name: 'Number of Binary Sensors'
+        value_template: >
+          {%- set domains = ['binary_sensor'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+      tracker_count:
+        friendly_name: 'Number of Devices'
+        value_template: >
+          {%- set domains = ['device_tracker'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+      lights_count:
+        friendly_name: 'Number of Lights'
+        value_template: >
+          {%- set domains = ['light'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain] -%}
+              {% if loop.first %}
+                {{loop.length}}
+              {% endif %}
+            {%- endfor -%}
+          {%- endfor -%}
+
+group:
+  tweet_stats:
+    entities:
+      - sensor.main_door_opened
+      - sensor.tv_time
+      - sensor.sensor_count
+      - sensor.script_count
+      - sensor.binary_sensor_count
+      - sensor.automation_count
+      - sensor.lights_count
+      - sensor.tracker_count
+
+#############################################################
+
+# automation:
+#   - alias: 'Random House stats'
+#     hide_entity: True
+#     trigger:
+#       - platform: time
+#         hours: '/2'
+#         minutes: 45
+#         seconds: 00
+#     condition:
+#       - condition: template
+#         value_template: >
+#           {%- if states.automation.random_house_stats.attributes.last_triggered -%}
+#             {{ (as_timestamp(now()) - as_timestamp(states.automation.random_house_stats.attributes.last_triggered)) > 10000 }}
+#           {%- else -%}
+#             true
+#           {%- endif -%}
+#     action:
+#       - delay: '0{{ range(0,2) | random | int }}:{{ range(10,59) | random | int }}:00'
+#       - service: script.tweet_engine_setup
+#         data_template:
+#           pick: >-
+#             {% set pick = [
+#               "solar", "solar",
+#               "robot", "robot", "robot", "robot", "robot", "robot", "robot", "robot", "robot","robot","robot","robot",
+#               "door", "door", "door",
+#               "weather", "weather", "weather", "weather", "weather",
+#               "cloud",
+#               "internet", "internet", "internet", "internet", "internet",
+#               "stocks", "stocks", "stocks",
+#               "night", "night",
+#               "tv", "tv", "tv"
+#             ] %}
+#             {{ pick|random }}
