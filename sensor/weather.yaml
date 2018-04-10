@@ -5,7 +5,7 @@
 #    - precip_type
     - precip_intensity
     - precip_intensity_max
-    - temperature
+    # - temperature
     - apparent_temperature
 #    - dew_point
     - wind_speed

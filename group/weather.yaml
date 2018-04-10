@@ -5,6 +5,8 @@ Weather:
     - sensor.dark_sky_humidity
     - sensor.dark_sky_precip_intensity
     - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_uv_index
+
     # - sensor.dark_sky_temperature
     # - sensor.dark_sky_uv_index
     - sensor.living_room_temperature
