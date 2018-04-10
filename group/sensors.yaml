@@ -1,0 +1,3 @@
+Sensors:
+  entities:
+    - binary_sensor.main_door

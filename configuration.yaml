@@ -118,23 +118,23 @@ light:
     effect: true
     effect_list:
       - bpm
-      - candy cane  
-      - confetti  
-      - cyclon rainbow  
-      - dots  
-      - fire  
-      - glitter  
-      - juggle  
+      - candy cane
+      - confetti
+      - cyclon rainbow
+      - dots
+      - fire
+      - glitter
+      - juggle
       - lightning
-      - noise  
-      - police all  
-      - police one  
-      - rainbow  
-      - rainbow with glitter  
-      - ripple  
-      - sinelon  
-      - solid  
-      - twinkle  
+      - noise
+      - police all
+      - police one
+      - rainbow
+      - rainbow with glitter
+      - ripple
+      - sinelon
+      - solid
+      - twinkle
     brightness: true
     flash: true
     rgb: true
@@ -226,6 +226,7 @@ tts:
 group: !include_dir_merge_named group
 device_tracker: !include_dir_merge_list device_tracker
 sensor: !include_dir_merge_list sensor
+binary_sensor: !include_dir_merge_list binary_sensor
 automation: !include_dir_merge_list automation
 scene: !include_dir_merge_list scene
 switch: !include_dir_merge_list switch
