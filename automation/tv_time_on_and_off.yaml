@@ -1,0 +1,53 @@
+######################################################################
+##  TV Time at sunset or 8pm.  Whichever is later.
+######################################################################
+
+- alias: TV Time
+  trigger:
+    - platform: state
+      entity_id: input_boolean.TV_time
+      to: 'on'
+      from: 'off'
+    # - platform: state
+    #   entity_id: sun.sun
+    #   to: 'below_horizon'
+    #   from: 'above_horizon'
+    - platform: state
+      entity_id: media_player.apple_tv
+      to: 'playing'
+      from: 'idle'
+    # - platform: time
+    #   at: '20:00:00'
+
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.family
+        state: home
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.guest_mode
+        state: 'off'
+      - condition: time
+        after: '20:00:00'
+      - condition: state
+        entity_id: media_player.apple_tv
+        state: 'playing'
+
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.tv_time
+
+    - service: light.turn_off
+      entity_id:
+        - group.main_lights
+        # - group.kitchen_lights
+
+    # - service: switch.turn_on
+    #   entity_id: switch.kitchen_accents
+    #
+    # - service: scene.turn_on
+    #   entity_id: scene.tv_time

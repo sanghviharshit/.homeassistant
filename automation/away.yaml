@@ -1,0 +1,27 @@
+######################################################################
+##  Shut it all down.  No one is here
+######################################################################
+
+- alias: 'Away Mode'
+  trigger:
+    - platform: state
+      entity_id: group.family
+      to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.good_night
+      to: 'on'
+
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+
+  action:
+    - service: script.interior_off
+    - service: switch.turn_off
+      entity_id: group.all_lights
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.good_night
