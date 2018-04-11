@@ -1,0 +1,32 @@
+######################################################################
+##  Door Open Announcements
+######################################################################
+- alias: 'Door Opened'
+
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.main_door # Front door #
+      from: 'off'
+
+  # condition:
+  #   - condition: state
+  #     entity_id: binary_sensor.sleepnumber_carlo_carlo_is_in_bed
+  #     state: 'on'
+  #   - condition: state
+  #     entity_id: binary_sensor.sleepnumber_carlo_stacey_is_in_bed
+  #     state: 'on'
+
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: 'parents'
+        value1: "The {{ trigger.to_state.attributes.friendly_name }} has been {{ (trigger.to_state.state)|replace('_', ' ') }}."
+
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_mode
+
+    # - service: script.speech_engine
+    #   data_template:
+    #     call_window_check: 1
+    #     call_inside_weather: 1

@@ -1,0 +1,28 @@
+######################################################################################################
+###Script to turn on Front light FULL bright for 15m when motion is detected and then return to the normal colors.
+#  action:
+#   - service: script.emergency
+# @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+######################################################################################################
+
+emergency:
+  sequence:
+# Switch all outside front lights to Red to indicate emergency
+    - service: light.turn_on
+      entity_id:
+        - group.all_lights
+      data:
+        color_name: 'red'
+      # Flash All LIGHTS
+    - service: light.turn_on
+      entity_id:
+        - group.all_lights
+      data:
+        flash: long
+      # Turn on All LIGHTS 100% Brightness
+    - service: light.turn_on
+      entity_id:
+        - group.all_lights
+      data:
+        brightness: 255
