@@ -74,3 +74,11 @@ media_player.chrome_2:
   name:
   platform: plex
   unique_id: ux5utk9xrjn140w00tzgefe1
+sensor.harshits_iphone_battery_state:
+  name:
+  platform: ios
+  unique_id: state_harshits_iphone
+sensor.harshits_iphone_battery_level:
+  name:
+  platform: ios
+  unique_id: level_harshits_iphone
