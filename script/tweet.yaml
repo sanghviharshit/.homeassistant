@@ -1,0 +1,160 @@
+######################################################################################################
+## Script to send notifications to Twitter as @BearStoneHA.
+## Publish on Facebook as well - https://www.facebook.com/BearStoneHA/
+## If you do end up using this package, please consider using one or two of the canned tweets that calls back to my main repo
+## so others can bring thier homes online as well.  I have an active search for #RandomFacts that helps me find new HA homes using my package online.
+## Enhancements by @dale3h
+######################################################################################################
+
+tweet_engine_setup:
+   sequence:
+    - service: script.tweet_engine_image
+      data_template:
+        tweet: >-
+          {%- macro tweet(topic) -%}
+            {% set tweets = {
+              "robot": [
+                "Beep. Bop. Beep. Boop.  I am a #roBOT run by @harshit_ps",
+                "I am running Home Assistant version {{ states('sensor.ha_installed_version') }}",
+                "Home Assistant has been running for {{ states('sensor.ha_uptime') }}.",
+                "My Home Assistant has been tested by Travis-CI and {{states('sensor.ccostanhomeassistantconfig_state')}}.",
+                "{{((states.sensor.sensor_count.state | int) + (states.sensor.binary_sensor_count.state | int))}} sensors feed my Smart Home #data.",
+                "{{states.sensor.automation_count.state}} automations and {{states.sensor.script_count.state}} scripts make my home smart.",
+                "Nevermind me.  I am just keeping track of {{states.sensor.lights_count.state}} lights and {{states.sensor.tracker_count.state}} devices in the house."
+              ],
+
+              "door": [
+                "The number of times main door opened yesterday was {{ states('sensor.doorbell_presses') }}",
+              ],
+
+              "weather": [
+                "Average humidity of the house was at {{ states('sensor.downstairs_thermostat_humidity') }} percent. Outside is {{ states('sensor.dark_sky_humidity') }} #smartthings",
+                "Outside is {{ states('sensor.dark_sky_temperature') }}. I keep the average inside temperature at {{ states('sensor.downstairs_thermostat_temperature') }}. #Weather",
+                "The current UV index is {{ states('sensor.dark_sky_uv_index') }} and the Moon is {{ states('sensor.moon') }}.  #Space"
+              ],
+
+              "cloud": [
+                "Average Cloud Coverage: {{ states('sensor.dark_sky_cloud_coverage') }}%, Average Temp: {{ states('sensor.dark_sky_temperature') }}Â°F #Solar"
+              ],
+
+              "internet": [
+                "So far, I have prevented {{ states('sensor.pihole_ads_blocked_today') }} ads from hitting the network via Pi-hole! http://www.pi-hole.net",
+                "Pi-hole (http://www.pi-hole.net) has serviced {{ states('sensor.pihole_dns_queries_today') }} DNS requests today! #PiZero",
+              ],
+
+              "stocks": [
+                "I am keeping track of the current #Shutterstock stock price. It is ${{ states('sensor.shutterstock')|round }}. #SSTK",
+                "I am keeping track of the current #Bitcoin prices. It is ${{ states('sensor.bitcoin')|round }}. #BTC",
+              ],
+
+
+              "tv": [
+                "The {{ states.media_player.apple_tv.attributes.friendly_name }} #AppleTV is playing #{{ states.media_player.apple_tv.attributes.app_name }}.",
+                "Yesterday we watched about {{ states.sensor.tv_time.attributes.value|replace('m', '') }} minutes of television. @Plex @YouTube and @Netflix on the @AppleTV"
+              ]
+            } %}
+
+            {{ tweets[topic]|random }}
+          {%- endmacro -%}
+
+          {{ tweet(pick) }}
+
+        image: >-
+          {%- macro image(topic) -%}
+            {% set images = {
+              "robot": [
+                "/config/www/custom_ui/floorplan/images/branding/servers5.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers4.png",
+                "/config/www/custom_ui/floorplan/images/branding/robot.png",
+                "/config/www/custom_ui/floorplan/images/branding/keyboard.png",
+                "/config/www/custom_ui/floorplan/images/branding/repo_ad4.png",
+                "/config/www/custom_ui/floorplan/images/branding/repo_ad2.png",
+                "/config/www/custom_ui/floorplan/images/branding/repo_ad3.png",
+              ],
+
+              "door": [
+                "/config/www/custom_ui/floorplan/images/branding/door.png",
+              ],
+
+              "weather": [
+                "/config/www/custom_ui/floorplan/images/branding/windy.png",
+                "/config/www/custom_ui/floorplan/images/branding/repo_ad2.png",
+                "/config/www/custom_ui/floorplan/images/branding/moon.png",
+              ],
+
+              "cloud": [
+                "/config/www/custom_ui/floorplan/images/branding/clouds.png",
+                "/config/www/custom_ui/floorplan/images/branding/clouds2.png",
+                "/config/www/custom_ui/floorplan/images/branding/solar.png"
+              ],
+
+              "internet": [
+                "/config/www/custom_ui/floorplan/images/branding/servers.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers2.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers3.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers4.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers5.png"
+              ],
+
+              "stocks": [
+                "/config/www/custom_ui/floorplan/images/branding/stock.png",
+                "/config/www/custom_ui/floorplan/images/branding/stock2.png"
+              ],
+
+              "tv": [
+                "/config/www/custom_ui/floorplan/images/branding/tv.png",
+                "/config/www/custom_ui/floorplan/images/branding/tv2.png",
+                "/config/www/custom_ui/floorplan/images/branding/tv3.png",
+                "/config/www/custom_ui/floorplan/images/branding/tv4.png",
+                "/config/www/custom_ui/floorplan/images/branding/tv5.png"
+              ]
+            } %}
+
+            {{ images[topic]|random }}
+          {%- endmacro -%}
+
+          {{ image(pick) }}
+
+tweet_engine_image:
+   sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: 'ifttt/message'
+        payload: >-
+          {{ tweet }}
+        retain: true
+
+    - service: notify.SanghviHA
+      data_template:
+        message: >-
+          {{ tweet }} #IOT #SmartHome
+        data:
+          media: >-
+            {{ image }}
+
+tweet_engine:
+   sequence:
+    - service: mqtt.publish
+      data_template:
+        topic: 'ifttt/message'
+        payload: >-
+          {{ tweet }}
+        retain: true
+
+    - service: notify.SanghviHA
+      data_template:
+        message: >-
+          {{ tweet }} #IOT #SmartHome
+
+
+
+
+    # - service: ifttt.trigger
+    #   data_template: {"event":"facebook_tweet", "value1":"{{ tweet }}", "value2":"{{ value2 }}", "value3":"{{ value3 }}"}
+
+    # - service: ifttt.trigger
+    #   data_template:
+    #     event: >-
+    #       facebook_tweet
+    #     value1: >
+    #         {{states.sensor.ifttt_formatted_message.state}} #IOT #SmartHome

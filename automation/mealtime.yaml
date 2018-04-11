@@ -10,11 +10,11 @@
       from: 'off'
 
   action:
-    - service: light.turn_on
-      entity_id:
-        - group.dinette_lights
     - service: light.turn_off
       entity_id:
         - group.main_lights
+    - service: light.turn_on
+      entity_id:
+        - group.dinette_lights
     - service: input_boolean.turn_off
       entity_id: input_boolean.meal_time
