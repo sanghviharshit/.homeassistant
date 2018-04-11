@@ -12,6 +12,7 @@
 #       hidden: False
 #-------------------------------------------
 sensor:
+  # pip install simplejson
   - platform: alpha_vantage
     scan_interval: 300
     api_key: !secret vantage_api
@@ -19,6 +20,9 @@ sensor:
       - name: Shutterstock
         currency: USD
         symbol: SSTK
+      - name: Tesla
+        currency: USD
+        symbol: TSLA
     foreign_exchange:
       - from: BTC
         to: USD
@@ -29,7 +33,7 @@ group:
     entities:
       - sensor.tesla
       - sensor.bitcoin
-      - sensor.vmware
+      - sensor.shutterstock
 
 ##############################################################################
 ###  Automations - Detect when things are not right. Like any Good Watchdog.
