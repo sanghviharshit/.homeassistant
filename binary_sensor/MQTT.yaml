@@ -2,8 +2,7 @@
 ## Various MQTT sensors
 ###################################################
 
-binary_sensor:
-  - platform: mqtt
-    name: "Main Door"
-    state_topic: "smartthings/Main Door/contact"
-    device_class: door
+- platform: mqtt
+  name: "Main Door"
+  state_topic: "smartthings/Main Door/contact"
+  device_class: door

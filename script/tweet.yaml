@@ -128,9 +128,9 @@ tweet_engine_image:
       data_template:
         message: >-
           {{ tweet }} #IOT #SmartHome
-        data:
-          media: >-
-            {{ image }}
+        # data:
+          # media: >-
+            # {{ image }}
 
 tweet_engine:
    sequence:
