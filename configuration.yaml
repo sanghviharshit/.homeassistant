@@ -217,6 +217,9 @@ tts:
     region_name: 'us-east-1'
     text_type: ssml
     cache: True
+    # https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
+    voice: Joanna
+
 
 #    cache_dir: /data/tts
 

@@ -15,16 +15,19 @@ tweet_engine_setup:
             {% set tweets = {
               "robot": [
                 "Beep. Bop. Beep. Boop.  I am a #roBOT run by @harshit_ps",
+                "I have spoken for about {{ states.sensor.speech_time.attributes.value|replace('m', '') }} minutes in the last 24 hours.",
+                "When you add it all up, I have spoken for about {{ states.sensor.speech_time.attributes.value|replace('m', '') }} minutes in the last 24 hours!",
+                "My Home Assistant Database is currently using {{ states('sensor.database_sensor') }} MBs. To get this #Stat for your HA, visit (https://github.com/robmarkcole/HASS-filesize-sensor)",
                 "I am running Home Assistant version {{ states('sensor.ha_installed_version') }}",
                 "Home Assistant has been running for {{ states('sensor.ha_uptime') }}.",
-                "My Home Assistant has been tested by Travis-CI and {{states('sensor.ccostanhomeassistantconfig_state')}}.",
+                "My Home Assistant has been tested by Travis-CI",
                 "{{((states.sensor.sensor_count.state | int) + (states.sensor.binary_sensor_count.state | int))}} sensors feed my Smart Home #data.",
                 "{{states.sensor.automation_count.state}} automations and {{states.sensor.script_count.state}} scripts make my home smart.",
                 "Nevermind me.  I am just keeping track of {{states.sensor.lights_count.state}} lights and {{states.sensor.tracker_count.state}} devices in the house."
               ],
 
               "door": [
-                "The number of times main door opened yesterday was {{ states('sensor.doorbell_presses') }}",
+                "The number of times main door opened yesterday was {{ states('sensor.main_door_opened') }}",
               ],
 
               "weather": [
@@ -63,6 +66,9 @@ tweet_engine_setup:
           {%- macro image(topic) -%}
             {% set images = {
               "robot": [
+                "/config/www/custom_ui/floorplan/images/branding/servers5.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers5.png",
+                "/config/www/custom_ui/floorplan/images/branding/servers5.png",
                 "/config/www/custom_ui/floorplan/images/branding/servers5.png",
                 "/config/www/custom_ui/floorplan/images/branding/servers4.png",
                 "/config/www/custom_ui/floorplan/images/branding/robot.png",
