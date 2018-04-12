@@ -25,7 +25,7 @@ sensor:
   - platform: history_stats
     name: Main Door Opened
     entity_id: binary_sensor.main_door
-    state: 'open'
+    state: 'on'
     type: count
     end: '{{ now() }}'
     duration:
