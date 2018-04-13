@@ -6,3 +6,5 @@
   name: "Main Door"
   state_topic: "smartthings/Main Door/contact"
   device_class: door
+  payload_on: "open"
+  payload_off: "closed"
