@@ -1,0 +1,10 @@
+- platform: ups
+    username: !secret upsmychoice_username
+    password: !secret upsmychoice_password
+    update_interval: '01:00'
+
+# usps:
+#     Needs chrome or phantom driver
+#     username: !secret myusps_username
+#     password: !secret myusps_password
+#     driver: chrome
