@@ -210,7 +210,7 @@ media_player:
 #  enable_websocket: true
 
 tts:
-  - platform: google
+  # - platform: google
   - platform: amazon_polly
     aws_access_key_id: !secret aws_access_key_ID
     aws_secret_access_key: !secret aws_secret_access_key
