@@ -1,50 +1,23 @@
-Other Devices:
+Network Devices:
   entities:
     - device_tracker.sanghviresidencesanghvihome
     - device_tracker.886b0f6f9555
     - device_tracker.2078f0be4d89
     - device_tracker.smarttvsanghvihome
     - device_tracker.dashwandsanghvihome
-
-Computers:
-  entities:
     - device_tracker.hsanghvimbpsanghvihome
     - device_tracker.hpsmbpsanghvihome
     - device_tracker.hsimacsanghvihome
     - device_tracker.hetasairsanghvihome
-
-Camera Devices:
-  entities:
     - device_tracker.spycamsanghvihome
-
-Lifx Devices:
-  entities:
     - device_tracker.lifxtvsanghvihome
     - device_tracker.lifxbedsanghvihome
     - device_tracker.lifxskylinesanghvihome
     - device_tracker.lifxcomputersanghvihome
-
-Mobile Devices:
-  entities:
-    - device_tracker.harshits_iphone
-    - device_tracker.hetas_iphone
-    - device_tracker.hetasiphonesanghvihome
-    - device_tracker.harshitsiphonesanghvihome
-
-
-Wemo Devices:
-  entities:
     - device_tracker.wemosanghvihome
     - device_tracker.wemosanghvihome_2
-
-Tablet Devices:
-  entities:
     - device_tracker.digiflipsanghvihome
     - device_tracker.nexus7sanghvihome
-
-
-ESP Devices:
-  entities:
     - device_tracker.esp_00c46fsanghvihome
     - device_tracker.esp_42a95esanghvihome
     - device_tracker.esp_80e0ccsanghvihome
@@ -53,19 +26,46 @@ ESP Devices:
     - device_tracker.esp_169263sanghvihome
     - device_tracker.esp_33f2ebsanghvihome
     - device_tracker.esp_42aac6sanghvihome
-
-
-Hubs:
-  entities:
     - device_tracker.st24fd5b00000303ecsanghvihome
     - device_tracker.harmonyhubsanghvihome
-
-Raspberry Pi Devices:
     - device_tracker.pionesanghvihome
     - device_tracker.pitwoethsanghvihome
     - device_tracker.pithreewifisanghvihome
-
-Media Player Devices:
     - device_tracker.nexusplayersanghvihome
     - device_tracker.appletvsanghvihome
     - device_tracker.firetvethernatsanghvihome
+
+Computers:
+  entities:
+    - sensor.computer_imac
+    - sensor.computer_mbp
+    - sensor.computer_mb
+    - sensor.computer_mba
+
+Mobile Devices:
+  entities:
+    - device_tracker.harshits_iphone
+    - device_tracker.hetas_iphone
+    - device_tracker.hetasiphonesanghvihome
+    - device_tracker.harshitsiphonesanghvihome
+
+Tablet Devices:
+  entities:
+    - sensor.tablet_digiflip
+    - sensor.tablet_nexus7
+
+Hubs:
+  entities:
+    - sensor.hub_smartthings
+    - sensor.hub_harmony
+
+Raspberry Pi Devices:
+  - sensor.pi_one
+  - sensor.pi_two
+  - sensor.pi_three
+
+Media Devices:
+  - sensor.tv_hisense
+  - sensor.media_player_appletv
+  - sensor.media_player_nexusplayer
+  - sensor.media_player_firetv

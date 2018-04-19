@@ -26,3 +26,7 @@
       value_template: "{% if is_state('device_tracker.nexusplayersanghvihome', 'home') %}online{% else %}offline{% endif %}"
     media_player_firetv:
       value_template: "{% if is_state('device_tracker.firetvethernatsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    tablet_digiflip:
+      value_template: "{% if is_state('device_tracker.digiflipsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    tablet_nexus7:
+      value_template: "{% if is_state('device_tracker.nexus7sanghvihome', 'home') %}online{% else %}offline{% endif %}"
