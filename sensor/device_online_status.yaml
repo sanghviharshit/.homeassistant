@@ -1,0 +1,28 @@
+- platform: template
+  sensors:
+    hub_smartthings:
+      value_template: "{% if is_state('device_tracker.st24fd5b00000303ecsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    hub_harmony:
+      value_template: "{% if is_state('device_tracker.harmonyhubsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    pi_one:
+      value_template: "{% if is_state('device_tracker.pionesanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    pi_two:
+      value_template: "{% if is_state('device_tracker.pitwoethsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    pi_three:
+      value_template: "{% if is_state('device_tracker.pithreewifisanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    computer_imac:
+      value_template: "{% if is_state('device_tracker.hsimacsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    computer_mbp:
+      value_template: "{% if is_state('device_tracker.hpsmbpsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    computer_mb:
+      value_template: "{% if is_state('device_tracker.hsanghvimbpsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    computer_mba:
+      value_template: "{% if is_state('device_tracker.hetasairsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    tv_hisense:
+      value_template: "{% if is_state('device_tracker.smarttvsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    media_player_appletv:
+      value_template: "{% if is_state('device_tracker.appletvsanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    media_player_nexusplayer:
+      value_template: "{% if is_state('device_tracker.nexusplayersanghvihome', 'home') %}online{% else %}offline{% endif %}"
+    media_player_firetv:
+      value_template: "{% if is_state('device_tracker.firetvethernatsanghvihome', 'home') %}online{% else %}offline{% endif %}"
