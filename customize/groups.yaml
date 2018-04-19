@@ -15,6 +15,12 @@ group.all_lights:
 
   hidden: True
 
+group.network_devices:
+  friendly_name: 'Network Devices'
+
+  hidden: True
+  homebridge_hidden: true
+
 
 group.family:
   friendly_name: 'Family'

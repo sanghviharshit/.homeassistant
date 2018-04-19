@@ -34,6 +34,8 @@ Network Devices:
     - device_tracker.nexusplayersanghvihome
     - device_tracker.appletvsanghvihome
     - device_tracker.firetvethernatsanghvihome
+    - device_tracker.hetasiphonesanghvihome
+    - device_tracker.harshitsiphonesanghvihome
 
 Computers:
   entities:
@@ -46,8 +48,6 @@ Mobile Devices:
   entities:
     - device_tracker.harshits_iphone
     - device_tracker.hetas_iphone
-    - device_tracker.hetasiphonesanghvihome
-    - device_tracker.harshitsiphonesanghvihome
 
 Tablet Devices:
   entities:
