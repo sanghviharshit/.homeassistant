@@ -1,0 +1,41 @@
+group.all_automations:
+  friendly_name: 'All Automations'
+
+  hidden: True
+  homebridge_hidden: true
+
+group.all_devices:
+  friendly_name: 'All Devices'
+
+  hidden: True
+  homebridge_hidden: true
+
+group.all_lights:
+  friendly_name: 'All Lights'
+
+  hidden: True
+
+
+group.family:
+  friendly_name: 'Family'
+
+  hidden: False
+  homebridge_hidden: true
+
+group.home_modes:
+  friendly_name: 'Home Modes'
+
+  hidden: False
+  homebridge_hidden: true
+
+group.media_players:
+  friendly_name: 'Media Players'
+
+  hidden: False
+  homebridge_hidden: true
+
+group.weather:
+  friendly_name: 'Weather'
+
+  hidden: False
+  homebridge_hidden: true
