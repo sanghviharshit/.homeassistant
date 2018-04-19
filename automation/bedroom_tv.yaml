@@ -1,0 +1,23 @@
+######################################################################
+##  Start Media Center, Ambilight, etc. when TV turns on
+######################################################################
+
+- alias: 'Turn on Bedroom Media Center'
+  trigger:
+    - platform: state
+      entity_id: sensor.tv_hisense
+      to: 'online'
+
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_tv
+
+- alias: 'Turn off Bedroom Media Center'
+  trigger:
+    - platform: state
+      entity_id: sensor.tv_hisense
+      to: 'offline'
+
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bedroom_tv

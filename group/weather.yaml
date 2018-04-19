@@ -12,4 +12,3 @@ Weather:
     - sensor.living_room_temperature
     - sensor.living_room_humidity
     - sensor.moon
-    - camera.wu_doppler_weather

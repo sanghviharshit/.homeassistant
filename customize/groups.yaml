@@ -15,8 +15,19 @@ group.all_lights:
 
   hidden: True
 
-group.network_devices:
-  friendly_name: 'Network Devices'
+# group.network_devices:
+#   friendly_name: 'Network Devices'
+#
+#   hidden: True
+#   homebridge_hidden: true
+
+group.entry_points:
+  friendly_name: 'Entry Points'
+
+  hidden: False
+  homebridge_hidden: true
+
+binary_sensor.main_door:
 
   hidden: True
   homebridge_hidden: true
