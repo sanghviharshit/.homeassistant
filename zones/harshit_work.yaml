@@ -1,0 +1,5 @@
+name: Harshit's Work
+latitude: !secret harshit_work_latitude
+longitude: !secret harshit_work_longitude
+radius: 250
+icon: mdi:worker

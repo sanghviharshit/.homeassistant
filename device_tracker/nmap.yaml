@@ -8,9 +8,8 @@
 #    exclude:
 #     - 192.168.1.175
 #     - 192.168.1.176
-  interval_seconds: 120
+  interval_seconds: 60
   # 5 minutes
-  consider_home: 0:05:00
+  consider_home: 0:02:00
   track_new_devices: yes
 #  scan_options: " --privileged -sP "
-#  consider_home: 1800 - Added to known_devices.yaml instead on a device by device basis.
