@@ -1,0 +1,12 @@
+image_processing:
+  - platform: dlib_face_detect
+    source:
+      - entity_id: camera.entrance
+
+image_processing:
+ - platform: dlib_face_identify
+   source:
+    - entity_id: camera.entrance
+   faces:
+     Jon: /home/homeassistant/.homeassistant/harshit.jpg
+     Bob: /home/homeassistant/.homeassistant/heta.jpg

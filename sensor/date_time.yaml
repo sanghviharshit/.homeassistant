@@ -1,4 +1,9 @@
 - platform: time_date
+  name: Local Datetime
   display_options:
     - 'time'
     - 'date'
+
+- platform: worldclock
+  name: IST
+  time_zone: Asia/Calcutta

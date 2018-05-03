@@ -1,0 +1,23 @@
+######################################################################
+##  Turn the TV on when Harmony activity for Apple TV starts
+######################################################################
+
+- alias: 'Turn on Living Room Media Center'
+  trigger:
+    - platform: state
+      entity_id: sensor.tv_hisense
+      to: 'online'
+
+  action:
+    - service: switch.turn_on
+      entity_id: switch.bedroom_tv
+
+- alias: 'Turn off Living Room Media Center'
+  trigger:
+    - platform: state
+      entity_id: sensor.tv_hisense
+      to: 'offline'
+
+  action:
+    - service: switch.turn_off
+      entity_id: switch.bedroom_tv

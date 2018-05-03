@@ -1,0 +1,30 @@
+- platform: mqtt_json
+  name: "Clock LED Strip"
+  state_topic: "sanghvi/clocklight"
+  command_topic: "sanghvi/clocklight/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane
+    - confetti
+    - cyclon rainbow
+    - dots
+    - fire
+    - glitter
+    - juggle
+    - lightning
+    - noise
+    - police all
+    - police one
+    - rainbow
+    - rainbow with glitter
+    - ripple
+    - sinelon
+    - solid
+    - twinkle
+  brightness: true
+  flash: true
+  rgb: true
+  color_temp: true
+  optimistic: false
+  qos: 0

@@ -25,7 +25,6 @@ Main lights:
     - light.fridge
     - light.passage
     - light.entrance
-    - light.temple
 
 Dinette lights:
   entities:
@@ -35,7 +34,6 @@ Hallway lights:
   entities:
     - light.passage
     - light.entrance
-    - light.temple
 
 Bedroom Media Center:
   entities:
