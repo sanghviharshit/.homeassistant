@@ -137,7 +137,18 @@ input_number:
 #     - torch
 #     - video_recording
 
+# camera:
+#   - platform: usps
+#     scan_interval: 5
+
 sun:
+
+# usps:
+#     name: USPS Mail
+#     username: !secret uspsmychoice_username
+#     password: !secret uspsmychoice_password
+#     driver: phantomjs
+#     # https://stackoverflow.com/questions/36314771/how-to-install-phantomjs-for-use-with-python-selenium-on-the-raspberry-pi
 
 # mqtt:
 #   broker: 127.0.0.1
@@ -153,6 +164,11 @@ media_player:
     include_non_clients: true
     show_all_controls: true
     use_episode_art: true
+
+apple_tv:
+  - host: 192.168.1.229
+    login_id: 00000000-4ed1-c48d-9df9-df88baa045bc
+    name: Apple TV (Wired)
 
 # Kodi
 #media_player:
