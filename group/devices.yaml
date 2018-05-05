@@ -5,6 +5,7 @@ Network Devices:
     - device_tracker.2078f0be4d89
     - device_tracker.smarttvsanghvihome
     - device_tracker.dashwandsanghvihome
+    - device_tracker.dashcolgatesanghvihome
     - device_tracker.hsanghvimbpsanghvihome
     - device_tracker.hpsmbpsanghvihome
     - device_tracker.hsimacsanghvihome
@@ -36,6 +37,12 @@ Network Devices:
     - device_tracker.firetvethernatsanghvihome
     - device_tracker.hetasiphonesanghvihome
     - device_tracker.harshitsiphonesanghvihome
+    - device_tracker.cc6ea478b715 # Samsung Smart TV
+    - device_tracker.d0d2b07bb7bf #apple tv ethernet
+
+Friends:
+  entities:
+    - device_tracker.salonisanghvihome
 
 Computers:
   entities:
@@ -60,12 +67,14 @@ Hubs:
     - sensor.hub_harmony
 
 Raspberry Pi Devices:
-  - sensor.pi_one
-  - sensor.pi_two
-  - sensor.pi_three
+  entities:
+    - sensor.pi_one
+    - sensor.pi_two
+    - sensor.pi_three
 
 Media Devices:
-  - sensor.tv_hisense
-  - sensor.media_player_appletv
-  - sensor.media_player_nexusplayer
-  - sensor.media_player_firetv
+  entities:
+    - sensor.tv_hisense
+    - sensor.media_player_appletv # apple tv wifi
+    - sensor.media_player_nexusplayer
+    - sensor.media_player_firetv
