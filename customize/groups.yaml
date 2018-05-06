@@ -21,6 +21,12 @@ group.entry_points:
   hidden: False
   homebridge_hidden: true
 
+binary_sensor.main_door:
+
+  hidden: True
+  homebridge_hidden: true
+
+
 group.family:
   friendly_name: 'Family'
 
