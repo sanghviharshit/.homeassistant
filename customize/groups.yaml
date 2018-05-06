@@ -139,3 +139,16 @@ group.interior_lights:
   friendly_name: 'Interior Lights'
 
   hidden: False
+
+
+group.harshit_locations:
+  friendly_name: 'Harshit Location'
+
+  hidden: False
+  icon: mdi:crosshairs-gps
+
+group.heta_locations:
+  friendly_name: 'Heta Location'
+
+  hidden: False
+  icon: mdi:crosshairs-gps

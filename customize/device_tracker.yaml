@@ -1,14 +1,29 @@
+device_tracker.harshitsiphonesanghvihome:
+  friendly_name: "Harshit's iPhone"
+  hidden: False
+  homebridge_hidden: True
+  icon: mdi:cellphone-iphone
+
+device_tracker.hetasiphonesanghvihome:
+  friendly_name: "Heta's iPhone"
+
+  hidden: False
+  homebridge_hidden: True
+  icon: mdi:cellphone-iphone
+
 device_tracker.harshits_iphone:
   friendly_name: 'Harshit'
 
   hidden: False
   homebridge_hidden: True
+  gravatar: sanghvi.harshit@gmail.com
 
 device_tracker.hetas_iphone:
   friendly_name: 'Heta'
 
   hidden: False
   homebridge_hidden: True
+  gravatar: shethheta1990@gmail.com
 
 device_tracker.salonisanghvihome:
   friendly_name: 'Saloni'

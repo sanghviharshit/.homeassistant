@@ -3,6 +3,7 @@ Network:
     - sensor.external_ip
     - sensor.speedtest_download
     - sensor.speedtest_upload
+    - sensor.speedtest_ping
 
 Network Devices:
   entities:

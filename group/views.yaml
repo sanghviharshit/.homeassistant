@@ -2,6 +2,7 @@ default_view:
     view: yes
     name: Home
     entities:
+      - group.highlights
       - group.entry_points
       - group.family_locations
       - group.living_room_media_center
@@ -33,8 +34,10 @@ family_view:
   name: Family
   view: yes
   entities:
-    - group.family_locations
-    - group.family_phone_sensors
+    - group.harshit_locations
+    - group.heta_locations
+    - group.harshit_phone_sensors
+    - group.heta_phone_sensors
     # - group.time_travel_card
     # - group.tracker_ble_happy_bubbles_card
 
@@ -67,7 +70,7 @@ living_room_view:
     - remote.harmony_hub
 
 network_view:
-  name: Network Devices
+  name: Network
   view: yes
   entities:
     - group.network

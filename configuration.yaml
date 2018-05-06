@@ -37,6 +37,11 @@ http:
   ip_ban_enabled: True
   login_attempts_threshold: 5
 
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_access_token
+
+
 # Enables the frontend
 frontend:
   javascript_version: latest
