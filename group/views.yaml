@@ -61,8 +61,8 @@ living_room_view:
     # - group.dinetter_lights
     - group.dining_room_lights
     - media_player.living_room
+    - media_player.apple_tv_wired
     - media_player.apple_tv
-    - media_player.apple_tv_2
     - media_player.fire_tv
     - media_player.nexus_player
     - switch.rotimatic  # TODO - Rename wemo switch

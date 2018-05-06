@@ -90,3 +90,11 @@ sensor.hetas_iphone_battery_state:
   name:
   platform: ios
   unique_id: state_hetas_iphone
+remote.apple_tv_wired:
+  name:
+  platform: apple_tv
+  unique_id: 0cff952d4f35ece6842e6e83c6000005ab03f565148d51991ce4466441638595
+media_player.apple_tv_wired:
+  name:
+  platform: apple_tv
+  unique_id: 0cff952d4f35ece6842e6e83c6000005ab03f565148d51991ce4466441638595

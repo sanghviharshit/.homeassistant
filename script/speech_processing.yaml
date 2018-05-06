@@ -52,7 +52,7 @@ speech_processing:
     - service: tts.amazon_polly_say
       data_template:
         entity_id: >
-          media_player.apple_tv
+          media_player.apple_tv_wired
         message: >-
           <speak>
             {{ speech_message }}

@@ -33,7 +33,7 @@ sensor:
 
   - platform: history_stats
     name: TV time
-    entity_id: media_player.apple_tv
+    entity_id: media_player.apple_tv_wired
     state: 'playing'
     type: time
     end: '{{ now() }}'

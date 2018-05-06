@@ -13,7 +13,7 @@
     #   to: 'below_horizon'
     #   from: 'above_horizon'
     - platform: state
-      entity_id: media_player.apple_tv
+      entity_id: media_player.apple_tv_wired
       to: 'playing'
       from: 'idle'
     # - platform: time
@@ -34,7 +34,7 @@
       - condition: time
         after: '20:00:00'
       - condition: state
-        entity_id: media_player.apple_tv
+        entity_id: media_player.apple_tv_wired
         state: 'playing'
 
   action:

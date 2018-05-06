@@ -31,7 +31,7 @@ speech_engine:
         media_player: >-
             {% if media_player | length == 0 %}
               {% set media_player = [
-                'media_player.apple_tv',
+                'media_player.apple_tv_wired',
                 'media_player.fire_tv',
                 'media_player.media_room'
               ] %}

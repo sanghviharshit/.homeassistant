@@ -52,7 +52,7 @@ tweet_engine_setup:
 
 
               "tv": [
-                "The {{ states.media_player.apple_tv.attributes.friendly_name }} #AppleTV is playing #{{ states.media_player.apple_tv.attributes.app_name }}.",
+                "The {{ states.media_player.apple_tv_wired.attributes.friendly_name }} #AppleTV is playing #{{ states.media_player.apple_tv_wired.attributes.app_name }}.",
                 "Yesterday we watched about {{ states.sensor.tv_time.attributes.value|replace('m', '') }} minutes of television. @Plex @YouTube and @Netflix on the @AppleTV"
               ]
             } %}
