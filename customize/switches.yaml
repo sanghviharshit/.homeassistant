@@ -23,7 +23,7 @@ switch.rotimatic:
 #   icon: mdi:music-circle
 
 switch.pihole:
-  friendly_name: 'Pihole Temp Disable'
+  friendly_name: 'Pihole'
 
   hidden: False
   homebridge_hidden: true

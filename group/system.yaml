@@ -1,6 +1,7 @@
 System:
   entities:
     - sensor.date
+    - binary_sensor.workday_sensor
     - sensor.last_message
     - sensor.database_sensor
     - sensor.disk_use_percent_

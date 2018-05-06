@@ -1,0 +1,19 @@
+All Scenes:
+  entities:
+    - scene.front_full_brightness
+    - scene.month_christmas_colors
+    - scene.month_cinco_de_mayo_colors
+    - scene.month_easter_colors
+    - scene.month_fathers_day_colors
+    - scene.month_halloween_colors
+    - scene.month_hanukkah_colors
+    - scene.month_marti_gras_colors
+    - scene.month_new_years_day_colors
+    - scene.month_pi_colors
+    - scene.month_rwb_colors
+    - scene.month_st_patty_colors
+    - scene.month_standard_colors
+    - scene.month_starwars_colors
+    - scene.month_thanksgiving_colors
+    - scene.month_valentine_colors
+    - scene.tv_time

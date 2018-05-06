@@ -1,3 +1,16 @@
+group.highlights:
+  friendly_name: 'Highlights'
+
+  hidden: False
+  homebridge_hidden: true
+
+group.all_scenes:
+  friendly_name: 'All Scenes'
+
+  hidden: False
+  homebridge_hidden: true
+
+
 group.all_automations:
   friendly_name: 'All Automations'
 
@@ -97,7 +110,7 @@ group.living_room_accents:
   hidden: False
 
 group.main_lights:
-  friendly_name: 'Living Room Accents'
+  friendly_name: 'Main Accents'
 
   hidden: False
 
