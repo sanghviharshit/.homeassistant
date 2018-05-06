@@ -11,3 +11,18 @@ Media Centers:
   entities:
     - switch.bedroom_tv
     - switch.rotimatic
+
+Living Room Media Center:
+  entities:
+    - switch.rotimatic
+    - media_player.apple_tv
+    - media_player.apple_tv_2
+    - media_player.fire_tv
+    - media_player.nexus_player
+
+Bedroom Media Center:
+  entities:
+    - switch.bedroom_tv
+    - switch.bedroom_tv
+    - media_player.media_room
+    - media_player.hs_imac

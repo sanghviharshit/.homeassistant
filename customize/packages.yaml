@@ -1,5 +1,5 @@
 group.pihole:
-  friendly_name: 'Pihole'
+  friendly_name: 'Pi-hole'
 
   hidden: False
   homebridge_hidden: True

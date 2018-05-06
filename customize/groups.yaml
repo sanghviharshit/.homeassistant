@@ -83,6 +83,12 @@ group.weather:
   hidden: False
   homebridge_hidden: true
 
+group.indoor_climate:
+  friendly_name: 'Indoor climate'
+
+  hidden: False
+  homebridge_hidden: true
+
 group.entry_points:
   friendly_name: 'Entry Points'
 

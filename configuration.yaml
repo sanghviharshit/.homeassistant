@@ -158,12 +158,15 @@ sun:
 #   password: !secret MQTT_password
 
 # Media Players
+# TODO - add universal media player - https://www.home-assistant.io/components/media_player.universal/
+
 media_player:
   - platform: cast
   - platform: plex
     include_non_clients: true
     show_all_controls: true
     use_episode_art: true
+
 
 apple_tv:
   - host: 192.168.1.229

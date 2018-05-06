@@ -1,12 +1,42 @@
-Family:
+Family Card:
+  entities:
+    - group.harshit_phone_sensors
+    - group.heta_phone_sensors
+    # - group.time_travel_card
+    - group.harshit_locations_card
+    - group.heta_locations_card
+
+Family Locations:
+  entities:
+    - group.harshit_locations
+    - group.heta_locations
+
+Family Phone Sensors:
+  entities:
+    - group.harshit_phone_sensors
+    - group.heta_phone_sensors
+
+
+
+Harshit Locations:
   entities:
     - device_tracker.harshits_iphone
+    - device_tracker.harshitsiphonesanghvihome
+
+Heta Locations:
+  entities:
+    - device_tracker.hetas_iphone
+    - device_tracker.hetasiphonesanghvihome
+
+Harshit Phone Sensors:
+  entities:
     - sensor.harshits_iphone_battery_level
     - sensor.harshits_iphone_battery_state
-    - device_tracker.hetas_iphone
+
+Heta Phone Sensors:
+  entities:
     - sensor.hetas_iphone_battery_level
     - sensor.hetas_iphone_battery_state
-
 
 Friends:
   entities:
