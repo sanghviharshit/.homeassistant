@@ -15,17 +15,16 @@ group.all_lights:
 
   hidden: True
 
-group.entry_points:
-  friendly_name: 'Entry Points'
-
-  hidden: False
-  homebridge_hidden: true
-
-binary_sensor.main_door:
+group.all_scripts:
+  friendly_name: 'All Scripts'
 
   hidden: True
   homebridge_hidden: true
 
+group.all_switches:
+  friendly_name: 'All Switches'
+
+  hidden: True
 
 group.family:
   friendly_name: 'Family'
@@ -45,8 +44,79 @@ group.media_players:
   hidden: False
   homebridge_hidden: true
 
+group.network:
+  friendly_name: 'Network'
+
+  hidden: False
+  homebridge_hidden: true
+
+
+group.sensors:
+  friendly_name: 'Sensors'
+
+  hidden: False
+  homebridge_hidden: true
+
+
+group.switches:
+  friendly_name: 'Switches'
+
+  hidden: False
+  homebridge_hidden: true
+
 group.weather:
   friendly_name: 'Weather'
 
   hidden: False
   homebridge_hidden: true
+
+group.entry_points:
+  friendly_name: 'Entry Points'
+
+  hidden: False
+  homebridge_hidden: true
+
+group.bedroom_lights:
+  friendly_name: 'Bedroom Lights'
+
+  hidden: False
+
+group.kitchen_lights:
+  friendly_name: 'Kitchen Lights'
+
+  hidden: False
+
+group.living_room_lights:
+  friendly_name: 'Living Room Lights'
+
+  hidden: False
+
+group.living_room_accents:
+  friendly_name: 'Living Room Accents'
+
+  hidden: False
+
+group.main_lights:
+  friendly_name: 'Living Room Accents'
+
+  hidden: False
+
+group.dinette_lights:
+  friendly_name: 'Dinette Lights'
+
+  hidden: False
+
+group.dining_room_lights:
+  friendly_name: 'Dining Room Lights'
+
+  hidden: False
+
+group.hallway_lights:
+  friendly_name: 'Hallway Lights'
+
+  hidden: False
+
+group.interior_lights:
+  friendly_name: 'Interior Lights'
+
+  hidden: False

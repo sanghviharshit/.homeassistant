@@ -1,0 +1,23 @@
+device_tracker.harshits_iphone:
+  friendly_name: 'Harshit'
+
+  hidden: False
+  homebridge_hidden: True
+
+device_tracker.hetas_iphone:
+  friendly_name: 'Heta'
+
+  hidden: False
+  homebridge_hidden: True
+
+device_tracker.salonisanghvihome:
+  friendly_name: 'Saloni'
+
+  hidden: True
+  homebridge_hidden: True
+
+device_tracker.neelshahsiphonesanghvihome:
+  friendly_name: 'Neel'
+
+  hidden: True
+  homebridge_hidden: True

@@ -1,0 +1,30 @@
+###################################
+##  Switches Section
+###################################
+switch.bedroom_tv:
+  friendly_name: 'Bedroom TV'
+
+  hidden: False
+  icon: mdi:television-classic
+  assumed_state: true
+
+
+switch.rotimatic:
+  friendly_name: 'Living Room TV'
+
+  hidden: False
+  icon: mdi:television-classic
+  assumed_state: true
+
+# switch.living_room_amp:
+#   friendly_name: 'Living Room Amp'
+#
+#   hidden: False
+#   icon: mdi:music-circle
+
+switch.pihole:
+  friendly_name: 'Pihole Temp Disable'
+
+  hidden: False
+  homebridge_hidden: true
+  icon: mdi:block-helper

@@ -1,0 +1,5 @@
+binary_sensor.main_door:
+  friendly_name: 'Main Door'
+
+  hidden: False
+  homebridge_hidden: true

@@ -1,0 +1,13 @@
+- platform: trend
+  sensors:
+    temp_falling:
+      entity_id: sensor.dark_sky_apparent_temperature
+      sample_duration: 7200
+      min_gradient: -0.0008
+      device_class: cold
+
+    temp_rising:
+      entity_id: sensor.dark_sky_apparent_temperature
+      sample_duration: 7200
+      min_gradient: 0.0008
+      device_class: heat
