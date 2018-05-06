@@ -2,3 +2,8 @@ Family:
   entities:
     - device_tracker.harshits_iphone
     - device_tracker.hetas_iphone
+
+
+Friends:
+  entities:
+    - device_tracker.salonisanghvihome

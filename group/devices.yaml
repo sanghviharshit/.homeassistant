@@ -39,42 +39,34 @@ Network Devices:
     - device_tracker.harshitsiphonesanghvihome
     - device_tracker.cc6ea478b715 # Samsung Smart TV
     - device_tracker.d0d2b07bb7bf #apple tv ethernet
-
-Friends:
-  entities:
-    - device_tracker.salonisanghvihome
-
-Computers:
-  entities:
-    - sensor.computer_imac
-    - sensor.computer_mbp
-    - sensor.computer_mb
-    - sensor.computer_mba
-
-Mobile Devices:
-  entities:
-    - device_tracker.harshits_iphone
-    - device_tracker.hetas_iphone
-
-Tablet Devices:
-  entities:
-    - sensor.tablet_digiflip
-    - sensor.tablet_nexus7
-
-Hubs:
-  entities:
-    - sensor.hub_smartthings
-    - sensor.hub_harmony
-
-Raspberry Pi Devices:
-  entities:
-    - sensor.pi_one
-    - sensor.pi_two
-    - sensor.pi_three
-
-Media Devices:
-  entities:
-    - sensor.tv_hisense
-    - sensor.media_player_appletv # apple tv wifi
-    - sensor.media_player_nexusplayer
-    - sensor.media_player_firetv
+#
+# Computers:
+#   entities:
+#     - sensor.computer_imac
+#     - sensor.computer_mbp
+#     - sensor.computer_mb
+#     - sensor.computer_mba
+#
+#
+# Tablet Devices:
+#   entities:
+#     - sensor.tablet_digiflip
+#     - sensor.tablet_nexus7
+#
+# Hubs:
+#   entities:
+#     - sensor.hub_smartthings
+#     - sensor.hub_harmony
+#
+# Raspberry Pi Devices:
+#   entities:
+#     - sensor.pi_one
+#     - sensor.pi_two
+#     - sensor.pi_three
+#
+# Media Devices:
+#   entities:
+#     - sensor.tv_hisense
+#     - sensor.media_player_appletv # apple tv wifi
+#     - sensor.media_player_nexusplayer
+#     - sensor.media_player_firetv

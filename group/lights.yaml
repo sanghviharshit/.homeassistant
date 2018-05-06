@@ -35,6 +35,7 @@ Hallway lights:
     - light.passage
     - light.entrance
 
-Bedroom Media Center:
+Media Centers:
   entities:
     - switch.bedroom_tv
+    - switch.rotimatic
