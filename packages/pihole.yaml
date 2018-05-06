@@ -30,7 +30,12 @@ homeassistant:
     #   icon: mdi:filter-variant
 
     group.pihole:
-      homebridge_hidden: true
+      friendly_name: 'Pi-hole'
+
+      hidden: False
+      homebridge_hidden: True
+      icon: mdi:filter-remove
+
 #-------------------------------------------
 sensor:
   - platform: pi_hole
