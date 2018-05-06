@@ -3,3 +3,21 @@ binary_sensor.main_door:
 
   hidden: False
   homebridge_hidden: true
+
+binary_sensor.temp_falling:
+  friendly_name: 'Outside Temperature Falling'
+
+  hidden: False
+  homebridge_hidden: true
+
+binary_sensor.temp_rising:
+  friendly_name: 'Outside Temperature Rising'
+
+  hidden: False
+  homebridge_hidden: true
+
+binary_sensor.workday_sensor:
+  friendly_name: 'Workday'
+
+  hidden: False
+  homebridge_hidden: true

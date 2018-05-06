@@ -44,3 +44,4 @@ Hallway lights:
 Interior Lights:  # TODO - add couch light, counter light, ladder lights, hyperion lights
   entities:
     - light.clock_led_strip
+    - light.tv_ambilight

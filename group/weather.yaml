@@ -12,4 +12,6 @@ Weather:
     # - sensor.dark_sky_uv_index
     - sensor.living_room_temperature
     - sensor.living_room_humidity
+    - binary_sensor.temp_falling
+    - binary_sensor.temp_rising
     - sensor.moon

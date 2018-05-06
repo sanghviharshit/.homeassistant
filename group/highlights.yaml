@@ -1,0 +1,5 @@
+Highlights:
+  entities:
+    - sensor.last_message
+    - sensor.ist
+    - sensor.ups

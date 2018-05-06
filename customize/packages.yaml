@@ -1,0 +1,20 @@
+group.pihole:
+  friendly_name: 'Pihole'
+
+  hidden: False
+  homebridge_hidden: True
+  # icon: mdi:filter-remove
+
+group.finance:
+  friendly_name: 'Finance'
+
+  hidden: False
+  homebridge_hidden: True
+  # icon: mdi:finance
+
+group.tweet_stats:
+  friendly_name: 'Tweet Stats'
+
+  hidden: False
+  homebridge_hidden: True
+  # icon: mdi:twitter

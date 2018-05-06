@@ -1,0 +1,31 @@
+# default_view:
+#     view: yes
+#     name: Home
+#     entities:
+#       - device_tracker.hetas_iphone
+#       - device_tracker.harshits_iphone
+
+network_view:
+  name: Network Devices
+  view: yes
+  entities:
+    - group.network
+    - group.network_devices
+
+automations_view:
+  name: Automations
+  view: yes
+  entities:
+    - group.all_automations
+    - group.all_scripts
+    - group.all_scenes
+    - group.triggers
+
+stats_view:
+  name: Statistics
+  view: yes
+  entities:
+    - group.system
+    - group.pihole
+    - group.tweet_stats
+    - group.finance
