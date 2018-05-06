@@ -1,0 +1,24 @@
+- name: TV Time
+  entities:
+       light.tv:
+           state: off
+           transition: 10
+       light.skyline:
+           state: off
+           transition: 10
+       light.platform:
+           state: off
+           transition: 10
+       light.fridge:
+           state: on
+           transition: 10
+       light.entrance:
+           state: on
+           transition: 400
+           color_name: 'Gold'
+           brightness: 150
+       light.passage:
+           state: on
+           transition: 400
+           color_name: 'Gold'
+           brightness: 150

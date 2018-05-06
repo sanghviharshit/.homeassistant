@@ -1,0 +1,17 @@
+# light.computer:
+#   friendly_name: 'Computer'
+#
+#   hidden: False
+#   homebridge_hidden: True
+#
+#
+#
+#
+# light.bed:
+#   friendly_name: 'Bed'
+#
+#   hidden: False
+#   homebridge_hidden: True
+#
+#
+#

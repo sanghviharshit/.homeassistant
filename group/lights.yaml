@@ -13,7 +13,7 @@ Living Room lights:
     - light.tv
     - light.skyline
 
-Living Room Accents:
+Living Room Accents:  # TODO - Use counter lights instead
   entities:
     - light.clock_led_strip
 
@@ -26,16 +26,21 @@ Main lights:
     - light.passage
     - light.entrance
 
-Dinette lights:
+Dinette lights: # TODO - Use couch lights and counter lights
   entities:
-    - light.entrance
+    - light.tv
+    - light.skyline
+
+Dining Room lights:
+  entities:
+    - light.tv
+    - light.skyline
 
 Hallway lights:
   entities:
     - light.passage
     - light.entrance
 
-Media Centers:
+Interior Lights:  # TODO - add couch light, counter light, ladder lights, hyperion lights
   entities:
-    - switch.bedroom_tv
-    - switch.rotimatic
+    - light.clock_led_strip

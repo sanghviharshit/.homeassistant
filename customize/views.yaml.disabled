@@ -1,0 +1,13 @@
+network_view:
+  name: Network Devices
+  view: yes
+  entities:
+    - group.network
+    - group.network_devices
+
+automations_view:
+  name: Automations
+  view: yes
+  entities:
+    - group.all_automations
+    - group.all_scripts

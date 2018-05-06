@@ -1,9 +1,14 @@
 Family:
   entities:
     - device_tracker.harshits_iphone
+    - sensor.harshits_iphone_battery_level
+    - sensor.harshits_iphone_battery_state
     - device_tracker.hetas_iphone
+    - sensor.hetas_iphone_battery_level
+    - sensor.hetas_iphone_battery_state
 
 
 Friends:
   entities:
     - device_tracker.salonisanghvihome
+    - device_tracker.neelshahsiphonesanghvihome

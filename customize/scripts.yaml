@@ -1,0 +1,85 @@
+###################################
+##  Scripts Section
+###################################
+
+# script.amp_settings:
+#   friendly_name: 'AMP Settings'
+#
+#   hidden: True
+
+script.dog_bark:
+  friendly_name: 'Dog Bark'
+
+  hidden: True
+
+script.flash_notify:
+  friendly_name: 'Flash Notify'
+
+  hidden: True
+
+script.emergency:
+  friendly_name: 'Emergency'
+
+  hidden: True
+
+
+script.front_house_motion:
+  friendly_name: 'Front House Motion'
+
+  hidden: True
+
+
+
+
+script.notify_engine:
+  friendly_name: 'Ifttt Notify'
+
+  hidden: True
+
+
+
+
+script.interior_off:
+  friendly_name: 'Interior Off'
+
+  hidden: False
+
+
+
+
+script.monthly_color_scene:
+  friendly_name: 'Monthly Front House Scene'
+
+  hidden: False
+
+
+
+
+script.doorbell_pressed:
+  friendly_name: 'Doorbell Pressed'
+
+  hidden: True
+
+
+
+
+script.switch_turn_off_all:
+  friendly_name: 'Switch Turn Off All'
+
+  hidden: False
+
+
+script.speech_processing:
+  friendly_name: 'Voice Processing'
+
+  hidden: True
+
+script.speech_engine:
+  friendly_name: 'Voice Notify'
+
+  hidden: True
+
+script.tweet_engine:
+  friendly_name: 'Tweet Notify'
+
+  hidden: True
