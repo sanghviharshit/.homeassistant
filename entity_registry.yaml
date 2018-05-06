@@ -82,3 +82,11 @@ sensor.harshits_iphone_battery_level:
   name:
   platform: ios
   unique_id: level_harshits_iphone
+sensor.hetas_iphone_battery_level:
+  name:
+  platform: ios
+  unique_id: level_hetas_iphone
+sensor.hetas_iphone_battery_state:
+  name:
+  platform: ios
+  unique_id: state_hetas_iphone
