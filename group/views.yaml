@@ -1,9 +1,70 @@
-# default_view:
-#     view: yes
-#     name: Home
-#     entities:
-#       - device_tracker.hetas_iphone
-#       - device_tracker.harshits_iphone
+default_view:
+    view: yes
+    name: Home
+    entities:
+      - group.entry_points
+      - group.family_locations
+      - group.living_room_media_center
+      - group.bedroom_media_center
+      - group.living_room_lights
+      - group.hallway_lights
+      - group.kitchen_lights
+      - group.bedroom_lights
+      - group.interior_lights
+      - group.all_remotes
+
+bedroom_view:
+  name: Bedroom
+  view: yes
+  entities:
+    - group.bedroom_lights
+    - group.bedroom_media_center
+    - light.tv_ambilight
+
+climate_view:
+  name: Climate
+  view: yes
+  entities:
+    - group.weather
+    - group.indoor_climate
+    # - camera.radar
+
+family_view:
+  name: Family
+  view: yes
+  entities:
+    - group.family_locations
+    - group.family_phone_sensors
+    # - group.time_travel_card
+    # - group.tracker_ble_happy_bubbles_card
+
+kitchen_view:
+  name: Kitchen
+  view: yes
+  entities:
+    - group.kitchen_lights
+    # - group.kitchen_sensors
+    # - group.laundry_card
+    # - group.sense_card
+    # - media_player.kitchen_home
+
+living_room_view:
+  name: Living Room
+  view: yes
+  entities:
+    - group.living_room_lights
+    - group.living_room_accents
+    # - group.main_lights
+    # - group.dinetter_lights
+    - group.dining_room_lights
+    - media_player.living_room
+    - media_player.apple_tv
+    - media_player.apple_tv_2
+    - media_player.fire_tv
+    - media_player.nexus_player
+    - switch.rotimatic  # TODO - Rename wemo switch
+    - remote.apple_tv
+    - remote.harmony_hub
 
 network_view:
   name: Network Devices
@@ -12,8 +73,8 @@ network_view:
     - group.network
     - group.network_devices
 
-automations_view:
-  name: Automations
+admin_view:
+  name: Admin
   view: yes
   entities:
     - group.all_automations
