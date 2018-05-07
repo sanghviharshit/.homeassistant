@@ -25,9 +25,11 @@ dog_bark:
     # - service: switch.turn_on
     #   entity_id: switch.living_room_amp
 
-    # - service: media_player.turn_on
-    #   entity_id: media_player.livingroomCC
+    - service: media_player.turn_on
+      entity_id: media_player.media_room
 
+    - delay: '00:00:05'
+    
     - service: media_player.volume_set
       entity_id:
         - media_player.media_room
@@ -44,8 +46,8 @@ dog_bark:
     - service: media_player.play_media
       data_template:
         entity_id:
-          - media_player.apple_tv_wired
-          - media_player.fire_tv
+          # - media_player.apple_tv_wired
+          # - media_player.fire_tv
           - media_player.media_room
         media_content_id: "https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/dog-barking-2-bullmastiff.mp3"
         media_content_type: audio/mp4

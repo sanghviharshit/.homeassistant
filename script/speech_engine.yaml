@@ -83,6 +83,29 @@ speech_engine:
             {%- endif -%}
           {%- endmacro -%}
 
+          {%- macro iss() -%}
+            {% if is_state('binary_sensor.iss', 'on') -%}
+              Here is something interesting. The international space station is above us now. There are {{ states.binary_sensor.iss.attributes['number_of_people_in_space'] }} people in space right now.
+              {{ outside_weather() }}
+            {% endif -%}
+          {%- endmacro -%}
+
+          {%- macro window_check() -%}
+            {% if states.group.entry_points.state != 'off' -%}
+              {% set comma = joiner(', ') %}
+              The
+              {% for state in states.binary_sensor if state.state == 'on' and state.attributes.device_class == 'opening' -%}
+              {%- endfor %}
+              {% for group in states.binary_sensor|groupby('state') -%}
+                {%- for entity in group.list  if entity.state == 'on' and entity.attributes.device_class == 'opening'  -%}
+                  {{ ' and' if loop.last and not loop.first else comma() }}
+                  {{ entity.attributes.friendly_name }}
+                {%- endfor -%}
+              {% endfor %}
+               need to be closed.
+            {%- endif -%}
+          {%- endmacro -%}
+
           {%- macro moon() -%}
             {%- if states.sensor.moon.state == 'Full moon' -%}
               Check out the full moon tonight!
