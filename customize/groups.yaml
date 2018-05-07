@@ -14,7 +14,7 @@ group.all_scenes:
 group.all_automations:
   friendly_name: 'All Automations'
 
-  hidden: True
+  hidden: False
   homebridge_hidden: true
 
 group.all_devices:
@@ -31,7 +31,7 @@ group.all_lights:
 group.all_scripts:
   friendly_name: 'All Scripts'
 
-  hidden: True
+  hidden: False
   homebridge_hidden: true
 
 group.all_switches:
