@@ -29,21 +29,21 @@ automation:
 
     action:
     - service: media_player.turn_on
-      entity_id: media_player.apple_tv_wired
+      entity_id: media_player.media_room
 
     # - service: switch.turn_on
     #   entity_id: switch.living_room_amp
     - delay: '00:00:05'
 
-    # - service: media_player.volume_set
-    #   entity_id:
-    #     - media_player.livingroomCC
-    #   data:
-    #     volume_level: 0.22
+    - service: media_player.volume_set
+      entity_id:
+        - media_player.media_room
+      data:
+        volume_level: 0.22
 
     - service: media_player.play_media
       entity_id:
-          - media_player.apple_tv_wired
+          - media_player.media_room
           # - media_player.entry_alarm_panel
           # - media_player.bedroom_alarm_panel
       data_template:

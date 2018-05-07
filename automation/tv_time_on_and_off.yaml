@@ -31,8 +31,8 @@
       - condition: state
         entity_id: input_boolean.guest_mode
         state: 'off'
-      - condition: time
-        after: '20:00:00'
+      # - condition: time
+      #   after: '18:00:00'
       - condition: state
         entity_id: media_player.apple_tv_wired
         state: 'playing'

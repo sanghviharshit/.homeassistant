@@ -59,7 +59,7 @@ living_room_view:
     # - group.main_lights
     # - group.dinetter_lights
     - group.dining_room_lights
-    - media_player.living_room
+    - media_player.media_room
     - media_player.apple_tv
     - media_player.apple_tv_wired
     - media_player.nexus_player

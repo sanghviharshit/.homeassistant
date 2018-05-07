@@ -7,7 +7,8 @@
     - platform: state
       entity_id:
         - binary_sensor.main_door # Front door #
-      from: 'off'
+      to: 'open'
+      from: 'closed'
 
   # condition:
   #   - condition: state
@@ -26,7 +27,7 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_mode
 
-    # - service: script.speech_engine
-    #   data_template:
-    #     call_window_check: 1
-    #     call_inside_weather: 1
+    - service: script.speech_engine
+      data_template:
+        call_window_check: 1
+        call_inside_weather: 1
