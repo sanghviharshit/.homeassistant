@@ -83,6 +83,7 @@ admin_view:
     - group.all_scripts
     - group.all_scenes
     - group.triggers
+    - group.input_booleans
 
 stats_view:
   name: Statistics
