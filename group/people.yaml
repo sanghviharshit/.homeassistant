@@ -6,7 +6,7 @@ Family Card:
     - group.harshit_locations_card
     - group.heta_locations_card
 
-Family Locations:
+Family:
   entities:
     - group.harshit_locations
     - group.heta_locations
@@ -15,8 +15,6 @@ Family Phone Sensors:
   entities:
     - group.harshit_phone_sensors
     - group.heta_phone_sensors
-
-
 
 Harshit Locations:
   entities:

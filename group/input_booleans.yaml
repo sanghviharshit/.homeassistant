@@ -1,0 +1,12 @@
+Input Booleans:
+  control: hidden
+  entities:
+    - input_boolean.alert_mode
+    - input_boolean.color_tornado
+    - input_boolean.guard_dog
+    - input_boolean.guest_mode
+    - input_boolean.home_stats
+    - input_boolean.lastmsg
+    - input_boolean.self_destruct
+    - input_boolean.speech_notifications
+    - input_boolean.text_notifications
