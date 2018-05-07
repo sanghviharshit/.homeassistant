@@ -173,10 +173,10 @@ media_player:
     use_episode_art: true
 
 
-apple_tv:
-  - host: 192.168.1.229
-    login_id: 00000000-4ed1-c48d-9df9-df88baa045bc
-    name: Apple TV (Wired)
+# apple_tv:
+#   - host: 192.168.1.229
+#     login_id: 00000000-4ed1-c48d-9df9-df88baa045bc
+#     name: Apple TV (Wired)
 
 # Kodi
 #media_player:
@@ -190,15 +190,15 @@ apple_tv:
 #  enable_websocket: true
 
 tts:
-  - platform: google
-  # - platform: amazon_polly
-  #   aws_access_key_id: !secret aws_access_key_ID
-  #   aws_secret_access_key: !secret aws_secret_access_key
-  #   region_name: 'us-east-1'
-  #   text_type: ssml
-  #   cache: True
-  #   # https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
-  #   voice: Joanna
+  # - platform: google
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_ID
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: 'us-east-1'
+    text_type: ssml
+    cache: True
+    # https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
+    voice: Joanna
 
 
 #    cache_dir: /data/tts

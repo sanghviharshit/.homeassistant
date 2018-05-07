@@ -34,9 +34,9 @@ automation:
     action:
       - service: tts.amazon_polly_say
         entity_id:
+          - media_player.media_room
           - media_player.apple_tv_wired
           - media_player.fire_tv
-          - media_player.media_room
         data_template:
           message: >
             <speak>
