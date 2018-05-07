@@ -93,23 +93,23 @@ automation:
             "/config/www/custom_ui/floorplan/images/branding/servers4.png"
             ] | random }}
 
-  - alias: PiHole Daily Client Tweet!
-    trigger:
-      platform: time
-      at: '04:30:00'
-    action:
-      - delay: '{{ (range(1, 6)|random|int) }}:{{ (range(1, 50)|random|int) }}:00'
-      - service: script.tweet_engine_image
-        data_template:
-          tweet: >
-            {{ [
-            "There are currently {{states.sensor.pihole_dns_unique_clients.state}} clients on my network.",
-            "As reported by #Ubiquity Routers, There are {{states.sensor.pihole_dns_unique_clients.state}} clients on my network.",
-            ] | random + "#Security https://github.com/CCOSTAN/Home-AssistantConfig#networking"}}
-          image: >-
-            {{ [
-            "/config/www/custom_ui/floorplan/images/branding/servers.png",
-            "/config/www/custom_ui/floorplan/images/branding/servers2.png",
-            "/config/www/custom_ui/floorplan/images/branding/servers3.png",
-            "/config/www/custom_ui/floorplan/images/branding/servers4.png"
-            ] | random }}
+  # - alias: PiHole Daily Client Tweet!
+  #   trigger:
+  #     platform: time
+  #     at: '04:30:00'
+  #   action:
+  #     - delay: '{{ (range(1, 6)|random|int) }}:{{ (range(1, 50)|random|int) }}:00'
+  #     - service: script.tweet_engine_image
+  #       data_template:
+  #         tweet: >
+  #           {{ [
+  #           "There are currently {{states.sensor.pihole_dns_unique_clients.state}} clients on my network.",
+  #           "As reported by #Ubiquity Routers, There are {{states.sensor.pihole_dns_unique_clients.state}} clients on my network.",
+  #           ] | random + "#Security"}}
+  #         image: >-
+  #           {{ [
+  #           "/config/www/custom_ui/floorplan/images/branding/servers.png",
+  #           "/config/www/custom_ui/floorplan/images/branding/servers2.png",
+  #           "/config/www/custom_ui/floorplan/images/branding/servers3.png",
+  #           "/config/www/custom_ui/floorplan/images/branding/servers4.png"
+  #           ] | random }}

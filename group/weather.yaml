@@ -1,4 +1,4 @@
-Weather:
+weather:
   entities:
     - sensor.dark_sky_apparent_temperature
     - sensor.dark_sky_wind_speed
@@ -15,7 +15,7 @@ Weather:
     - sun.sun
     - sensor.moon
 
-Indoor Climate:
+indoor_climate:
   entities:
     - sensor.living_room_temperature
     - sensor.living_room_humidity
