@@ -10,8 +10,8 @@
       from: 'off'
     - platform: state
       entity_id: binary_sensor.main_door
-      to: 'open'
-      from: 'closed'
+      from: 'off'
+      to: 'on'
 
   # condition:
   #   - condition: state
