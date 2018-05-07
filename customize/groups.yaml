@@ -84,7 +84,7 @@ group.weather:
   homebridge_hidden: true
 
 group.indoor_climate:
-  friendly_name: 'Indoor climate'
+  friendly_name: 'Indoor Climate'
 
   hidden: False
   homebridge_hidden: true

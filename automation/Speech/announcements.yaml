@@ -11,7 +11,7 @@
         - device_tracker.hetasiphonesanghvihome
       from: 'not_home'
       to: 'home'
-      for: '00:02:00'
+      for: '00:05:00'
 
   action:
     - service: script.speech_engine
