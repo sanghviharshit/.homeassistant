@@ -4,3 +4,4 @@ Travel Times:
     - sensor.heta_to_work
     - sensor.harshit_to_home
     - sensor.heta_to_work
+    - sensor.harshit_to_heta

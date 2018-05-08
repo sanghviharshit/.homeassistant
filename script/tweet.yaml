@@ -17,7 +17,7 @@ tweet_engine_setup:
                 "Beep. Bop. Beep. Boop.  I am a #roBOT run by @harshit_ps",
                 "I have spoken for about {{ states.sensor.speech_time.attributes.value|replace('m', '') }} minutes in the last 24 hours.",
                 "When you add it all up, I have spoken for about {{ states.sensor.speech_time.attributes.value|replace('m', '') }} minutes in the last 24 hours!",
-                "My Home Assistant Database is currently using {{ states('sensor.database_sensor') }} MBs. To get this #Stat for your HA, visit (https://github.com/robmarkcole/HASS-filesize-sensor)",
+                "My Home Assistant Database is currently using {{ states('sensor.database_sensor') }} MBs.",
                 "I am running Home Assistant version {{ states('sensor.ha_installed_version') }}",
                 "Home Assistant has been running for {{ states('sensor.ha_uptime') }}.",
                 "My Home Assistant has been tested by Travis-CI",
@@ -37,7 +37,7 @@ tweet_engine_setup:
               ],
 
               "cloud": [
-                "Average Cloud Coverage: {{ states('sensor.dark_sky_cloud_coverage') }}%, Average Temp: {{ states('sensor.dark_sky_temperature') }}Â°F #Solar"
+                "Average Cloud Coverage: {{ states('sensor.dark_sky_cloud_coverage') }}%, Average Temp: {{ states('sensor.apparent_temperature') }}°F #Solar"
               ],
 
               "internet": [
@@ -49,7 +49,6 @@ tweet_engine_setup:
                 "I am keeping track of the current #Shutterstock stock price. It is ${{ states('sensor.shutterstock')|round }}. #SSTK",
                 "I am keeping track of the current #Bitcoin prices. It is ${{ states('sensor.bitcoin')|round }}. #BTC",
               ],
-
 
               "tv": [
                 "The {{ states.media_player.apple_tv_wired.attributes.friendly_name }} #AppleTV is playing #{{ states.media_player.apple_tv_wired.attributes.app_name }}.",

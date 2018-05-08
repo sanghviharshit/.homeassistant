@@ -85,8 +85,6 @@ automation:
             "Just checked with Alexa & today is {{ states.sensor.holiday.state }}."
             ] | random + [
             " #DayOff",
-            "(http://www.vmwareinfo.com/2017/07/my-smart-home-look-at-parts-that-make.html)",
-            "(http://www.vmwareinfo.com/2017/08/diy-outdoor-smart-home-led-strips.html)",
             "#{{ states.sensor.holiday.state }}"
             ] | random }}
           image: >-

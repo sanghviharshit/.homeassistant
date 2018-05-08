@@ -6,6 +6,15 @@
 - platform: mqtt
   name: "Main Door"
   state_topic: "smartthings/Main Door/contact"
+  # device_class: door
+  device_class: opening
+  payload_on: "open"
+  payload_off: "closed"
+
+- platform: mqtt
+  name: "Storage Door"
+  state_topic: "smartthings/Storage Door/contact"
+  # device_class: door
   device_class: door
   payload_on: "open"
   payload_off: "closed"
