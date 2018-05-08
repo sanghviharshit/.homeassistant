@@ -28,11 +28,11 @@ device_tracker.hetas_iphone:
 device_tracker.salonisanghvihome:
   friendly_name: 'Saloni'
 
-  hidden: True
+  hidden: False
   homebridge_hidden: True
 
 device_tracker.neelshahsiphonesanghvihome:
   friendly_name: 'Neel'
 
-  hidden: True
+  hidden: False
   homebridge_hidden: True

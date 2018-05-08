@@ -125,7 +125,7 @@ input_boolean.speech_notifications:
 
 
 input_boolean.tv_time:
-  friendly_name: 'Tv Time'
+  friendly_name: 'TV Time'
 
   hidden: False
   homebridge_hidden: true

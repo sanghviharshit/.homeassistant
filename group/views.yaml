@@ -84,6 +84,8 @@ admin_view:
     - group.all_scenes
     - group.triggers
     - group.input_booleans
+    - input_number.clock_animation_speed
+    - input_select.log_level
 
 stats_view:
   name: Statistics

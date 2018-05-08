@@ -10,23 +10,23 @@
 script.dog_bark:
   friendly_name: 'Dog Bark'
 
-  hidden: True
+  # hidden: True
 
 script.flash_notify:
   friendly_name: 'Flash Notify'
 
-  hidden: True
+  # hidden: True
 
 script.emergency:
   friendly_name: 'Emergency'
 
-  hidden: True
+  # hidden: True
 
 
 script.front_house_motion:
   friendly_name: 'Front House Motion'
 
-  hidden: True
+  # hidden: True
 
 
 
@@ -58,7 +58,7 @@ script.monthly_color_scene:
 script.doorbell_pressed:
   friendly_name: 'Doorbell Pressed'
 
-  hidden: True
+  # hidden: True
 
 
 
