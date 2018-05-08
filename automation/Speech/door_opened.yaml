@@ -10,6 +10,16 @@
       from: 'off'
       to: 'on'
 
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.family
+        state: 'not_home'
+      - condition: state
+        entity_id: input_boolean.guest_mode
+        state: 'off'
+
   # condition:
   #   - condition: state
   #     entity_id: binary_sensor.sleepnumber_carlo_carlo_is_in_bed
