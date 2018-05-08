@@ -1,17 +1,18 @@
 default_view:
-    view: yes
-    name: Home
-    entities:
-      - group.highlights
-      - group.entry_points
-      - group.family_locations
-      - group.media_centers
-      - group.living_room_lights
-      - group.hallway_lights
-      - group.kitchen_lights
-      - group.bedroom_lights
-      - group.interior_lights
-      - group.all_remotes
+  name: Home
+  view: yes
+  entities:
+    - group.highlights
+    - group.travel_times
+    - group.entry_points
+    - group.family_locations
+    - group.media_centers
+    - group.living_room_lights
+    - group.hallway_lights
+    - group.kitchen_lights
+    - group.bedroom_lights
+    - group.interior_lights
+    - group.all_remotes
 
 bedroom_view:
   name: Bedroom
