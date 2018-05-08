@@ -9,10 +9,11 @@
 
 speech_processing:
   sequence:
+    # TODO: Fix truncate in mqtt publish - State max length is 255 characters, which is easily exceeded by home stats automation
     - service: mqtt.publish
       data_template:
         topic: 'polly/lastmsg'
-        payload: "This message is from {{ now().strftime('%-I') }}:{{ now().strftime('%M') }} {{ now().strftime('%p') }}. {{ speech_message | truncate(254)}}"
+        payload: "This message is from {{ now().strftime('%-I') }}:{{ now().strftime('%M') }} {{ now().strftime('%p') }}. {{ speech_message | truncate(220)}}"
         retain: true
 
     - condition: and
