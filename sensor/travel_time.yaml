@@ -20,7 +20,7 @@
   mode: transit
 
 - platform: google_travel_time
-  name: Heta to Work
+  name: Heta to Home
   api_key: !secret google_time_travel_api_key
   origin: device_tracker.hetas_iphone
   destination: !secret home_address
