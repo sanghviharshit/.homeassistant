@@ -11,21 +11,54 @@ scene.front_full_brightness:
 scene.month_fathers_day_colors:
   friendly_name: 'Fathers Day Colors'
 
-  hidden: True
+  hidden: False
 
+
+scene.month_christmas_colors:
+  friendly_name: 'Month Christmas Colors'
+
+  hidden: False
+
+scene.month_halloween_colors:
+  friendly_name: 'Month Halloween Colors'
+
+  hidden: False
+
+scene.month_hanukkah_colors:
+  friendly_name: 'Month Hanukkah Colors'
+
+  hidden: False
+
+scene.month_new_years_day_colors:
+  friendly_name: 'Month New Years Day Colors'
+
+  hidden: False
+
+scene.month_pi_colors:
+  friendly_name: 'Month Pi Colors'
+
+  hidden: False
+
+scene.month_starwars_colors:
+  friendly_name: 'Month Star Wars Colors'
+
+  hidden: False
+
+scene.month_thanksgiving_colors:
+  friendly_name: 'Month Thanksgiving Colors'
+
+  hidden: False
 
 scene.month_cinco_de_mayo_colors:
   friendly_name: 'Month Cinco De Mayo Colors'
 
-  hidden: True
-
-
+  hidden: False
 
 
 scene.month_easter_colors:
   friendly_name: 'Month Easter Colors'
 
-  hidden: True
+  hidden: False
 
 
 
@@ -33,7 +66,7 @@ scene.month_easter_colors:
 scene.month_marti_gras_colors:
   friendly_name: 'Month Marti Gras Colors'
 
-  hidden: True
+  hidden: False
 
 
 
@@ -41,7 +74,7 @@ scene.month_marti_gras_colors:
 scene.month_rwb_colors:
   friendly_name: 'Month Rwb Colors'
 
-  hidden: True
+  hidden: False
 
 
 
@@ -49,7 +82,7 @@ scene.month_rwb_colors:
 scene.month_st_patty_colors:
   friendly_name: 'Month St Patty Colors'
 
-  hidden: True
+  hidden: False
 
 
 
@@ -57,7 +90,7 @@ scene.month_st_patty_colors:
 scene.month_standard_colors:
   friendly_name: 'Month Standard Colors'
 
-  hidden: True
+  hidden: False
 
 
 
@@ -65,12 +98,12 @@ scene.month_standard_colors:
 scene.month_valentine_colors:
   friendly_name: 'Month Valentine Colors'
 
-  hidden: True
+  hidden: False
 
 
 
 
 scene.tv_time:
-  friendly_name: 'Tv Time'
+  friendly_name: 'TV Time'
 
   hidden: False

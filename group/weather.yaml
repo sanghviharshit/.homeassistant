@@ -16,6 +16,7 @@ weather:
     - sensor.moon
 
 indoor_climate:
+  control: hidden
   entities:
     - sensor.living_room_temperature
     - sensor.living_room_humidity

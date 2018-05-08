@@ -101,7 +101,7 @@ sensor.dark_sky_humidity:
 sensor.dark_sky_minutely_summary:
   friendly_name: 'Current Conditions'
 
-  hidden: True
+  # hidden: True
   homebridge_hidden: True
   icon: mdi:beach
 
@@ -165,7 +165,7 @@ sensor.living_room_humidity:
   friendly_name: 'Living Room Humidity'
 
   hidden: False
-  homebridge_hidden: True
+  homebridge_hidden: False
   icon: mdi:water-percent
 
 
@@ -200,8 +200,8 @@ sensor.living_room_humidity:
 sensor.living_room_temperature:
   friendly_name: 'Living Room Temperature'
 
-  hidden: True
-  homebridge_hidden: True
+  hidden: False
+  homebridge_hidden: False
 
 
 
@@ -209,7 +209,7 @@ sensor.living_room_temperature:
 sensor.external_ip:
   friendly_name: 'External Ip'
 
-  hidden: True
+  # hidden: True
   homebridge_hidden: True
 
 
@@ -606,7 +606,7 @@ sensor.pihole_dns_queries_today:
   friendly_name: 'Dns Queries Today'
 
   hidden: False
-  homebridge_hidden: true
+  homebridge_hidden: False
   icon: mdi:note-text
 
 
@@ -713,7 +713,7 @@ sensor.pihole_dns_unique_clients:
 sensor.since_last_boot:
   friendly_name: 'Since Last Boot'
 
-  hidden: True
+  hidden: False
   homebridge_hidden: True
   icon: mdi:clock
 
