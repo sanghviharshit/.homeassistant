@@ -23,8 +23,8 @@ notify:
 ### Building out some Historical stats for tweeting. #####################
 sensor:
   - platform: history_stats
-    name: Main Door Opened
-    entity_id: binary_sensor.main_door
+    name: Doors Opened
+    entity_id: group.entry_points
     state: 'on'
     type: count
     end: '{{ now() }}'
@@ -33,7 +33,16 @@ sensor:
 
   - platform: history_stats
     name: TV time
-    entity_id: media_player.apple_tv_wired
+    entity_id: group.media_players
+    state: 'playing'
+    type: time
+    end: '{{ now() }}'
+    duration:
+      hours: 24
+
+  - platform: history_stats
+    name: Speech time
+    entity_id: media_player.media_room
     state: 'playing'
     type: time
     end: '{{ now() }}'
@@ -115,6 +124,7 @@ group:
     entities:
       - sensor.main_door_opened
       - sensor.tv_time
+      - sensor.speech_time
       - sensor.sensor_count
       - sensor.script_count
       - sensor.binary_sensor_count

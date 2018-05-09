@@ -31,8 +31,8 @@ tweet_engine_setup:
               ],
 
               "weather": [
-                "Average humidity of the house was at {{ states('sensor.living_room_humidity') }} percent. Outside is {{ states('sensor.dark_sky_humidity') }} #smartthings",
-                "Outside is {{ states('sensor.dark_sky_temperature') }}. I keep the average inside temperature at {{ states('sensor.living_room_temperature') }}. #Weather",
+                "Average humidity of the house was at {{ states('sensor.living_room_humidity') }}%. Outside is {{ states('sensor.dark_sky_humidity') }}% #smartthings",
+                "Outside is {{ states('sensor.dark_sky_apparent_temperature') }}°F. I keep the average inside temperature at {{ states('sensor.living_room_temperature') }}°F. #Weather",
                 "The current UV index is {{ states('sensor.dark_sky_uv_index') }} and the Moon is {{ states('sensor.moon') }}.  #Space"
               ],
 
@@ -43,6 +43,9 @@ tweet_engine_setup:
               "internet": [
                 "So far, I have prevented {{ states('sensor.pihole_ads_blocked_today') }} ads from hitting the network via Pi-hole! http://www.pi-hole.net",
                 "Pi-hole (http://www.pi-hole.net) has serviced {{ states('sensor.pihole_dns_queries_today') }} DNS requests today! #PiZero",
+                "Average internet stats are Download: {{ states('sensor.speedtest_download') }} Mbit/s & Upload {{ states('sensor.speedtest_upload') }} Mbit/s (Max. 100Mbps)",
+                "So if you get @verizonfios, you can expect these types of results - Download: {{ states('sensor.speedtest_download') }} Mbit/s & Upload {{ states('sensor.speedtest_upload') }} Mbit/s. (Max. 100Mbps)",
+                "My @verizonfios internet download speed is about {{ states('sensor.speedtest_download') }} Mbit/s and I am a #cordcutter. (Over RPi's 100Mbps LAN port)",
               ],
 
               "stocks": [
