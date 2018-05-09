@@ -1,4 +1,5 @@
 entry_points:
   entities:
+    - camera.hallway_camera
     - binary_sensor.main_door
     - binary_sensor.storage_door
