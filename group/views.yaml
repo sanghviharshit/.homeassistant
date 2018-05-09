@@ -41,11 +41,11 @@ family_view:
     # - group.time_travel_card
     # - group.tracker_ble_happy_bubbles_card
 
-kitchen_view:
-  name: Kitchen
-  view: yes
-  entities:
-    - group.kitchen_lights
+# kitchen_view:
+#   name: Kitchen
+#   view: yes
+#   entities:
+    # - group.kitchen_lights
     # - group.kitchen_sensors
     # - group.laundry_card
     # - group.sense_card
@@ -60,6 +60,7 @@ living_room_view:
     # - group.main_lights
     # - group.dinetter_lights
     - group.dining_room_lights
+    - group.kitchen_lights
     - media_player.media_room
     - media_player.apple_tv
     - media_player.apple_tv_wired

@@ -29,6 +29,7 @@ group.all_lights:
   hidden: True
 
 group.all_scripts:
+  control: hidden
   friendly_name: 'All Scripts'
 
   hidden: False
