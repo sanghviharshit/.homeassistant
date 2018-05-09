@@ -113,10 +113,12 @@ input_number:
 
 
 # Cameras
-#camera:
-#- platform: mjpeg
-#  mjpeg_url: http://192.168.1.71:8080/video
-#  name: Entrance Camera
+camera:
+- platform: mjpeg
+  mjpeg_url: !secret camera1_mjpeg_url
+  still_image_url: !secret camera1_snapshot_url
+  username: !secret camera1_username
+  name: Entrance Camera
 
 
 #binary_sensor:
@@ -142,11 +144,11 @@ input_number:
 #     - torch
 #     - video_recording
 
+sun:
+
 # camera:
 #   - platform: usps
 #     scan_interval: 5
-
-sun:
 
 # usps:
 #     name: USPS Mail
