@@ -36,4 +36,4 @@
   origin: device_tracker.harshits_iphone
   destination: device_tracker.hetas_iphone
   options:
-      mode: transit
+      mode: driving
