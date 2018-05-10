@@ -1,7 +1,8 @@
 - platform: yeelight
-  devices:
-    192.168.1.230:
-      name: Window LED Strip
-      transition: 1000
-      use_music_mode: True #(defaults to False)
-      save_on_change: False #(defaults to True)
+  # devices:
+  #   192.168.1.230:
+  #     # effect_list: Disco,Slow Temp,Strobe epilepsy!,Strobe color,Alarm,Police,Police2,Christmas,RGB,Random Loop,Fast Random Loop,Slowdown,WhatsApp,Facebook,Twitter,Stop
+  #     name: Window LED Strip
+  #     transition: 1000
+  #     use_music_mode: True #(defaults to False)
+  #     save_on_change: False #(defaults to True)
