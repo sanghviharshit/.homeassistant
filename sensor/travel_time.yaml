@@ -3,32 +3,37 @@
   api_key: !secret google_time_travel_api_key
   origin: device_tracker.harshits_iphone
   destination: !secret harshit_work_address
-  mode: transit
+  options:
+      mode: transit
 
 - platform: google_travel_time
   name: Heta to Work
   api_key: !secret google_time_travel_api_key
   origin: device_tracker.hetas_iphone
   destination: !secret heta_work_address
-  mode: transit
+  options:
+      mode: transit
 
 - platform: google_travel_time
   name: Harshit to Home
   api_key: !secret google_time_travel_api_key
   origin: device_tracker.harshits_iphone
   destination: !secret home_address
-  mode: transit
+  options:
+      mode: transit
 
 - platform: google_travel_time
   name: Heta to Home
   api_key: !secret google_time_travel_api_key
   origin: device_tracker.hetas_iphone
   destination: !secret home_address
-  mode: transit
+  options:
+      mode: transit
 
 - platform: google_travel_time
   name: Harshit to Heta
   api_key: !secret google_time_travel_api_key
   origin: device_tracker.harshits_iphone
   destination: device_tracker.hetas_iphone
-  mode: transit
+  options:
+      mode: transit
