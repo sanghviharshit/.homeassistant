@@ -16,7 +16,7 @@ Living Room lights:
 Living Room Accents:  # TODO - Use counter lights instead
   entities:
     - light.clock_led_strip
-    - light.window_led_strip
+    - light.yeelight_strip_7811dcfb46db
 
 Main lights:
   entities:
@@ -46,3 +46,4 @@ Interior Lights:  # TODO - add couch light, counter light, ladder lights, hyperi
   entities:
     - light.clock_led_strip
     - light.tv_ambilight
+    - light.yeelight_strip_7811dcfb46db

@@ -15,3 +15,6 @@
 #
 #
 #
+
+light.yeelight_strip_7811dcfb46db:
+  friendly_name: 'Window LED Strip'
