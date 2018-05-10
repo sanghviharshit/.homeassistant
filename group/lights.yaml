@@ -16,6 +16,7 @@ Living Room lights:
 Living Room Accents:  # TODO - Use counter lights instead
   entities:
     - light.clock_led_strip
+    - light.window_led_strip
 
 Main lights:
   entities:
