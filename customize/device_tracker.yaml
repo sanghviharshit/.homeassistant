@@ -36,3 +36,15 @@ device_tracker.neelshahsiphonesanghvihome:
 
   hidden: False
   homebridge_hidden: True
+
+device_tracker.kalpanasiphonesanghvihome:
+  friendly_name: 'Kalpana'
+
+  hidden: False
+  homebridge_hidden: True
+
+device_tracker.android4d7dd24268c2601csanghvihome:
+  friendly_name: 'Hemant'
+
+  hidden: False
+  homebridge_hidden: True

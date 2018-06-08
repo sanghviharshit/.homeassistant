@@ -41,3 +41,47 @@
           {%- endmacro -%}
           {{greeting_sentence(person)}}
         call_no_announcement: 1
+
+##########  ############################################################
+##  Announce when friends come or go.
+## Announce over all Chromecast Audios
+######################################################################
+- alias: 'Friends Greeting'
+  trigger:
+    - platform: state
+      entity_id:
+        - device_tracker.salonisanghvihome
+        - device_tracker.neelshahsiphonesanghvihome
+        - device_tracker.kalpanasiphonesanghvihome
+        - device_tracker.android4d7dd24268c2601csanghvihome
+
+      from: 'not_home'
+      to: 'home'
+      # for: '00:01:00'
+  condition:
+    - condition: time
+      after: '09:00:00'
+      before: '21:00:00'
+    # TODO - Make it run only once in the day for each person
+    - condition: template
+      value_template: '{{ as_timestamp(now()) - as_timestamp(states.automation.people_greeting.attributes.last_triggered) | int > 60 }}'
+
+  action:
+    - service: script.speech_engine
+      data_template:
+        # {% set person = states[trigger.entity_id.split(".")[0]][trigger.entity_id.split(".")[1]].name%}
+        personarriving: >
+          {% set person = trigger.from_state.attributes.friendly_name%}
+          {%- macro greeting_sentence(person) -%}
+          {{ [
+          "Welcome back home " ~ person,
+          person + " is now in the house.",
+          "Welcome Home " ~ person + ".  We have missed you.",
+          "Hey there " ~ person + " Welcome Home!",
+          "Knock Knock. Who is There? "   ~ person +" is!",
+          person ~ "! You are home!",
+          "I know a secret! "  ~ person +" is home!"
+          ] | random }}
+          {%- endmacro -%}
+          {{greeting_sentence(person)}}
+        call_no_announcement: 1
