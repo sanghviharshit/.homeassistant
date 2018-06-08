@@ -1,0 +1,45 @@
+############################################################
+# recorder
+############################################################
+#db_url: sqlite:///data/home-assistant_v2.db
+purge_interval: 1
+purge_keep_days: 7
+include:
+  entities:
+    - group.landscaping
+exclude:
+  domains:
+    - updater
+    - automation
+    - device_tracker
+    - group
+    - scene
+    - script
+  entities:
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_minutely_summary
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_uv_index
+    - sensor.dark_sky_wind_speed
+   - sensor.database_sensor
+    - sensor.date
+    - sensor.external_ip
+    - sensor.ha_uptime
+    - sensor.last_message
+    - sensor.low_battery
+    - sensor.network
+    - sensor.network_detail
+    - sensor.pihole_ads_blocked_today
+    - sensor.pihole_ads_percentage_blocked_today
+    - sensor.pihole_dns_queries_today
+    - sensor.pihole_dns_unique_clients
+    - sensor.since_last_boot
+    - sensor.since_last_boot_templated
+    - sensor.speech_time
+    - sensor.tesla
+    - sensor.time
+    - sun.sun
+    - zone.home
