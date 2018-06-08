@@ -5,6 +5,7 @@ default_view:
     - group.highlights
     - group.travel_times
     - group.entry_points
+    - camera.hallway_camera
     - group.family_locations
     - group.media_centers
     - group.living_room_lights

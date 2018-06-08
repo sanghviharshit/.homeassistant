@@ -8,19 +8,19 @@
 
 emergency:
   sequence:
-# Switch all outside front lights to Red to indicate emergency
+    # Switch all outside front lights to Red to indicate emergency
     - service: light.turn_on
       entity_id:
         - group.all_lights
       data:
         color_name: 'red'
-      # Flash All LIGHTS
+    # Flash All LIGHTS
     - service: light.turn_on
       entity_id:
         - group.all_lights
       data:
         flash: long
-      # Turn on All LIGHTS 100% Brightness
+    # Turn on All LIGHTS 100% Brightness
     - service: light.turn_on
       entity_id:
         - group.all_lights

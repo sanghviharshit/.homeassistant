@@ -94,10 +94,11 @@ history:
   #    - sensor.time
 
 # logger: !include logger.yaml
-# recorder: !include recorder.yaml
 
-recorder:
-  purge_keep_days: 7
+recorder: !include recorder.yaml
+#
+# recorder:
+#   purge_keep_days: 7
 
 
 mqtt:
