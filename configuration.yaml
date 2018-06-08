@@ -95,11 +95,11 @@ history:
 
 # logger: !include logger.yaml
 
-recorder: !include recorder.yaml
+# recorder: !include recorder.yaml
 #
-# recorder:
-#   purge_keep_days: 7
-
+recorder:
+  purge_keep_days: 7
+  purge_interval: 1
 
 mqtt:
   broker: 127.0.0.1
