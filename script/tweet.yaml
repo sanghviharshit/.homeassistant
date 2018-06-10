@@ -27,7 +27,7 @@ tweet_engine_setup:
               ],
 
               "door": [
-                "The number of times main door opened yesterday was {{ states('sensor.main_door_opened') }}",
+                "The number of times doors opened yesterday was {{ states('sensor.doors_opened') }}",
               ],
 
               "weather": [
