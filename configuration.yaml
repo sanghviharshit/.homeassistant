@@ -171,6 +171,10 @@ sun:
 
 media_player:
   - platform: cast
+    host:
+      - 192.168.1.80
+      - 192.168.1.30
+      - 192.168.1.82
   - platform: plex
     include_non_clients: true
     show_all_controls: true
