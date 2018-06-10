@@ -32,7 +32,7 @@ tweet_engine_setup:
 
               "weather": [
                 "Average humidity of the house was at {{ states('sensor.living_room_humidity') }}%. Outside is {{ states('sensor.dark_sky_humidity') }}% #smartthings",
-                "Outside is {{ states('sensor.dark_sky_apparent_temperature') }}°F. I keep the average inside temperature at {{ states('sensor.living_room_temperature') }}°F. #Weather",
+                "Outside is {{ states('sensor.dark_sky_apparent_temperature') }}°F. The average temperature inside is at {{ states('sensor.living_room_temperature') }}°F. #Weather",
                 "The current UV index is {{ states('sensor.dark_sky_uv_index') }} and the Moon is {{ states('sensor.moon') }}.  #Space"
               ],
 
