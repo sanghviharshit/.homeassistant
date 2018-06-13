@@ -42,12 +42,11 @@
           {%- endif -%}
         {%- endif -%}
 
-sensor:
-  - platform: rest
-    resource: https://api.ipify.org?format=json
-    scan_interval: 86400
-    name: External IP
-    value_template: '{{ value_json.ip }}'
+- platform: rest
+  resource: https://api.ipify.org?format=json
+  scan_interval: 86400
+  name: External IP
+  value_template: '{{ value_json.ip }}'
 
 # https://www.home-assistant.io/components/sensor.dnsip/
 # sensor:
