@@ -11,11 +11,14 @@
       event_type: flash_all
 
   action:
-    - service: light.turn_on
-      entity_id:
-        - group.all_lights
+    # https://www.home-assistant.io/components/light.lifx/
+    - service: light.lifx_effect_pulse
       data:
-        flash: long
+        entity_id:
+          - group.living_room_lights
+          - group.kitchen_lights
+          - group.hallway_lights
+          - group.bedroom_lights
 
     - service: input_boolean.turn_off
       entity_id: input_boolean.flash

@@ -1,0 +1,93 @@
+#-------------------------------------------
+#  Network Related Packages
+# @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+#-------------------------------------------
+
+#-------------------------------------------
+sensor:
+  - platform: template
+    sensors:
+      network:
+        friendly_name: 'Network Monitor'
+        value_template: >
+          {%- set domains = ['device_tracker'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain]
+                if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name not in
+                [
+                  "Harshit's iPhone",
+                  "Heta's iPhone",
+                  "Harshit",
+                  "Heta",
+                  "Saloni",
+                  "Neel",
+                  "Kalpana",
+                  "Hemant"
+                  ])
+                  and(as_timestamp(now()) - as_timestamp(item.last_changed)) > 600 -%}
+              {{ item.attributes.friendly_name }}
+              {%- if not loop.last -%}
+                {{'
+                '}}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+
+  - platform: template
+    sensors:
+      network_detail:
+        friendly_name: 'Network Monitor Detail'
+        value_template: >
+          {%- set domains = ['device_tracker'] -%}
+          {%- for domain in domains -%}
+            {%- for item in states[domain]
+                if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name not in
+                [
+                  "Harshit's iPhone",
+                  "Heta's iPhone",
+                  "Harshit",
+                  "Heta",
+                  "Saloni",
+                  "Neel",
+                  "Kalpana",
+                  "Hemant"
+                  ])
+                  and(as_timestamp(now()) - as_timestamp(item.last_changed)) > 600 -%}
+              {{ item.attributes.friendly_name }} - {{((as_timestamp(now()) - as_timestamp(item.last_changed))/60) | round() }} minutes
+              {%- if not loop.last -%}
+                {{'
+                '}}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+
+#-------------------------------------------------------------------------------------
+automation:
+  - alias: 'Device Status'
+    hide_entity: True
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.network
+          # - binary_sensor.carlowink
+
+    condition:
+      - condition: template
+        value_template: >
+          {% if not is_state('sensor.network_detail', ' ') %}
+            false
+          {% else %}
+            true
+          {% endif %}
+
+    action:
+      - service: script.notify_engine
+        data_template:
+          value1: 'Offline Devices:'
+          value3: "{{ states.sensor.network_detail.state }}"
+          who: 'harshit'
+
+      # - service: script.speech_engine
+      #   data_template:
+      #     value1: "The following Devices are in an Offline state {{ trigger.to_state.state }}"

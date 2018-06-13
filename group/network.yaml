@@ -4,8 +4,22 @@ Network:
     - sensor.speedtest_download
     - sensor.speedtest_upload
     - sensor.speedtest_ping
+    - sensor.ha_installed_version
+    # - sensor.sanghviharshit_ha_config_state
+    - sensor.ha_uptime
+    - sensor.since_last_boot_templated
+    - sensor.disk_use_percent_
+    - sensor.database_sensor
+    - sensor.network
+    - sensor.network_detail
 
-Network Devices:
+# Create full group with Loop!:
+# {% for state in states.device_tracker-%}
+# - {{ state.entity_id | lower }}
+# {{ ' '}}
+# {%- endfor -%}.
+
+Network Detail:
   entities:
     - device_tracker.sanghviresidencesanghvihome
     - device_tracker.886b0f6f9555

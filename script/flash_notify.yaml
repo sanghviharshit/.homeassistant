@@ -5,12 +5,10 @@
 #
 ######################################################################################################
 
-# TODO - fix flash
 flash_notify:
   sequence:
-    - service: light.turn_on
-      entity_id:
-        - light.tv
-        - light.skyline
+    - service: light.lifx_effect_pulse
       data:
-        flash: long
+        entity_id:
+          - light.tv
+          - light.skyline

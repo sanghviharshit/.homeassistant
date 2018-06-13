@@ -68,24 +68,20 @@ speech_engine:
               {%- endif -%}
             {%- endfor %}
             lights on right now.
-
             {% set comma = joiner(', ') %}
             The
             {% for group in states.group|groupby('state') -%}
-              {%- for entity in group.list if entity.state == 'on' and entity.name.split(' ')[1]|lower == 'lights' and entity.name.split(' ')[0]|lower != 'all' and entity.name.split(' ')[0]|lower != 'interior' -%}
-                {{ ' and' if loop.last and not loop.first else comma() }}
-                {{ entity.name }}
+              {%- for entity in group.list if entity.state == 'on'
+              and entity.name.split(' ')[1]|lower == 'lights'
+              and entity.name.split(' ')[0]|lower != 'all'
+              and entity.name.split(' ')[0]|lower != 'interior'
+              -%}
+                {{ 'and' if loop.last and not loop.first else comma() }}
+                {{ entity.name|replace('Lights','')}}
               {%- endfor -%}
             {%- endfor -%}
-            .
+            lights are on.
             {%- endif -%}
-          {%- endmacro -%}
-
-          {%- macro iss() -%}
-            {% if is_state('binary_sensor.iss', 'on') -%}
-              Here is something interesting. The international space station is above us now. There are {{ states.binary_sensor.iss.attributes['number_of_people_in_space'] }} people in space right now.
-              {{ outside_weather() }}
-            {% endif -%}
           {%- endmacro -%}
 
           {%- macro window_check() -%}
@@ -102,6 +98,13 @@ speech_engine:
               {% endfor %}
                need to be closed.
             {%- endif -%}
+          {%- endmacro -%}
+
+          {%- macro iss() -%}
+            {% if is_state('binary_sensor.iss', 'on') -%}
+              Here is something interesting. The international space station is above us now. There are {{ states.binary_sensor.iss.attributes['number_of_people_in_space'] }} people in space right now.
+              {{ outside_weather() }}
+            {% endif -%}
           {%- endmacro -%}
 
           {%- macro moon() -%}

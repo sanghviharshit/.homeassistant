@@ -11,8 +11,7 @@
   action:
     - service: script.notify_engine
       data_template:
-        value1: 'There is a new Version of Home-Assistant Available.'
-        value2: "{{ states('updater.updater') }}"
+        value1: "Home Assistant {{ states.updater.updater.state }} is now available. {{now().strftime('%Y-%m-%d %I:%M %p')}}"
         who: 'harshit'
 
     - service: script.tweet_engine_image
