@@ -97,4 +97,5 @@ network_view:
   view: yes
   entities:
     - group.network
-    - group.network_detail
+    - sensor.network
+    - sensor.network_detail
