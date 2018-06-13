@@ -242,7 +242,7 @@ sensor.living_room_temperature:
 
 
 sensor.external_ip:
-  friendly_name: 'External Ip'
+  friendly_name: 'External IP'
 
   # hidden: True
   homebridge_hidden: True
