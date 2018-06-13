@@ -71,13 +71,6 @@ living_room_view:
     - remote.apple_tv_wired
     - remote.harmony_hub
 
-network_view:
-  name: Network
-  view: yes
-  entities:
-    - group.network
-    - group.network_devices
-
 admin_view:
   name: Admin
   view: yes
@@ -98,3 +91,10 @@ stats_view:
     - group.pihole
     - group.tweet_stats
     - group.finance
+
+network_view:
+  name: Network
+  view: yes
+  entities:
+    - group.network
+    - group.network_detail

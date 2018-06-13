@@ -3,7 +3,7 @@
 ##############################################################################
 
 
-- alias: Automated Light WatchDog!
+- alias: Forgotten Lights WatchDog!
   trigger:
     - platform: state
       entity_id: group.all_lights
@@ -29,3 +29,25 @@
     - service: switch.turn_off
       data_template:
         entity_id: "{{ trigger.entity_id }}"
+
+- alias: Daytime Light WatchDog!
+  trigger:
+    - platform: time
+      minutes: 10
+      seconds: 20
+    - platform: time
+      minutes: 40
+      seconds: 00
+
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'above_horizon'
+
+#Turn it off!
+  action:
+    - service: homeassistant.turn_off
+      data_template:
+        entity_id:
+          - group.hallway_lights
+          - group.bedroom_lights

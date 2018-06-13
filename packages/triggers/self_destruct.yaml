@@ -50,11 +50,13 @@ automation:
         media_content_id: >
           "https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/speechcons/self_destruct.mp3"
         media_content_type: audio/mp4
-    - service: light.turn_on
-      entity_id:
-        - group.all_lights
+    - service: light.lifx_effect_pulse
       data:
-        flash: long
+        entity_id:
+          - group.living_room_lights
+          - group.kitchen_lights
+          - group.hallway_lights
+          - group.bedroom_lights
     - service: switch.turn_off
       entity_id:
         - group.all_switches
