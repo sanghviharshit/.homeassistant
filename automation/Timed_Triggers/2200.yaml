@@ -1,0 +1,14 @@
+######################################################################
+##  Stuff that needs to happen at 10pm.
+######################################################################
+
+- alias: 'Timed 22:00'
+  trigger:
+    - platform: time
+      at: '22:00:00'
+
+  action:
+    - service: light.turn_off
+      entity_id:
+        - light.clock_led_strip
+        - light.tv_ambilight

@@ -1,0 +1,25 @@
+######################################################################
+##  Stuff that needs to happen at 06:30am.
+######################################################################
+
+- alias: 'Timed 07:00'
+  trigger:
+    - platform: time
+      at: '07:00:00'
+
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: home
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.clock_led_strip
