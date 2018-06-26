@@ -1,0 +1,26 @@
+alias: Commute delay - Harshit's evening
+trigger:
+  platform: numeric_state
+  entity_id: sensor.his_evening_commute
+  above: 45
+condition:
+- condition: time
+  after: '16:30:00'
+  before: '18:30:00'
+  weekday:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+- condition: state
+  entity_id: switch.alert_delays
+  state: 'on'
+- condition: state
+  entity_id: device_tracker.harshits_iphone
+  state: 'home'
+action:
+  - service: script.notify_engine
+    data_template:
+      who: 'family'
+      value1: "Commute delay of {{ trigger.to_state.state|round }} minutes for Harshit"

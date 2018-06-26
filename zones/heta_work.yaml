@@ -1,5 +1,0 @@
-name: Heta's Work
-latitude: !secret heta_work_latitude
-longitude: !secret heta_work_longitude
-radius: 200
-icon: mdi:worker
