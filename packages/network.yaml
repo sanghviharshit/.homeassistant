@@ -9,6 +9,7 @@ sensor:
   - platform: template
     sensors:
       network:
+        # TODO: State max length is 255 characters
         friendly_name: 'Network Monitor'
         value_template: >
           {%- set domains = ['device_tracker'] -%}
