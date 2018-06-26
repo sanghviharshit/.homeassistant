@@ -8,9 +8,10 @@ trigger:
   for:
     seconds: 120
 action:
-  - service: notify.all
+  - service: script.notify_engine
     data_template:
-      message: 'The {{ trigger.to_state.attributes.friendly_name }} is open! Please close it.'
+      who: 'harshit'
+      value1: 'The {{ trigger.to_state.attributes.friendly_name }} is open! Please close it.'
 
   - service: script.speech_engine
     data_template:
