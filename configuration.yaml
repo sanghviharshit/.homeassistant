@@ -23,16 +23,18 @@ cloud:
   alexa:
     filter:
       include_entities:
-        - group.all_lights
-        - group.all_switches
-        - group.interior_lights
-        - group.bedroom_lights
-        - group.living_room_lights
-        - group.living_room_accents
-        - group.dinette_lights
-        - group.dining_room_lights
-        - group.hallway_lights
-        - group.kitchen_lights
+        # - group.all_lights
+        # - group.all_switches
+        # - group.interior_lights
+        # - group.bedroom_lights
+        # - group.living_room_lights
+        # - group.living_room_accents
+        # - group.dinette_lights
+        # - group.dining_room_lights
+        # - group.hallway_lights
+        # - group.kitchen_lights
+        - light.clock_led_strip
+        - light.clock_led_strip
       include_domains:
         - switch
         - cover
