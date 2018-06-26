@@ -3,7 +3,17 @@ sensor.harshits_iphone_battery_level:
 
   hidden: False
   homebridge_hidden: True
-  icon: mdi:battery-40
+  # icon: mdi:battery-40
+  icon_template: >
+    {% set battery_level = states.device_tracker.harshits_iphone.attributes.battery | default(0) | int %}
+    {% set battery_round = (battery_level / 10) |int * 10 %}
+    {% if battery_round >= 100 %}
+      mdi:battery
+    {% elif battery_round > 0 %}
+      mdi:battery-{{ battery_round }}
+    {% else %}
+      mdi:battery-alert
+    {% endif %}
 
 sensor.harshits_iphone_battery_state:
   friendly_name: "Harshit's iPhone Battery State"
@@ -17,7 +27,17 @@ sensor.hetas_iphone_battery_level:
 
   hidden: False
   homebridge_hidden: True
-  icon: mdi:battery-40
+  # icon: mdi:battery-40
+  icon_template: >
+    {% set battery_level = states.device_tracker.hetas_iphone.attributes.battery | default(0) | int %}
+    {% set battery_round = (battery_level / 10) |int * 10 %}
+    {% if battery_round >= 100 %}
+      mdi:battery
+    {% elif battery_round > 0 %}
+      mdi:battery-{{ battery_round }}
+    {% else %}
+      mdi:battery-alert
+    {% endif %}
 
 sensor.hetas_iphone_battery_state:
   friendly_name: "Heta's iPhone Battery State"
