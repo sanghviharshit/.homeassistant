@@ -34,7 +34,7 @@ cloud:
         # - group.hallway_lights
         # - group.kitchen_lights
         - light.clock_led_strip
-        - light.clock_led_strip
+        - light.tv_ambilight
       include_domains:
         - switch
         - cover
@@ -43,11 +43,13 @@ cloud:
       # exclude_domains:
       #   - light
       #   - media_player
-    # entity_config:
-    #   group.kitchen_lights:
-    #     display_categories: LIGHT
-    #   group.bedroom_lights:
-    #     display_categories: LIGHT
+    entity_config:
+      light.clock_led_strip:
+        name: Clock
+        display_categories: LIGHT
+      light.tv_ambilight:
+        name: TV backlight
+        display_categories: LIGHT
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
