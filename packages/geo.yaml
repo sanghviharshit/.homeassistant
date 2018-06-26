@@ -1,0 +1,177 @@
+#########################################################################
+# Geographic
+#
+#  Anything to do with zones, travel, etc.
+#########################################################################
+
+homeassistant:
+  customize:
+    proximity.home:
+      friendly_name: Anyone's proximity
+    proximity.her_home:
+      friendly_name: Her proximity
+    proximity.his_home:
+      friendly_name: His proximity
+  customize_glob:
+    'sensor.*_commute':
+      icon: mdi:car
+
+# Group geo-related entities.
+group:
+  Geo:
+    - sensor.his_morning_commute
+    - sensor.his_evening_commute
+    - sensor.her_morning_commute
+    - sensor.her_evening_commute
+    - sensor.her_distance_mean
+    - sensor.his_distance_mean
+    - proximity.her_home
+    - proximity.his_home
+    - proximity.home
+    - sensor.his_departure_time
+    - sensor.her_departure_time
+    - sensor.traveling_away
+    - sensor.traveling_home
+
+zone:
+  # Home zone.
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: !secret zone_radius
+    icon: mdi:account-multiple
+
+  # His work location.
+  - name: His Work
+    latitude: !secret his_work_latitude
+    longitude: !secret his_work_longitude
+    radius: !secret zone_radius
+    icon: mdi:worker
+
+  # Her work location.
+  - name: Her Work
+    latitude: !secret her_work_latitude
+    longitude: !secret her_work_longitude
+    radius: !secret zone_radius
+    icon: mdi:worker
+
+  # Her home (for proximity tracking).
+  - name: Her Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: !secret zone_radius
+    passive: true
+  # His home (for proximity tracking).
+  - name: His Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: !secret zone_radius
+    passive: true
+
+proximity:
+  # Her proximity to home.
+  her_home:
+    devices:
+      - device_tracker.hetas_iphone
+    tolerance: 50
+    unit_of_measurement: !secret proximity_unit_of_measurement
+  # His proximity to home.
+  his_home:
+    devices:
+      - device_tracker.harshits_iphone
+    tolerance: 50
+    unit_of_measurement: !secret proximity_unit_of_measurement
+  # Nearest proximity to home.
+  home:
+    devices:
+      - device_tracker.harshits_iphone
+      - device_tracker.hetas_iphone
+    tolerance: 50
+    unit_of_measurement: !secret proximity_unit_of_measurement
+
+# TBD
+binary_sensor:
+  - platform: trend
+    sensors:
+      traveling_home:
+        entity_id: proximity.his_home
+        device_class: presence
+      traveling_away:
+        entity_id: proximity.his_home
+        device_class: presence
+    invert: true
+
+sensor:
+  # His home departure time.
+  - platform: mqtt
+    name: "His Departure Time"
+    state_topic: "home/departure/his"
+  # Her home departure time.
+  - platform: mqtt
+    name: "Her Departure Time"
+    state_topic: "home/departure/her"
+  # Her average distance from home.
+  - platform: statistics
+    name: Her Distance
+    entity_id: proximity.her_home
+  # His average distance from home.
+  - platform: statistics
+    name: His Distance
+    entity_id: proximity.his_home
+
+  # Travel time on his morning commute.
+  - platform: google_travel_time
+    name: His Morning Commute
+    api_key: !secret google_time_travel_api_key
+    origin: !secret home_address
+    destination: !secret his_work_address
+    options:
+      mode: transit
+  # Travel time on his evening commute.
+  - platform: google_travel_time
+    name: His Evening Commute
+    api_key: !secret google_time_travel_api_key
+    origin: !secret his_work_address
+    destination: !secret home_address
+    options:
+      mode: transit
+  # Travel time on her morning commute.
+  - platform: google_travel_time
+    name: Her Morning Commute
+    api_key: !secret google_time_travel_api_key
+    origin: !secret home_address
+    destination: !secret her_work_address
+    options:
+      mode: transit
+  # Travel time on her evening commute.
+  - platform: google_travel_time
+    name: Her Evening Commute
+    api_key: !secret google_time_travel_api_key
+    origin: !secret her_work_address
+    destination: !secret home_address
+    options:
+      mode: transit
+  # Travel time between him and her
+  - platform: google_travel_time
+    name: Harshit to Heta
+    api_key: !secret google_time_travel_api_key
+    origin: device_tracker.harshits_iphone
+    destination: device_tracker.hetas_iphone
+    options:
+        mode: driving
+
+automation:
+  # Track and record departure time from home for everyone.
+  - alias: track departure time
+    trigger:
+      - platform: state
+        entity_id:
+          - device_tracker.harshits_iphone
+          - device_tracker.hetas_iphone
+        from: home
+        to: not_home
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: 'home/departure/{{trigger.entity_id.split(".")[1].split("_")[0]}}'
+          payload: '{{now().hour}}:{{now().minute}}'

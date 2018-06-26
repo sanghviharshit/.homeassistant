@@ -39,6 +39,8 @@ cloud:
         - switch
         - cover
         - input_boolean
+        - media_player
+
       # exclude_entities:
       # exclude_domains:
       #   - light
@@ -50,6 +52,11 @@ cloud:
       light.tv_ambilight:
         name: TV backlight
         display_categories: LIGHT
+      switch.pihole:
+        name: Network Filter
+      sensor.living_room_temperature:
+        display_categories: TEMPERATURE_SENSOR
+
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -264,4 +271,4 @@ switch: !include_dir_merge_list switch
 script: !include_dir_merge_named script
 input_boolean: !include_dir_merge_named input_boolean
 shell_command: !include_dir_merge_named shell_command
-zone: !include_dir_list zones
+# zone: !include_dir_list zones

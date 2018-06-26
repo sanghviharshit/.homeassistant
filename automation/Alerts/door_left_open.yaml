@@ -1,0 +1,17 @@
+alias: Alert if the front door was left open
+trigger:
+  platform: state
+  entity_id:
+    - binary_sensor.main_door
+    - binary_sensor.storage_door
+  to: 'on'
+  for:
+    seconds: 120
+action:
+  - service: notify.all
+    data_template:
+      message: 'The {{ trigger.to_state.attributes.friendly_name }} is open! Please close it.'
+
+  - service: script.speech_engine
+    data_template:
+      value1: 'The {{ trigger.to_state.attributes.friendly_name }} is open! Please close it.'
