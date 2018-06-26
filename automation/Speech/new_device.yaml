@@ -14,7 +14,7 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "New device detected on the network.
+        value1: "New device detected on the network"
         value2: "{{trigger.event.data.host_name}} - {{trigger.event.entity_id}}"
 
     - service: script.speech_engine
