@@ -9,7 +9,7 @@ sensor:
   - platform: template
     sensors:
       network:
-        # TODO: State max length is 255 characters
+        # Make sure the State max length is 255 characters,
         friendly_name: 'Network Monitor'
         value_template: >
           {%- set domains = ['device_tracker'] -%}
@@ -17,14 +17,9 @@ sensor:
             {%- for item in states[domain]
                 if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name not in
                 [
-                  "Harshit's iPhone",
-                  "Heta's iPhone",
-                  "Harshit",
-                  "Heta",
-                  "Saloni",
-                  "Neel",
-                  "Kalpana",
-                  "Hemant"
+                  "smartthings-hub.sanghvi.home",
+                  "SpyCam.sanghvi.home",
+                  "pi-one.sanghvi.home"
                   ])
                   and(as_timestamp(now()) - as_timestamp(item.last_changed)) > 600 -%}
               {{ item.attributes.friendly_name }}
@@ -45,14 +40,9 @@ sensor:
             {%- for item in states[domain]
                 if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name not in
                 [
-                  "Harshit's iPhone",
-                  "Heta's iPhone",
-                  "Harshit",
-                  "Heta",
-                  "Saloni",
-                  "Neel",
-                  "Kalpana",
-                  "Hemant"
+                  "smartthings-hub.sanghvi.home",
+                  "SpyCam.sanghvi.home",
+                  "pi-one.sanghvi.home"
                   ])
                   and(as_timestamp(now()) - as_timestamp(item.last_changed)) > 600 -%}
               {{ item.attributes.friendly_name }} - {{((as_timestamp(now()) - as_timestamp(item.last_changed))/60) | round() }} minutes
