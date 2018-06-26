@@ -14,7 +14,7 @@ homeassistant:
       friendly_name: His proximity
   customize_glob:
     'sensor.*_commute':
-      icon: mdi:car
+      icon: mdi:transit
 
 # Group geo-related entities.
 group:
@@ -32,6 +32,11 @@ group:
     - sensor.her_departure_time
     - sensor.traveling_away
     - sensor.traveling_home
+  Travel Times:
+    - sensor.his_morning_commute
+    - sensor.his_evening_commute
+    - sensor.her_morning_commute
+    - sensor.her_evening_commute
 
 zone:
   # Home zone.
@@ -125,6 +130,7 @@ sensor:
     api_key: !secret google_time_travel_api_key
     origin: !secret home_address
     destination: !secret his_work_address
+    icon: mdi:briefcase
     options:
       mode: transit
   # Travel time on his evening commute.
@@ -133,14 +139,17 @@ sensor:
     api_key: !secret google_time_travel_api_key
     origin: !secret his_work_address
     destination: !secret home_address
+    icon: mdi:home
     options:
       mode: transit
+
   # Travel time on her morning commute.
   - platform: google_travel_time
     name: Her Morning Commute
     api_key: !secret google_time_travel_api_key
     origin: !secret home_address
     destination: !secret her_work_address
+    icon: mdi:briefcase
     options:
       mode: transit
   # Travel time on her evening commute.
@@ -149,16 +158,18 @@ sensor:
     api_key: !secret google_time_travel_api_key
     origin: !secret her_work_address
     destination: !secret home_address
+    icon: mdi:home
     options:
       mode: transit
   # Travel time between him and her
   - platform: google_travel_time
-    name: Harshit to Heta
+    name: Him to Her
     api_key: !secret google_time_travel_api_key
     origin: device_tracker.harshits_iphone
     destination: device_tracker.hetas_iphone
     options:
         mode: driving
+    icon: mdi:heart
 
 automation:
   # Track and record departure time from home for everyone.

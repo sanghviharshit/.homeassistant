@@ -46,41 +46,6 @@ sensor.hetas_iphone_battery_state:
   homebridge_hidden: True
   icon: mdi:power-plug-off
 
-sensor.harshit_to_work:
-  friendly_name: "Harshit to Work"
-
-  hidden: False
-  homebridge_hidden: True
-  icon: mdi:briefcase
-
-sensor.heta_to_work:
-  friendly_name: "Heta to Work"
-
-  hidden: False
-  homebridge_hidden: True
-  icon: mdi:briefcase
-
-sensor.harshit_to_home:
-  friendly_name: "Harshit to Home"
-
-  hidden: False
-  homebridge_hidden: True
-  icon: mdi:home
-
-sensor.heta_to_home:
-  friendly_name: "Heta to Home"
-
-  hidden: False
-  homebridge_hidden: True
-  icon: mdi:home
-
-sensor.harshit_to_heta:
-  friendly_name: "Harshit to Heta"
-
-  hidden: False
-  homebridge_hidden: True
-  icon: mdi:heart
-
 # sensor.pihole:
 #   friendly_name: 'Pi Hole Server'
 #
