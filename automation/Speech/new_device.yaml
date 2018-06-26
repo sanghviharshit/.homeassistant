@@ -11,9 +11,15 @@
     - wait_template: >-
         {{ not is_state('media_player.apple_tv_wired', 'playing') }}
 
+    - service: script.notify_engine
+      data_template:
+        who: 'harshit'
+        value1: "New device detected on the network.
+        value2: "{{trigger.event.data.host_name}} - {{trigger.event.entity_id}}"
+
     - service: script.speech_engine
       data_template:
-        NewDevice: "There has been a new device detected on the network. Be sure to appropriately catagorize {{trigger.event.entity_id}}."
+        NewDevice: "New device detected on the network. Be sure to appropriately catagorize {{trigger.event.data.host_name}} - {{trigger.event.entity_id}}."
 
     - service: script.tweet_engine
       data_template:
