@@ -12,6 +12,8 @@ Network:
     - sensor.database_sensor
     - sensor.network
     - sensor.network_detail
+    - weblink.router
+    - weblink.pihole
 
 # Create full group with Loop!:
 # {% for state in states.device_tracker-%}
