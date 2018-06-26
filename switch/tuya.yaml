@@ -1,0 +1,6 @@
+- platform: tuya
+  name: Night Light
+  host: 192.168.1.3
+  local_key: fe8878efca013970
+  device_id: 00200441a020a633f2eb
+  id: 1
