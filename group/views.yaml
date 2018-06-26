@@ -40,8 +40,6 @@ family_view:
     - group.harshit_phone_sensors
     - group.heta_phone_sensors
     - group.geo
-    # - group.time_travel_card
-    # - group.tracker_ble_happy_bubbles_card
 
 # kitchen_view:
 #   name: Kitchen
