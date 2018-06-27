@@ -1,0 +1,4 @@
+Horoscope:
+  entities:
+    - sensor.his_horoscope
+    - sensor.her_horoscope

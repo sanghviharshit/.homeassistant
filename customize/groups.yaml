@@ -10,7 +10,6 @@ group.all_scenes:
   hidden: False
   homebridge_hidden: true
 
-
 group.all_automations:
   friendly_name: 'All Automations'
 
