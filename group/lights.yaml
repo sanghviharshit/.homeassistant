@@ -2,6 +2,7 @@ Bedroom lights:
   entities:
     - light.computer
     - light.bed
+    - switch.night_light
 
 Kitchen lights:
   entities:

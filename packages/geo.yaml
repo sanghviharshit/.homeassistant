@@ -23,6 +23,7 @@ homeassistant:
 # Group geo-related entities.
 group:
   Geo:
+    - sensor.him_to_her
     - sensor.his_morning_commute
     - sensor.his_evening_commute
     - sensor.her_morning_commute

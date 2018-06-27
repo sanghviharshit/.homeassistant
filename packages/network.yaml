@@ -15,11 +15,13 @@ sensor:
           {%- set domains = ['device_tracker'] -%}
           {%- for domain in domains -%}
             {%- for item in states[domain]
-                if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name not in
+                if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name in
                 [
+                  "Hs-iMac.sanghvi.home",
                   "smartthings-hub.sanghvi.home",
                   "SpyCam.sanghvi.home",
-                  "pi-one.sanghvi.home"
+                  "pi-one.sanghvi.home",
+                  "pi-three-wifi.sanghvi.home"
                   ])
                   and(as_timestamp(now()) - as_timestamp(item.last_changed)) > 600 -%}
               {{ item.attributes.friendly_name }}
@@ -38,11 +40,13 @@ sensor:
           {%- set domains = ['device_tracker'] -%}
           {%- for domain in domains -%}
             {%- for item in states[domain]
-                if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name not in
+                if (item.attributes.source_type is defined and item.state != 'home' and item.attributes.friendly_name in
                 [
+                  "Hs-iMac.sanghvi.home",
                   "smartthings-hub.sanghvi.home",
                   "SpyCam.sanghvi.home",
-                  "pi-one.sanghvi.home"
+                  "pi-one.sanghvi.home",
+                  "pi-three-wifi.sanghvi.home"
                   ])
                   and(as_timestamp(now()) - as_timestamp(item.last_changed)) > 600 -%}
               {{ item.attributes.friendly_name }} - {{((as_timestamp(now()) - as_timestamp(item.last_changed))/60) | round() }} minutes
