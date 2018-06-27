@@ -4,29 +4,25 @@
 ######################################################################
 - alias: 'People Greeting'
   trigger:
-    - platform: state
-      entity_id:
-        - device_tracker.harshits_iphone
-        - device_tracker.hetas_iphone
-      from: 'not_home'
-      to: 'home'
-      # for: '00:01:00'
+    - platform: mqtt
+      topic: 'home/first_arrival/harshit'
+      payload: 'on'
+    - platform: mqtt
+      topic: 'home/first_arrival/heta'
+      payload: 'on'
+    # - platform: state
+    #   entity_id:
+    #     - device_tracker.harshits_iphone
+    #     - device_tracker.hetas_iphone
+    #   from: 'not_home'
+    #   to: 'home'
+    #   # for: '00:01:00'
   condition:
     - condition: time
       after: '16:30:00'
       before: '01:00:00'
-    # TODO - Make it run only once in the day for each person
-    - condition: template
-      value_template: '{{ as_timestamp(now()) - as_timestamp(states.automation.people_greeting.attributes.last_triggered) | int > 10 }}'
 
   action:
-
-    # http://jinja.pocoo.org/
-    - wait_template: >-
-        {% set person = trigger.entity_id.split(".")[1].split("_")[0] %}
-        {% set person_device = 'device_tracker.' + person + 'iphonesanghvihome' %}
-        {{ is_state('person_device', 'home') }}
-      timeout: '00:15:00'
     - wait_template: >-
         {{ not is_state('media_player.apple_tv_wired', 'playing') }}
       timeout: '00:01:00'
@@ -35,7 +31,7 @@
       data_template:
         # {% set person = states[trigger.entity_id.split(".")[0]][trigger.entity_id.split(".")[1]].name%}
         personarriving: >
-          {% set person = trigger.from_state.attributes.friendly_name%}
+          {% set person = states.sensor.latest_arrival.state %}
           {%- macro greeting_sentence(person) -%}
           {{ [
           "Welcome back home " ~ person,
