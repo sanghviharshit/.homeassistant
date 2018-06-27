@@ -2,7 +2,7 @@
 ##  Dark House Little extra light - DARK and Cloudy or just rainy.
 ######################################################################
 
-- alias: 'Dark House Little extra light'
+- alias: 'Dark House Extra Lights'
   trigger:
     - platform: numeric_state
       entity_id: sun.sun

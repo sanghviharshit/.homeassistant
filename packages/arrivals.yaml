@@ -32,7 +32,7 @@ sensor:
 
 automation:
   # Set the most recent arrival.
-  - alias: Set arrival
+  - alias: Set Latest Arrival
     trigger:
       platform: state
       entity_id:

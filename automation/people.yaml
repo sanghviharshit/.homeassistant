@@ -22,7 +22,7 @@
 # smart sockets, pause media, and lock the front door.
 # If any door is open, don't activate.
 # If temperature meets a threshold, turn on the bedroom fan.
-- alias: Sleeping
+- alias: Sleep Mode On
   trigger:
     platform: state
     entity_id: input_boolean.sleeping_mode
@@ -66,7 +66,7 @@
 
 # Sleep mode exceptions: If any door is open, alert via TTS and
 # turn sleep mode off.
-- alias: Don't sleep yet
+- alias: Sleep Mode Alerts
   trigger:
     platform: state
     entity_id: input_boolean.sleeping_mode
@@ -90,7 +90,7 @@
 
 # Sleep mode isn't always manually turned off in the morning.
 # Just turn it off automatically.
-- alias: Turn off sleep mode automatically
+- alias: Sleep Mode Off
   trigger:
     platform: time
     at: '10:00:00'
@@ -120,7 +120,7 @@
 #       entity_id:
 #         - switch.zwave_switch_1_switch
 
-- alias: 'Away Mode'
+- alias: 'Away Mode On'
   trigger:
     - platform: state
       entity_id: group.family
@@ -145,7 +145,7 @@
       entity_id: input_boolean.good_night
 
 # On vacation, make sure the thermostat is on "away" mode.
-- alias: Vacation started
+- alias: Vacation Mode On
   trigger:
     platform: state
     entity_id: input_boolean.vacation_mode
@@ -167,7 +167,7 @@
 
 # If no one has been home for 24 hours, automatically
 # enable vacation mode.
-- alias: automatic vacation mode
+- alias: Vacation Mode Auto
   trigger:
     - platform: state
       entity_id:
@@ -181,7 +181,7 @@
       entity_id: input_boolean.vacation_mode
 
 # Turn off vacation mode as soon as anyone gets home.
-- alias: turn off vacation mode
+- alias: Vacation Mode off
   trigger:
     - platform: state
       entity_id:
