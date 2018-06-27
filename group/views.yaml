@@ -15,7 +15,9 @@ default_view:
     - group.bedroom_lights
     - group.interior_lights
     - group.all_remotes
-
+    - group.triggers
+    - group.settings
+    - group.home_modes
 
 bedroom_view:
   name: Bedroom
@@ -80,7 +82,8 @@ admin_view:
     - group.all_scripts
     - group.all_scenes
     - group.triggers
-    - group.input_booleans
+    - group.settings
+    - group.home_modes
     - input_number.clock_animation_speed
     - input_select.log_level
 
