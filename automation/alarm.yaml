@@ -2,7 +2,7 @@
 ##  Alarm lights
 ######################################################################
 
-- alias: 'Alarm lights in Living room'
+- alias: 'Entry Point Alert'
   trigger:
     - platform: state
       entity_id:
