@@ -5,6 +5,9 @@ Input Booleans:
     - input_boolean.color_tornado
     - input_boolean.guard_dog
     - input_boolean.guest_mode
+    - input_boolean.sleeping_mode
+    - input_boolean.vacation_mode
+    - input_boolean.alert_delays
     - input_boolean.home_stats
     - input_boolean.lastmsg
     - input_boolean.self_destruct

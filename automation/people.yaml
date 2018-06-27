@@ -1,0 +1,193 @@
+#########################################################################
+# People
+#
+#  People exist in various states. Keep track of these and act
+#  accordingly.
+#
+#  - Sleeping: This state is used daily and is critical. First, when
+#              sleep mode is enabled, TTS briefings, door chimes, and
+#              and various other potential disturbances are disabled.
+#              Secondly, the house is placed in a convenient state for
+#              sleeping occupants.
+#  - Guests: Having guests means accomodating untracked people. Don't
+#            rely on tracked people to control temperature, lights, etc.
+#            Guests are quickly annoyed by home automation that doesn't
+#            take their presence into account.
+#  - Vacation: When no one is home for an extended period, don't bother
+#              changing states.
+#########################################################################
+
+# When sleeping, play a good night TTS message, turn off
+# all lighting, turn on stair nightlight lighting, turn off
+# smart sockets, pause media, and lock the front door.
+# If any door is open, don't activate.
+# If temperature meets a threshold, turn on the bedroom fan.
+- alias: Sleeping
+  trigger:
+    platform: state
+    entity_id: input_boolean.sleeping_mode
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+    - condition: state
+      entity_id: group.entry_points
+      state: 'off'
+  action:
+    # - service: script.turn_on
+    #   entity_id: script.play_tts
+    #   data_template:
+    #     variables:
+    #       message: "Good night."
+    - service: script.switch_turn_off_all
+    # - service: light.turn_on
+    #   entity_id: light.stair_lighting
+    #   data:
+    #     brightness: 10
+    #     color_name: red
+    # - service: lock.lock
+    #   entity_id: group.all_locks
+    # - service: media_player.turn_off
+    #   entity_id:
+    #     - media_player.firetv
+    # - service: media_player.media_pause
+    #   entity_id:
+    #     - media_player.spotify
+    #     - media_player.local_music
+    #     - media_player.mpd
+    # - condition: numeric_state
+    #   entity_id: sensor.dark_sky_temperature
+    #   above: 60
+    # - service: fan.turn_on
+    #   entity_id: fan.zwave_fan_1_level
+    #   data:
+    #     speed: 'low'
+
+# Sleep mode exceptions: If any door is open, alert via TTS and
+# turn sleep mode off.
+- alias: Don't sleep yet
+  trigger:
+    platform: state
+    entity_id: input_boolean.sleeping_mode
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.entry_points
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.sleeping_mode
+    - service: script.speech_engine
+      data_template:
+        value1: >
+          {% set doors = ["main_door", "storage_door"] %}
+          {% for door in doors %}
+            {% if states.binary_sensor[door].state == 'on' -%}
+              The {{states.binary_sensor[door].attributes.friendly_name.lower()}} is open and must be closed.
+            {%- endif -%}
+          {% endfor %}
+
+# Sleep mode isn't always manually turned off in the morning.
+# Just turn it off automatically.
+- alias: Turn off sleep mode automatically
+  trigger:
+    platform: time
+    at: '10:00:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.sleeping_mode
+    state: 'on'
+  action:
+    service: homeassistant.turn_off
+    data:
+      entity_id: input_boolean.sleeping_mode
+
+# Sometimes we want to turn on sleep mode without TTS,
+# especially if it isn't on, but someone is already sleeping.
+# It can be activated by double-tapping off the bedroom
+#  light switch.
+# - alias: Silent sleep mode
+#   trigger:
+#     - event_type: zwave.scene_activated
+#       platform: event
+#       event_data:
+#         entity_id: zwave.zwave_dimmer_2
+#         scene_id: 2
+#         scene_data: 3
+#   action:
+#     - service: switch.turn_off
+#       entity_id:
+#         - switch.zwave_switch_1_switch
+
+- alias: 'Away Mode'
+  trigger:
+    - platform: state
+      entity_id: group.family
+      to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.good_night
+      to: 'on'
+
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+
+  action:
+    - service: script.interior_off
+    - service: switch.turn_off
+      entity_id: group.all_lights
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.good_night
+
+# On vacation, make sure the thermostat is on "away" mode.
+- alias: Vacation started
+  trigger:
+    platform: state
+    entity_id: input_boolean.vacation_mode
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.guest_mode
+      state: 'off'
+
+  action:
+    - service: script.interior_off
+    - service: switch.turn_off
+      entity_id: group.all_lights
+
+    # - service: climate.set_away_mode
+    #   data:
+    #     entity_id: climate.thermostat
+    #     away_mode: true
+
+# If no one has been home for 24 hours, automatically
+# enable vacation mode.
+- alias: automatic vacation mode
+  trigger:
+    - platform: state
+      entity_id:
+        - group.harshit_locations
+        - group.heta_locations
+      to: not_home
+      for:
+        hours: 24
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.vacation_mode
+
+# Turn off vacation mode as soon as anyone gets home.
+- alias: turn off vacation mode
+  trigger:
+    - platform: state
+      entity_id:
+        - group.harshit_locations
+        - group.heta_locations
+      to: home
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.vacation_mode

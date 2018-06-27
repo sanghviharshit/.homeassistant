@@ -996,3 +996,13 @@ sensor.time:
 #   hidden: False
 #   homebridge_hidden: True
 #   icon: mdi:scale-bathroom
+
+
+sensor.new_commits:
+  icon: mdi:github-circle
+sensor.home_assistant_errors:
+  icon: mdi:alert-circle
+sensor.home_assistant_warnings:
+  icon: mdi:alert-circle-outline
+sensor.connected_clients:
+  icon: mdi:account-multiple
