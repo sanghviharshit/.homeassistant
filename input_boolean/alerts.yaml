@@ -1,0 +1,4 @@
+delay_alerts:
+  name: Alert Delays
+  initial: on
+  icon: mdi:car

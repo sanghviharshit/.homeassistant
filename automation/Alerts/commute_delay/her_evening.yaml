@@ -14,7 +14,7 @@ condition:
   - thu
   - fri
 - condition: state
-  entity_id: switch.alert_delays
+  entity_id: input_boolean.alert_delays
   state: 'on'
 - condition: state
   entity_id: device_tracker.hetas_iphone

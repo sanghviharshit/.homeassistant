@@ -1,6 +1,6 @@
 guest_mode:
   name: Guest Mode
-  icon: mdi:account-alert
+  icon: mdi:human-male-female
   initial: off
 
 alert_mode:
@@ -17,3 +17,13 @@ text_notifications:
   name: Text Notifications
   icon: mdi:cellphone-wireless
   initial: on
+
+sleeping_mode:
+  name: Sleeping Mode
+  icon: mdi:sleep
+  initial: off
+
+vacation_mode:
+  name: Vacation Mode
+  icon: mdi:airplane
+  initial: off
