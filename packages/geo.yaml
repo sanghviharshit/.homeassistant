@@ -84,20 +84,20 @@ proximity:
     devices:
       - device_tracker.hetas_iphone
     tolerance: 50
-    unit_of_measurement: !secret proximity_unit_of_measurement
+    unit_of_measurement: mi
   # His proximity to home.
   his_home:
     devices:
       - device_tracker.harshits_iphone
     tolerance: 50
-    unit_of_measurement: !secret proximity_unit_of_measurement
+    unit_of_measurement: mi
   # Nearest proximity to home.
   home:
     devices:
       - device_tracker.harshits_iphone
       - device_tracker.hetas_iphone
     tolerance: 50
-    unit_of_measurement: !secret proximity_unit_of_measurement
+    unit_of_measurement: mi
 
 # TBD
 binary_sensor:
