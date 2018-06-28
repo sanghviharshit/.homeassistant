@@ -1,4 +1,5 @@
 # see how many new commit there are.
+# TODO not working
 - platform: command_line
   name: New Commits
   scan_interval: 600

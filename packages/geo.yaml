@@ -115,19 +115,20 @@ sensor:
   # His home departure time.
   - platform: mqtt
     name: "His Departure Time"
-    state_topic: "home/departure/his"
+    state_topic: "home/departure/harshits"
   # Her home departure time.
   - platform: mqtt
     name: "Her Departure Time"
-    state_topic: "home/departure/her"
-  # Her average distance from home.
-  - platform: statistics
-    name: Her Distance
-    entity_id: proximity.her_home
+    state_topic: "home/departure/hetas"
+
   # His average distance from home.
   - platform: statistics
     name: His Distance
     entity_id: proximity.his_home
+  # Her average distance from home.
+  - platform: statistics
+    name: Her Distance
+    entity_id: proximity.her_home
 
   # Travel time on his morning commute.
   - platform: google_travel_time
