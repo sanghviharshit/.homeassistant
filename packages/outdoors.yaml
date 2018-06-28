@@ -55,6 +55,9 @@ homeassistant:
     sensor.capitalweather_snow_forecast:
       friendly_name: 'Snow Forecast'
       icon: mdi:weather-snowy
+    sensor.season:
+      friendly_name: 'Season'
+      icon: mdi:calendar-clock
   customize_glob:
     'sensor.waqi*':
       hidden: true
