@@ -22,6 +22,18 @@ binary_sensor.temp_rising:
   hidden: False
   homebridge_hidden: true
 
+binary_sensor.indoor_temp_falling:
+  friendly_name: 'Indoor Temperature Falling'
+
+  hidden: False
+  homebridge_hidden: true
+
+binary_sensor.indoor_temp_rising:
+  friendly_name: 'Indoor Temperature Rising'
+
+  hidden: False
+  homebridge_hidden: true
+
 binary_sensor.workday_sensor:
   friendly_name: 'Workday'
 

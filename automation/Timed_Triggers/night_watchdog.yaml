@@ -6,7 +6,7 @@
 ##  Stuff that needs to happen after 10pm.
 ######################################################################
 
-- alias: Automated NIGHT WatchDog!
+- alias: Automated Night WatchDog
   trigger:
     - platform: state
       entity_id: light.all_lights

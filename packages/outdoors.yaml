@@ -1,0 +1,217 @@
+#########################################################################
+# Outdoors
+#
+#  Everything to do with the natural world outside the house.
+#########################################################################
+
+homeassistant:
+  customize:
+    sensor.air_quality_numeric:
+      hidden: true
+    sensor.air_quality:
+      icon: mdi:cloud-check
+    sun.sun:
+      icon: mdi:weather-sunny
+    sensor.dark_sky_humidity:
+      icon: mdi:water-percent
+      friendly_name: Humidity
+    sensor.dark_sky_temperature:
+      icon: mdi:thermometer
+      friendly_name: Temperature
+    sensor.dark_sky_summary:
+      icon: mdi:leaf
+      friendly_name: Conditions
+    sensor.dark_sky_cloud_coverage:
+      friendly_name: Cloud Coverage
+    sensor.dark_sky_wind_speed:
+      friendly_name: Wind Speed
+    sensor.dark_sky_daily_high_temperature:
+      hidden: true
+    sensor.dark_sky_daily_low_temperature:
+      hidden: true
+    sensor.dark_sky_daily_summary:
+      hidden: true
+    sensor.dark_sky_hourly_summary:
+      hidden: true
+    sensor.moon:
+      icon: mdi:vector-circle-variant
+    sensor.pollen:
+      hidden: true
+    sensor.cold_flu:
+      hidden: true
+    sensor.pollen_level:
+      icon: mdi:chart-bar
+    sensor.cold_flu_risk:
+      icon: mdi:chart-bubble
+    sensor.capitalweather_daily_digit:
+      friendly_name: 'Weather Rating'
+      icon: mdi:emoticon-cool
+    sensor.capitalweather_day_description:
+      friendly_name: 'Day Description'
+      icon: mdi:weather-partlycloudy
+    sensor.capitalweather_snow_potential_index:
+      friendly_name: 'Snow Likelihood'
+      icon: mdi:snowflake
+    sensor.capitalweather_snow_forecast:
+      friendly_name: 'Snow Forecast'
+      icon: mdi:weather-snowy
+  customize_glob:
+    'sensor.waqi*':
+      hidden: true
+
+# Group entities in logical categories.
+group:
+  Weather:
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_uv_index
+    - sensor.dark_sky_minutely_summary
+    - sensor.dark_sky_cloud_coverage
+    # - sensor.capitalweather_daily_digit
+    # - sensor.capitalweather_snow_potential_index
+    - sensor.daily_earthquakes
+    - camera.weather_radar
+
+    # Custom sensors
+    - binary_sensor.temp_falling
+    - binary_sensor.temp_rising
+
+  Health:
+    - sensor.pollen_level
+    - sensor.cold_flu_risk
+    - sensor.air_quality
+  Orbits:
+    - sun.sun
+    - sensor.season
+    - sensor.moon
+    - binary_sensor.iss
+
+# "camera" which displays local radar.
+camera:
+  - platform: generic
+    still_image_url: !secret weather_map_url
+    name: Weather Radar
+
+sensor:
+  # TODO Parse daily forecast tweets from local weather news.
+  # - platform: twitter
+  #   consumer_key: !secret twitter_consumer_key
+  #   consumer_secret: !secret twitter_consumer_secret
+  #   access_token: !secret twitter_access_token
+  #   access_token_secret: !secret twitter_access_token_secret
+  #   screen_names:
+  #     capitalweather:
+  #       - 'igit[^A-Za-z]+(?P<daily_digit>[-0-9]+)/10[^A-Za-z]+(?P<day_description>.+?)(( *\-? *[A-Za-z]+, CWG)|(\n)|$)'
+  #       - 'potential index[^A-Za-z]+(?P<snow_potential_index>[-0-9]+)/10[^A-Za-z]+(?P<snow_forecast>.+?)(( *\-? *[A-Za-z]+, CWG)|(\n)|$)'
+  # Check how many earthquakes happened nearby (spoiler: none).
+  # TODO Add usgs
+  # - platform: usgs
+  #   name: Daily Earthquakes
+  #   radius: 1600
+  # Track the moon phase.
+  - platform: moon
+  # Track the season.
+  - platform: season
+  # Track the local air quality.
+  - platform: waqi
+    token: !secret waqi_token
+    locations:
+    - !secret waqi_location
+  # Get the pollen forecast.
+  - platform: rest
+    name: pollen
+    resource: !secret pollen_url
+    value_template: "{{value_json.Location.periods[1].Index}}"
+    scan_interval: 21600
+    headers:
+       Referer: "https://www.pollen.com"
+  # Get the cold & flu risk level.
+  - platform: rest
+    name: cold_flu
+    resource: !secret cold_flu_url
+    value_template: "{{value_json.Location.periods[0].Index}}"
+    scan_interval: 21600
+    headers:
+       Referer: "https://www.pollen.com"
+  - platform: template
+    sensors:
+      # TODO Extract the air quality attribute.
+      # air_quality_numeric:
+      #   value_template: !secret air_quality_sensor_template
+      # Interpret the air quality numeric value.
+      # air_quality:
+      #   friendly_name: 'Air Quality'
+      #   value_template: >
+      #     {% if states.sensor.air_quality_numeric.state|int <= 50 %}
+      #       Good
+      #     {% elif states.sensor.air_quality_numeric.state|int <= 100 %}
+      #       Moderate
+      #     {% elif states.sensor.air_quality_numeric.state|int <= 150 %}
+      #       Unhealthy
+      #     {% endif %}
+      # Interpret the pollen level numeric value.
+      pollen_level:
+        friendly_name: 'Pollen Level'
+        value_template: >-
+          {%- if states.sensor.pollen.state|float <= 2.4 %}
+              Low
+          {%- elif states.sensor.pollen.state|float <= 4.8 %}
+              Medium-Low
+          {%- elif states.sensor.pollen.state|float <= 7.2 %}
+              Medium
+          {%- elif states.sensor.pollen.state|float <= 9.6 %}
+              Medium-High
+          {%- elif states.sensor.pollen.state|float <= 12.0 %}
+              High
+          {% else %}
+              Unknown
+          {%- endif %}
+      # Interpret the cold & flu risk numeric value.
+      cold_flu_risk:
+        friendly_name: 'Cold & Flu Risk'
+        value_template: >-
+          {%- if states.sensor.cold_flu.state|float <= 2.4 %}
+              Low
+          {%- elif states.sensor.cold_flu.state|float <= 4.8 %}
+              Medium-Low
+          {%- elif states.sensor.cold_flu.state|float <= 7.2 %}
+              Medium
+          {%- elif states.sensor.cold_flu.state|float <= 9.6 %}
+              Medium-High
+          {%- elif states.sensor.cold_flu.state|float <= 12.0 %}
+              High
+          {% else %}
+              Unknown
+          {%- endif %}
+  # Monitor various local weather conditions.
+  - platform: darksky
+    api_key: !secret forecast_key
+    monitored_conditions:
+      - summary
+      - temperature
+      - humidity
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - cloud_cover
+      - temperature_max
+      - temperature_min
+      - wind_speed
+      - precip_intensity
+      - precip_intensity_max
+      - apparent_temperature
+  #    - dew_point
+      - wind_speed
+  #    - wind_bearing
+      - uv_index
+
+binary_sensor:
+  # Track the international space station.
+  - platform: iss
