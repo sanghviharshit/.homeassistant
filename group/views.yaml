@@ -2,7 +2,6 @@ default_view:
   name: Home
   view: yes
   entities:
-    - group.horoscope
     - group.highlights
     - group.travel_times
     - group.entry_points
@@ -41,11 +40,13 @@ family_view:
   name: Family
   view: yes
   entities:
+    - group.horoscope
     - group.harshit_locations
     - group.heta_locations
     - group.harshit_phone_sensors
     - group.heta_phone_sensors
     - group.geo
+    - group.friends
 
 # kitchen_view:
 #   name: Kitchen
@@ -80,6 +81,7 @@ admin_view:
   name: Admin
   view: yes
   entities:
+    - group.briefings
     - group.all_automations
     - group.all_scripts
     - group.all_scenes
