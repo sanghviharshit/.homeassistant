@@ -56,7 +56,7 @@ speech_engine:
           {%- endmacro -%}
 
           {%- macro outside_weather() -%}
-            Outside, it is going to be {{ states('sensor.dark_sky_minutely_summary') }}
+            Outside, it is going to be {{ states('sensor.dark_sky_hourly_summary') }}
           {%- endmacro -%}
 
           {%- macro light_check() -%}

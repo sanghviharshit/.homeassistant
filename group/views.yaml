@@ -32,6 +32,8 @@ climate_view:
   view: yes
   entities:
     - group.weather
+    - group.health
+    - group.orbits
     - group.indoor_climate
     # - camera.radar
 
