@@ -53,7 +53,7 @@ cloud:
         name: TV backlight
         display_categories: LIGHT
       switch.pihole:
-        name: Network Filter
+        name: Firewall
       sensor.living_room_temperature:
         display_categories: TEMPERATURE_SENSOR
 
