@@ -20,7 +20,7 @@ group:
       - input_select.briefing_target
       - input_select.tts_engine
       - sensor.briefing_target
-      - automation.play_a_briefing
+      - automation.play_an_evening_briefing
       - script.persistent_briefing
       - switch.briefings
 

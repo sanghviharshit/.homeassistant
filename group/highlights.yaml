@@ -3,3 +3,4 @@ Highlights:
     - sensor.last_message
     - sensor.ist
     - sensor.ups
+    - sensor.plex
