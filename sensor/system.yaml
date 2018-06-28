@@ -11,13 +11,13 @@
   name: Home Assistant Errors
   scan_interval: 30
   unit_of_measurement: errors
-  command: grep -r "ERROR (" /config/home-assistant.log | wc -l
+  command: grep -r -E ":[0-9][0-9] ERROR" /config/home-assistant.log | wc -l
 # Track how many warnings are in the log.
 - platform: command_line
   name: Home Assistant Warnings
   scan_interval: 30
   unit_of_measurement: warnings
-  command: grep -r "WARNING (" /config/home-assistant.log | wc -l
+  command: grep -r -E ":[0-9][0-9] ERROR" /config/home-assistant.log | wc -l
 
 # Track number of connected clients.
 - platform: api_streams
