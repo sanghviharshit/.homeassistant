@@ -9,9 +9,9 @@
   scan_interval: 7200
   resource: !secret his_horoscope_url
   name: His Horoscope
-  value_template: "{{ value_json.horoscope }}"
+  value_template: "{{ value_json.horoscope | truncate(255)}}"
 - platform: rest
   scan_interval: 7200
   resource: !secret her_horoscope_url
   name: Her Horoscope
-  value_template: "{{ value_json.horoscope }}"
+  value_template: "{{ value_json.horoscope | truncate(255) }}"

@@ -5,4 +5,4 @@
   password: !secret plex_password
   server: !secret plex_server
   token: !secret plex_token
-  # ssl: true
+  ssl: true
