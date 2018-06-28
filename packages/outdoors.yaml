@@ -150,20 +150,20 @@ sensor:
        Referer: "https://www.pollen.com"
   - platform: template
     sensors:
-      # TODO Extract the air quality attribute.
-      # air_quality_numeric:
-      #   value_template: !secret air_quality_sensor_template
+      # Extract the air quality attribute.
+      air_quality_numeric:
+        value_template: !secret air_quality_sensor_template
       # Interpret the air quality numeric value.
-      # air_quality:
-      #   friendly_name: 'Air Quality'
-      #   value_template: >
-      #     {% if states.sensor.air_quality_numeric.state|int <= 50 %}
-      #       Good
-      #     {% elif states.sensor.air_quality_numeric.state|int <= 100 %}
-      #       Moderate
-      #     {% elif states.sensor.air_quality_numeric.state|int <= 150 %}
-      #       Unhealthy
-      #     {% endif %}
+      air_quality:
+        friendly_name: 'Air Quality'
+        value_template: >
+          {% if states.sensor.air_quality_numeric.state|int <= 50 %}
+            Good
+          {% elif states.sensor.air_quality_numeric.state|int <= 100 %}
+            Moderate
+          {% elif states.sensor.air_quality_numeric.state|int <= 150 %}
+            Unhealthy
+          {% endif %}
       # Interpret the pollen level numeric value.
       pollen_level:
         friendly_name: 'Pollen Level'
