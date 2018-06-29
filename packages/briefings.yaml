@@ -12,6 +12,8 @@ homeassistant:
   customize:
     switch.briefings:
       icon: mdi:voice
+    script.persistent_briefing:
+      friendly_name: 'Persistent Briefing'
 
 # Group various briefing-related entities.
 group:
