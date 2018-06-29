@@ -232,7 +232,7 @@
       {% macro battery_sentence(person) -%}
         {%- set device_entity = get_device(person) -%}
         {%- set pronoun = get_pronoun(device_entity) -%}
-        {%- set percent = states("sensor." ~ pronoun ~ "_iphone_battery_level") -%}
+        {%- set percent = states("sensor." ~ person | lower ~ "s_iphone_battery_level") -%}
         {% if percent|int < 50 %}
           Remember to plug in your phone, it's at {{percent}} percent.
         {% endif %}
@@ -268,6 +268,7 @@
 
       {# Market sentence
       {# `DIA` is a standin until Yahoo Finance sensor supports indexes. #}
+      {#
       {% macro market_sentence() -%}
         {%- if 'dia' in states.sensor -%}
           The market is
@@ -354,7 +355,8 @@
         {{market_sentence()}}
         {{chore_sentence(states.calendar.general, 'trash', 'Remember to take out the trash. It is trash day.')}}
         {{chore_sentence(states.calendar.general, 'recycling', 'Remember to take out the recycling. It is recycling day.')}}
-        {#{{event_sentence(states.calendar.facebook)}}#}
+        {#
+        {{event_sentence(states.calendar.facebook)}}
         {{event_sentence(states.calendar.sca, '', ', get prepared')}}
         {{event_sentence(states.calendar.combat_docket_mma_calendar, 'Oh yeah, and ')}}
         #}
