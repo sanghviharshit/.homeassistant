@@ -159,9 +159,8 @@
 
       {# Get person's device #}
       {% macro get_device(person) -%}
-        {% set person_device = person ~ "'s iPhone" -%}
         {% for device in states.device_tracker -%}
-          {% if device.name == person_device -%}
+          {% if device.name == person -%}
             {{device.entity_id}}
           {%- endif %}
         {%- endfor %}
@@ -170,9 +169,9 @@
       {# Get person's pronoun #}
       {%- macro get_pronoun(device_entity) -%}
         {%- if device_entity.split('.')[1].split('_')[0] == "harshits" -%}
-          {{ his }}
+          his
         {%- else -%}
-          {{ her }}
+          her
         {%- endif -%}
       {%- endmacro -%}
 
