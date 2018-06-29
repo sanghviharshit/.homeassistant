@@ -4,7 +4,8 @@ Settings:
     - input_boolean.speech_notifications
     - input_boolean.text_notifications
     - input_boolean.alert_delays
-    # Use either switch or input_booleans
+    # TODO Use either switch or input_booleans
+    - input_boolean.work
     - switch.briefings
 
 Home Modes:
@@ -22,7 +23,6 @@ Triggers:
     - input_boolean.good_night
     - input_boolean.meal_time
     - input_boolean.tv_time
-    - input_boolean.work
     - input_boolean.flash
     - input_boolean.color_tornado
     - input_boolean.home_stats

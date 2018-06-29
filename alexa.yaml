@@ -1,3 +1,8 @@
+flash_briefings:
+    ha_briefing:
+      - title: Home Assistant Flash Briefing
+        text: !include templates/briefing.yaml
+
 intents:
   BriefingIntent:
     action:
