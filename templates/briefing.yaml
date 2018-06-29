@@ -198,7 +198,8 @@
       {%- macro omw_sentence(person) -%}
         {%- set device_entity = get_device(person) -%}
         {%- set pronoun = get_pronoun(device_entity) -%}
-        {%- set max = states.sensor[pronoun ~ "_distance_mean"].attributes.max_value|int -%}
+        {%- set distance_mean = pronoun ~ "_distance_mean" -%}
+        {%- set max = states.sensor[distance_mean].attributes.max_value|int -%}
         {%- set mins = minutes_away(pronoun, "evening", max) -%}
         {%- if states(device_entity) == 'not_home' and mins|int > 0 -%}
           {{person}} is on {{pronoun}} way home, about {{mins}} minutes out.
