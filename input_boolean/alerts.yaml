@@ -1,4 +1,4 @@
 delay_alerts:
-  name: Alert Delays
+  name: Delays Alert
   initial: on
-  icon: mdi:car
+  icon: mdi:car-connected
