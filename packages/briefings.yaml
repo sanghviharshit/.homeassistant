@@ -14,6 +14,8 @@ homeassistant:
       icon: mdi:voice
     script.persistent_briefing:
       friendly_name: 'Persistent Briefing'
+    input_boolean.play_briefing:
+      friendly_name: 'Play Briefing'
 
 # Group various briefing-related entities.
 group:
@@ -24,7 +26,7 @@ group:
       - sensor.briefing_target
       - automation.play_an_evening_briefing
       - script.persistent_briefing
-      - switch.briefings
+      - input_boolean.play_briefing
 
 input_select:
   # Manual control for selecting briefing target.
@@ -87,44 +89,70 @@ automation:
   # This briefing plays after individuals get home from work.
   - alias: Play an evening briefing
     trigger:
-      platform: state
-      entity_id: binary_sensor.main_door
-      to: 'off'
+      - platform: state
+        entity_id: binary_sensor.main_door
+        to: 'off'
     condition:
-    - condition: state
-      entity_id: input_boolean.guest_mode
-      state: 'off'
-    - condition: state
-      entity_id: group.family
-      state: 'home'
-    - condition: state
-      entity_id: switch.briefings
-      state: 'on'
-    - condition: time
-      after: '15:00:00'
-    - condition: state
-      entity_id: binary_sensor.workday_sensor
-      state: 'on'
-    - condition: template
-      value_template: >
-        {{states("binary_sensor." ~ states.sensor.latest_arrival.state ~ "_first_arrival") == "off"}}
+      # - condition: state
+      #   entity_id: input_boolean.guest_mode
+      #   state: 'off'
+      - condition: state
+        entity_id: group.family
+        state: 'home'
+      - condition: state
+        entity_id: switch.briefings
+        state: 'on'
+      - condition: time
+        after: '15:00:00'
+        before: '23:30:00'
+      # - condition: state
+      #   entity_id: binary_sensor.workday_sensor
+      #   state: 'on'
+      - condition: template
+        value_template: >
+          {{states("binary_sensor." ~ states.sensor.latest_arrival.state ~ "_first_arrival") == "off"}}
+
     action:
-    - service: mqtt.publish
-      data_template:
-        topic: 'home/first_arrival/{{states.sensor.latest_arrival.state}}'
-        payload: 'ON'
-        retain: true
-    - service: mqtt.publish
-      data_template:
-        payload: >
-          {{states.device_tracker[states.sensor.latest_arrival.state ~ "_iphone"].attributes.friendly_name}}
-        topic: 'home/briefing_target'
-        retain: true
-    - delay:
-        seconds: 5
-    - service: script.speech_engine
-      data_template:
-        value1: !include ../templates/briefing.yaml
+      - service: mqtt.publish
+        data_template:
+          topic: 'home/first_arrival/{{states.sensor.latest_arrival.state}}'
+          payload: 'ON'
+          retain: true
+      - service: mqtt.publish
+        data_template:
+          payload: >
+            {{states.device_tracker[states.sensor.latest_arrival.state ~ "_iphone"].attributes.friendly_name}}
+          topic: 'home/briefing_target'
+          retain: true
+      - delay:
+          seconds: 5
+      - service: script.speech_engine
+        data_template:
+          value1: !include ../templates/briefing.yaml
+
+  - alias: Play briefing when asked
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.main_door
+        to: 'off'
+      - platform: state
+        entity_id: input_boolean.play_briefing
+        to: 'on'
+        from: 'off'
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.play_briefing
+      - service: mqtt.publish
+        data_template:
+          payload: >
+            {{states.device_tracker[states.sensor.latest_arrival.state ~ "_iphone"].attributes.friendly_name}}
+          topic: 'home/briefing_target'
+          retain: true
+      - delay:
+          seconds: 5
+      - service: script.speech_engine
+        data_template:
+          value1: !include ../templates/briefing.yaml
 
     # TODO - Play the morning briefing. This briefing is triggered
     # when the bedroom light switch is turned on.
