@@ -3,7 +3,7 @@ Settings:
   entities:
     - input_boolean.speech_notifications
     - input_boolean.text_notifications
-    - input_boolean.alert_delays
+    - input_boolean.delay_alerts
     # TODO Use either switch or input_booleans
     - input_boolean.work
     - switch.briefings

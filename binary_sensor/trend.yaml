@@ -1,29 +1,26 @@
+#TODO fix error with numpy python package import
 - platform: trend
   sensors:
     temp_falling:
       entity_id: sensor.dark_sky_apparent_temperature
-      sample_duration: 7200
-      min_gradient: -0.0008
-      max_samples: 50
+      sample_duration: 3600
+      min_gradient: -0.0005
       device_class: cold
 
     temp_rising:
       entity_id: sensor.dark_sky_apparent_temperature
-      sample_duration: 7200
-      min_gradient: 0.0008
-      max_samples: 50
+      sample_duration: 3600
+      min_gradient: 0.0005
       device_class: heat
 
     indoor_temp_falling:
       entity_id: sensor.living_room_temperature
-      sample_duration: 7200
-      min_gradient: -0.0008
-      max_samples: 50
+      sample_duration: 3600
+      min_gradient: -0.0005
       device_class: cold
 
     indoor_temp_rising:
       entity_id: sensor.living_room_temperature
-      sample_duration: 7200
-      min_gradient: 0.0008
-      max_samples: 50
+      sample_duration: 3600
+      min_gradient: 0.0005
       device_class: heat
