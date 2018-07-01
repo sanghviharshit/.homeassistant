@@ -2,7 +2,7 @@
 ##  Trigger Dump
 ###################################
 
-  - alias: Trigger dump - MQTT
+  - alias: Trigger MQTT dump
     trigger:
       - platform: event
         event_type: feedreader

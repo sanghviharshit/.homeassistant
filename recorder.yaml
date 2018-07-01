@@ -49,3 +49,4 @@ exclude:
     - sensor.time
     - sun.sun
     - zone.home
+    - sensor.ist

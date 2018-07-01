@@ -68,3 +68,51 @@ script:
           topic: 'home/first_arrival/heta'
           payload: 'OFF'
           retain: true
+
+  # - alias: 'Greetings on Arrival'
+  #   trigger:
+  #     - platform: mqtt
+  #       topic: 'home/first_arrival/harshit'
+  #       payload: 'on'
+  #     - platform: mqtt
+  #       topic: 'home/first_arrival/heta'
+  #       payload: 'on'
+  #     # - platform: state
+  #     #   entity_id:
+  #     #     - device_tracker.harshits_iphone
+  #     #     - device_tracker.hetas_iphone
+  #     #   from: 'not_home'
+  #     #   to: 'home'
+  #     #   # for: '00:01:00'
+  #   condition:
+  #     - condition: time
+  #       after: '16:30:00'
+  #       before: '01:00:00'
+  #
+  #   action:
+  #     - wait_template: >-
+  #         {{ not is_state('media_player.apple_tv_wired', 'playing') }}
+  #       timeout: '00:01:00'
+  #
+  #     - service: script.speech_engine
+  #       data_template:
+  #         # {% set person = states[trigger.entity_id.split(".")[0]][trigger.entity_id.split(".")[1]].name%}
+  #         personarriving: >
+  #           {% set person = states.sensor.latest_arrival.state %}
+  #           {%- macro greeting_sentence(person) -%}
+  #           {{ [
+  #           "Welcome back home " ~ person,
+  #           "Guess who is home?" ~ person +" is!",
+  #           person + " is now in the house.",
+  #           "Welcome Home " ~ person + ".  We have missed you.",
+  #           "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
+  #           "Life is like a song, you’re back where you belong. Welcome home " ~ person,
+  #           "Hey there " ~ person + " Welcome Home!",
+  #           "Knock Knock. Who is There? "   ~ person +" is!",
+  #           person ~ "! You are home!",
+  #           "I know a secret! "  ~ person +" is home!"
+  #           ] | random }}
+  #           {%- endmacro -%}
+  #           {{greeting_sentence(person)}}
+  #         call_no_announcement: 1
+  #
