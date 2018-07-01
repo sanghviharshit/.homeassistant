@@ -57,6 +57,10 @@ cloud:
       sensor.living_room_temperature:
         display_categories: TEMPERATURE_SENSOR
 
+google:
+  client_id: !secret google_cal_clientid
+  client_secret: !secret google_cal_clientsecret
+
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
