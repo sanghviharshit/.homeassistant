@@ -14,8 +14,6 @@ homeassistant:
       icon: mdi:voice
     script.persistent_briefing:
       friendly_name: 'Persistent Briefing'
-    input_boolean.play_briefing:
-      friendly_name: 'Play Briefing'
 
 # Group various briefing-related entities.
 group:
@@ -24,7 +22,6 @@ group:
       - input_select.briefing_target
       - input_select.tts_engine
       - sensor.briefing_target
-      - automation.play_an_evening_briefing
       - script.persistent_briefing
       - input_boolean.play_briefing
 
@@ -36,6 +33,7 @@ input_select:
       - 'Select a person'
       - !secret her_name
       - !secret his_name
+    icon: mdi:bullseye-arrow
   # Options for TTS engine (voice provider).
   tts_engine:
     name: TTS Engine
@@ -43,6 +41,12 @@ input_select:
       - 'google'
       - 'amazon_polly'
       # - 'voicerss'
+
+input_boolean:
+  play_briefing:
+    name: Play Briefing
+    initial: off
+    icon: mdi:voice
 
 sensor:
   # Sensor that maintains the current briefing target.

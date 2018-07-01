@@ -29,3 +29,4 @@ Triggers:
     - input_boolean.lastmsg
     - input_boolean.guard_dog
     - input_boolean.self_destruct
+    - input_boolean.play_briefing
