@@ -5,8 +5,8 @@ trigger:
   above: 45
 condition:
 - condition: time
-  after: '08:30:00'
-  before: '10:00:00'
+  after: '08:00:00'
+  before: '10:15:00'
   weekday:
   - mon
   - tue

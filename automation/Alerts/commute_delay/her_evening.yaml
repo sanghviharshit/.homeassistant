@@ -2,11 +2,11 @@ alias: Commute delay - Heta's evening
 trigger:
   platform: numeric_state
   entity_id: sensor.her_evening_commute
-  above: 45
+  above: 120
 condition:
 - condition: time
-  after: '16:00:00'
-  before: '18:00:00'
+  after: '15:45:00'
+  before: '17:30:00'
   weekday:
   - mon
   - tue
@@ -18,7 +18,7 @@ condition:
   state: 'on'
 - condition: state
   entity_id: device_tracker.hetas_iphone
-  state: 'home'
+  state: 'not_home'
 action:
   - service: script.notify_engine
     data_template:

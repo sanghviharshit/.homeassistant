@@ -9,7 +9,7 @@
       to: 'on'
       from: 'off'
     - platform: state
-      entity_id: binary_sensor.main_door
+      entity_id: binary_sensor.entry_points
       from: 'off'
       to: 'on'
 

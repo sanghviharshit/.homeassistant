@@ -2,7 +2,7 @@
 ##  Good night Routine
 ######################################################################
 
-- alias: 'Good Night Trigger'
+- alias: 'Good Night'
   trigger:
     - platform: state
       entity_id: input_boolean.good_night

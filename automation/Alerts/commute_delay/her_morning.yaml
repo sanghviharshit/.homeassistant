@@ -5,8 +5,8 @@ trigger:
   above: 120
 condition:
 - condition: time
-  after: '07:30:00'
-  before: '08:30:00'
+  after: '07:00:00'
+  before: '09:00:00'
   weekday:
   - mon
   - tue

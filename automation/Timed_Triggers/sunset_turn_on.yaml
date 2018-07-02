@@ -4,7 +4,7 @@
 # Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
 ###################################
 
-- alias: 'Sunset'
+- alias: 'Sunset Stuff On'
   trigger:
     - platform: state
       entity_id: sun.sun
@@ -51,7 +51,7 @@
     - service: light.turn_on
       entity_id:
        - light.tv_ambilight
-    # 
+    #
     # - wait_template: >-
     #    {{ is_state('binary_sensor.main_door', 'on') }}
     # - wait_template: >-
