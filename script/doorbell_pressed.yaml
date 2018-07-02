@@ -21,7 +21,7 @@ doorbell_pressed:
     - service: notify.ios_family
       data:
         message: Someone Pressed the Doorbell!
-        # data:
-        #   push:
-        #     category: camera
-        #   entity_id: camera.stone_door  # TODO - update camera entity_id
+        data:
+          push:
+            category: camera
+          entity_id: camera.hallway_camera

@@ -181,7 +181,7 @@
       entity_id: input_boolean.vacation_mode
 
 # Turn off vacation mode as soon as anyone gets home.
-- alias: Vacation Mode off
+- alias: Vacation Mode Off
   trigger:
     - platform: state
       entity_id:

@@ -60,3 +60,10 @@
           {% elif ( windspeed > 60 ) %}
              Current Wind Speed is : {{windspeed}} mph! HURRICANE WINDS. FIND SHELTER, AND STAY INDOORS! #NewJersey #Weather
           {% endif %}
+    - service: notify.ios_family
+      data:
+        message: High wind speed detected in your neighborhood.
+        data:
+          push:
+            category: camera
+          entity_id: camera.weather_radar

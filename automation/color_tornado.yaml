@@ -9,17 +9,13 @@
       from: 'off'
 
   action:
-    - service: light.turn_on
-      entity_id:
-        - light.skyline
+    - service: light.lifx_effect_colorloop
       data:
-        effect: colorloop
-
-    - service: light.turn_on
-      entity_id:
-        - light.tv
-      data:
-        effect: colorloop
+        entity_id: group.main_lights
+        brightness: 255
+        period: 10
+        spread: 30
+        change: 35
 
     - service: input_boolean.turn_off
       entity_id: input_boolean.color_tornado
