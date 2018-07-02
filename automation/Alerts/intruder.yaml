@@ -1,31 +1,49 @@
 ######################################################################
-##  Alarm lights
+##  Door Open Announcements
 ######################################################################
+- alias: 'Door Opened'
 
-- alias: 'Entry Point Alert'
   trigger:
     - platform: state
       entity_id:
-        - group.entry_points
+        - binary_sensor.main_door # Front door #
+      from: 'off'
+      to: 'on'
 
   condition:
     condition: and
     conditions:
       - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      # - condition: state
-      #   entity_id: group.bed
-      #   state: 'off'
+        entity_id: group.family
+        state: 'not_home'
+      - condition: state
+        entity_id: input_boolean.guest_mode
+        state: 'off'
+
+  # condition:
+  #   - condition: state
+  #     entity_id: binary_sensor.sleepnumber_carlo_carlo_is_in_bed
+  #     state: 'on'
+  #   - condition: state
+  #     entity_id: binary_sensor.sleepnumber_carlo_stacey_is_in_bed
+  #     state: 'on'
 
   action:
+    - service: script.notify_engine
+      data_template:
+        who: 'harshit'
+        value1: "The {{ trigger.to_state.attributes.friendly_name }} has been {{ (trigger.to_state.state)|replace('_', ' ') }}."
+
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alert_mode
+
+    - service: script.speech_engine
+      data_template:
+        call_window_check: 1
+        call_inside_weather: 1
+
     - service: light.turn_on
       entity_id:
-        - group.living_room_accents
+        - group.interior_lights
       data_template:
-        color_name: >
-          {% if states.group.entry_points.state == 'on' -%}
-          red
-          {% else %}
-          gold
-          {% endif %}
+        color_name: red

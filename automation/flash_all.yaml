@@ -19,6 +19,20 @@
           - group.kitchen_lights
           - group.hallway_lights
           - group.bedroom_lights
-
+        # Integer between 0 and 255 for how bright the color should be.
+        brightness: >
+          {% set hour=states("sensor.time").split(':')[0] | int %}
+          {%- if hour >= 5 and hour < 8  -%}
+            127
+          {%- elif hour >= 8 and hour <20  -%}
+            255
+          {%- elif hour >= 20 and hour <24  -%}
+            150
+          {%- else -%}
+            100
+          {%- endif %}
+        period: 1 # The duration of a single pulse (in seconds).
+        cycles: 3 # The total number of pulses.
+        mode: blink # Valid modes: blink (default), breathe, ping, strobe, solid.
     - service: input_boolean.turn_off
       entity_id: input_boolean.flash

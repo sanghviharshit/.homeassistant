@@ -27,10 +27,10 @@ Main lights:
     - light.passage
     - light.entrance
 
-Dinette lights: # TODO - Use couch lights and counter lights
-  entities:
-    - light.tv
-    - light.skyline
+# Dinette lights: # TODO - Use couch lights and counter lights
+#   entities:
+#     - light.tv
+#     - light.skyline
 
 Dining Room lights:
   entities:
