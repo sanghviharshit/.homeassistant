@@ -6,25 +6,20 @@ default_view:
     - group.travel_times
     - group.entry_points
     - camera.hallway_camera
-    - group.family_locations
     - group.media_centers
-    - group.living_room_lights
-    - group.hallway_lights
-    - group.kitchen_lights
-    - group.bedroom_lights
-    - group.interior_lights
+    - group.light_controls
     - group.all_remotes
     - group.triggers
     - group.settings
     - group.home_modes
 
-bedroom_view:
-  name: Bedroom
-  view: yes
-  entities:
-    - group.bedroom_lights
-    - group.bedroom_media_center
-    - light.tv_ambilight
+# bedroom_view:
+#   name: Bedroom
+#   view: yes
+#   entities:
+#     - group.bedroom_lights
+#     - group.bedroom_media_center
+#     - light.tv_ambilight
 
 climate_view:
   name: Climate
@@ -34,7 +29,7 @@ climate_view:
     - group.health
     - group.orbits
     - group.indoor_climate
-    # - camera.radar
+    - camera.weather_radar
 
 family_view:
   name: Family
@@ -99,9 +94,4 @@ stats_view:
     - group.pihole
     - group.tweet_stats
     - group.finance
-
-network_view:
-  name: Network
-  view: yes
-  entities:
     - group.network

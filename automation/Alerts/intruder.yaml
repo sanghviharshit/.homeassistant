@@ -1,12 +1,12 @@
 ######################################################################
 ##  Door Open Announcements
 ######################################################################
-- alias: 'Door Opened'
+- alias: 'Intruder Alert'
 
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.main_door # Front door #
+        - binary_sensor.entry_points # Front door #
       from: 'off'
       to: 'on'
 
@@ -32,15 +32,14 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "The {{ trigger.to_state.attributes.friendly_name }} has been {{ (trigger.to_state.state)|replace('_', ' ') }}."
+        value1: "The {{ trigger.to_state.attributes.friendly_name }} was opened."
 
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_mode
 
     - service: script.speech_engine
       data_template:
-        call_window_check: 1
-        call_inside_weather: 1
+        value1: 'Intruder detected. Please leave or I am alerting the authorities.'
 
     - service: light.turn_on
       entity_id:

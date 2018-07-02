@@ -2,7 +2,7 @@ alias: Commute delay - Harshit's evening
 trigger:
   platform: numeric_state
   entity_id: sensor.his_evening_commute
-  above: 45
+  above: 50
 condition:
 - condition: time
   after: '16:30:00'
@@ -18,7 +18,7 @@ condition:
   state: 'on'
 - condition: state
   entity_id: device_tracker.harshits_iphone
-  state: 'home'
+  state: 'not_home'
 action:
   - service: script.notify_engine
     data_template:

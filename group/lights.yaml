@@ -2,7 +2,6 @@ Bedroom lights:
   entities:
     - light.computer
     - light.bed
-    - switch.night_light
 
 Kitchen lights:
   entities:
@@ -17,6 +16,16 @@ Living Room lights:
 Living Room Accents:  # TODO - Use counter lights instead
   entities:
     - light.clock_led_strip
+    - light.tv_ambilight
+
+Light Controls:
+  entities:
+    - group.living_room_lights
+    # - group.dinette_lights
+    - group.kitchen_lights
+    - group.hallway_lights
+    - group.bedroom_lights
+    - group.interior_lights
 
 Main lights:
   entities:
@@ -46,3 +55,4 @@ Interior Lights:  # TODO - add couch light, counter light, ladder lights, hyperi
   entities:
     - light.clock_led_strip
     - light.tv_ambilight
+    - switch.night_light

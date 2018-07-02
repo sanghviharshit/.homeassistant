@@ -1,0 +1,11 @@
+- alias: Alert Mode On
+  trigger:
+    platform: state
+    entity_id: input_boolean.alert_mode
+    to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.all_lights
+      data:
+        brightness: 255
+        color_name: red

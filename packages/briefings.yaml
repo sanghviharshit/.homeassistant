@@ -91,7 +91,7 @@ automation:
   # so we can guess who is opening the door. When the door opens,
   # wait a few seconds and then play the targeted briefing over TTS.
   # This briefing plays after individuals get home from work.
-  - alias: Play an evening briefing
+  - alias: Play Evening Briefing
     trigger:
       - platform: state
         entity_id: binary_sensor.main_door
@@ -134,7 +134,7 @@ automation:
         data_template:
           value1: !include ../templates/briefing.yaml
 
-  - alias: Play briefing when asked
+  - alias: Play Briefing Trigger
     trigger:
       - platform: state
         entity_id: binary_sensor.main_door

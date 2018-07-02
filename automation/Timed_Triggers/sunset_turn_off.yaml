@@ -2,7 +2,7 @@
 ##  Sunrise and Sunset stuff
 ###################################
 
-- alias: 'Sunset Stuff off'
+- alias: 'Sunset Stuff Off'
   trigger:
     - platform: sun
       event: sunrise

@@ -82,7 +82,7 @@ group:
     # - sensor.capitalweather_daily_digit
     # - sensor.capitalweather_snow_potential_index
     - sensor.daily_earthquakes
-    - camera.weather_radar
+    # - camera.weather_radar
 
     # Custom sensors
     - binary_sensor.temp_falling
