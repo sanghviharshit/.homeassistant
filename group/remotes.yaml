@@ -1,0 +1,5 @@
+All Remotes:
+  entities:
+    # - remote.apple_tv
+    - remote.apple_tv_wired
+    - remote.harmony_hub

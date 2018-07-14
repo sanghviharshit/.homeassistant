@@ -2,7 +2,7 @@ alias: Commute delay - Heta's evening
 trigger:
   platform: numeric_state
   entity_id: sensor.her_evening_commute
-  above: 120
+  above: 150
 condition:
 - condition: time
   after: '15:45:00'
@@ -20,7 +20,7 @@ condition:
   entity_id: device_tracker.hetas_iphone
   state: 'not_home'
 action:
-  - service: script.notify_engine
-    data_template:
-      who: 'family'
-      value1: "Commute delay of {{ trigger.to_state.state|round }} minutes for Heta"
+  - service: notify.ios_family
+    data:
+      message: "Commute delay of {{ trigger.to_state.state|round }} minutes for Heta"
+      subtitle: "Home Assistant Notify"

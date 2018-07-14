@@ -34,7 +34,8 @@ input_select:
       - !secret her_name
       - !secret his_name
     icon: mdi:bullseye-arrow
-  # Options for TTS engine (voice provider).
+
+  # TODO Options for TTS engine (voice provider).
   tts_engine:
     name: TTS Engine
     options:
@@ -136,9 +137,6 @@ automation:
 
   - alias: Play Briefing Trigger
     trigger:
-      - platform: state
-        entity_id: binary_sensor.main_door
-        to: 'off'
       - platform: state
         entity_id: input_boolean.play_briefing
         to: 'on'

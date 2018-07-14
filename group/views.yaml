@@ -21,16 +21,6 @@ default_view:
 #     - group.bedroom_media_center
 #     - light.tv_ambilight
 
-climate_view:
-  name: Climate
-  view: yes
-  entities:
-    - group.weather
-    - group.health
-    - group.orbits
-    - group.indoor_climate
-    - camera.weather_radar
-
 family_view:
   name: Family
   view: yes
@@ -43,6 +33,17 @@ family_view:
     - group.geo
     - group.friends
 
+climate_view:
+  name: Climate
+  view: yes
+  entities:
+    - group.weather
+    - group.health
+    - group.orbits
+    - group.indoor_climate
+    - camera.weather_radar
+
+
 # kitchen_view:
 #   name: Kitchen
 #   view: yes
@@ -53,24 +54,24 @@ family_view:
     # - group.sense_card
     # - media_player.kitchen_home
 
-living_room_view:
-  name: Living Room
-  view: yes
-  entities:
-    - group.living_room_lights
-    - group.living_room_accents
-    # - group.main_lights
-    # - group.dinetter_lights
-    - group.dining_room_lights
-    - group.kitchen_lights
-    - media_player.media_room
-    - media_player.apple_tv
-    - media_player.apple_tv_wired
-    - media_player.nexus_player
-    - switch.rotimatic  # TODO - Rename wemo switch
-    - remote.apple_tv
-    - remote.apple_tv_wired
-    - remote.harmony_hub
+# living_room_view:
+#   name: Living Room
+#   view: yes
+#   entities:
+#     - group.living_room_lights
+#     - group.living_room_accents
+#     # - group.main_lights
+#     # - group.dinetter_lights
+#     - group.dining_room_lights
+#     - group.kitchen_lights
+#     - media_player.media_room
+#     - media_player.apple_tv
+#     - media_player.apple_tv_wired
+#     - media_player.nexus_player
+#     - switch.rotimatic  # TODO - Rename wemo switch
+#     - remote.apple_tv
+#     - remote.apple_tv_wired
+#     - remote.harmony_hub
 
 admin_view:
   name: Admin
