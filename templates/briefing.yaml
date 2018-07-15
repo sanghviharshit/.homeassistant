@@ -1,16 +1,15 @@
       >
-      {# Difference between dates in hours, roughly
+      {# Difference between dates in hours, roughly #}
       {% macro hour_diff(first, second) -%}
         {{((as_timestamp(first) - as_timestamp(second))/60.0/60.0)}}
       {%- endmacro %}
-      #}
-      {# Day of week
+
+      {# Day of week #}
       {% macro day_of_week(timestamp) -%}
         {{as_timestamp(timestamp)|timestamp_custom('%A', true)|lower}}
       {%- endmacro %}
-      #}
 
-      {# On a weekend
+      {# On a weekend #}
       {% macro on_weekend(timestamp) -%}
         {%- if
           day_of_week(timestamp) == 'saturday' or
@@ -21,9 +20,9 @@
           false
         {%- endif %}
       {%- endmacro %}
-      #}
 
-      {# Is today
+
+      {# Is today #}
       {% macro is_today(event) -%}
         {%- if event.attributes.start_time[:10]== (now()|string)[:10] -%}
           true
@@ -31,20 +30,19 @@
           false
         {%- endif %}
       {%- endmacro %}
-      #}
 
       {# Friendly time #}
       {% macro friendly_time(timestamp) -%}
         {{as_timestamp(timestamp)|timestamp_custom('%I:%M', true)}}
       {%- endmacro %}
 
-      {# Hours until a given event, approximately
+      {# Hours until a given event, approximately #}
       {% macro hours_until(event) -%}
         {{hour_diff(event.attributes.start_time, now())|float|round}}
       {%- endmacro %}
-      #}
 
-      {# Upcoming event
+
+      {# Upcoming event #}
       {% macro upcoming_event(event) -%}
         {%- set start = event.attributes.start_time -%}
         {%- if start and is_today(event) == 'true' -%}
@@ -53,7 +51,7 @@
           {{event.attributes.message}} is on {{day_of_week(start)}} at {{friendly_time(start)}}
         {%- endif -%}
       {%- endmacro %}
-      #}
+
 
       {# Household chore
       {% macro chore_sentence(event, type, sentence) -%}
@@ -66,7 +64,7 @@
       {%- endmacro %}
       #}
 
-      {# Holiday sentence
+      {# Holiday sentence #}
       {% macro holiday_sentence() -%}
         {%- if (states.calendar.holidays_in_united_states and
                 states.calendar.holidays_in_united_states.attributes.start_time and
@@ -74,9 +72,8 @@
           It is {{states.calendar.holidays_in_united_states.attributes.message}}.
         {%- endif -%}
       {%- endmacro %}
-      #}
 
-      {# Event sentence
+      {# Event sentence #}
       {% macro event_sentence(event, prefix, suffix) -%}
         {%- if event -%}
           {%- set event_string = upcoming_event(event) -%}
@@ -85,7 +82,6 @@
           {%- endif %}
         {%- endif -%}
       {%- endmacro %}
-      #}
 
       {# Her name #}
       {%- macro her_name() -%}
@@ -97,14 +93,21 @@
         {{states.device_tracker.harshits_iphone.attributes.friendly_name}}
       {%- endmacro -%}
 
+
       {# Evening greeting sentence #}
-      {% macro evening_greeting_sentence(person) %}
+      {% macro evening_greeting_sentence(person, other_person) %}
         {% set greetings = [
-          "Welcome home " ~ person ~ ".",
-          "Hey there " ~ person ~ ".",
-          person ~ "! You're home!",
-          "Welcome back " ~ person ~ ".",
-          "Welcome home " ~ person + ". I've missed you. Or at least the cats did."
+          "Welcome back home " ~ person,
+          "Guess who is home?" ~ person +" is!",
+          person + " is now in the house.",
+          "Welcome Home " ~ person + ".  We have missed you.",
+          "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
+          "Life is like a song, you’re back where you belong. Welcome home " ~ person,
+          "Hey there " ~ person + " Welcome Home!",
+          "Knock Knock. Who is There? "   ~ person +" is!",
+          person ~ "! You are home!",
+          "I know a secret! "  ~ person +" is home!",
+          "Welcome home " ~ person + ". I've missed you. Or at least " ~ other_person ~ " did."
         ] %}
         {{greetings|random}}
       {% endmacro %}
@@ -148,6 +151,7 @@
         It is {{states.sensor.dark_sky_summary.state.lower()}} and {{states.sensor.dark_sky_temperature.state|int|round}} degrees outside.
         {{- ' ' -}}
         {{- states.sensor.dark_sky_hourly_summary.state-}}
+        {# TODO extended weather report
         {% if extended %}
           Today is rated {{states.sensor.capitalweather_daily_digit.state}} out of 10.
           {{ states.sensor.capitalweather_day_description.state -}}
@@ -155,6 +159,7 @@
             {{ states.sensor.capitalweather_snow_forecast.state -}}
           {% endif %}
         {% endif %}
+        #}
       {%- endmacro %}
 
       {# Get person's device #}
@@ -345,21 +350,30 @@
       {# Evening briefing #}
       {% macro evening_briefing(person) -%}
         {%- set other_person = get_other_person(person) %}
-        {{evening_greeting_sentence(person)}}
+        {{evening_greeting_sentence(person, other_person)}}
+
+        {# TODO Add home_is_now_complete() when whole family is home. #}
         {# {{holiday_sentence()}} #}
+
         {{battery_sentence(person)}}
         {{weather_sentence(false)}}
         {{omw_sentence(other_person)}}
+
         {#
         {{deliveries_sentence()}}
         {{market_sentence()}}
         {{chore_sentence(states.calendar.general, 'trash', 'Remember to take out the trash. It is trash day.')}}
         {{chore_sentence(states.calendar.general, 'recycling', 'Remember to take out the recycling. It is recycling day.')}}
+        #}
+        {# TODO hide calendar name? #}
+        {{event_sentence(states.calendar.hh, 'It is a special day for H and H. ', '')}}
+        {{event_sentence(states.calendar.harshit, 'Harshit has an event today. ', '')}}
+        {{event_sentence(states.calendar.heta_sanghvi, 'Heta has an event today. ', '')}}
         {#
-        {{event_sentence(states.calendar.facebook)}}
         {{event_sentence(states.calendar.sca, '', ', get prepared')}}
         {{event_sentence(states.calendar.combat_docket_mma_calendar, 'Oh yeah, and ')}}
         #}
+
         {{moon_sentence()}}
         {{quote_sentence()}}
         {{evening_closing_sentence(person)}}
