@@ -20,12 +20,14 @@ Living Room Accents:  # TODO - Use counter lights instead
 
 Light Controls:
   entities:
+    - group.main_lights
+    - group.bedroom_lights
+    - group.interior_lights
     - group.living_room_lights
     # - group.dinette_lights
     - group.kitchen_lights
     - group.hallway_lights
-    - group.bedroom_lights
-    - group.interior_lights
+    
 
 Main lights:
   entities:

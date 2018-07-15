@@ -21,6 +21,16 @@ default_view:
 #     - group.bedroom_media_center
 #     - light.tv_ambilight
 
+lights_view:
+  name: Lights
+  view: yes
+  entities:
+    - group.living_room_lights
+    - group.kitchen_lights
+    - group.hallway_lights
+    - group.bedroom_lights
+    - group.interior_lights
+
 family_view:
   name: Family
   view: yes
