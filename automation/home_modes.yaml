@@ -120,7 +120,7 @@
 #       entity_id:
 #         - switch.zwave_switch_1_switch
 
-- alias: 'Away Mode On'
+- alias: Away Mode On
   trigger:
     - platform: state
       entity_id: group.family
@@ -128,6 +128,12 @@
     - platform: state
       entity_id: input_boolean.good_night
       to: 'on'
+    - platform: state
+      entity_id: switch.round_bedside_button
+      to: 'pushed'
+    - platform: state
+      entity_id: switch.square_door_button
+      to: 'pushed'
 
   condition:
     - condition: state
