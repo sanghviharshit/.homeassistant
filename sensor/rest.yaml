@@ -4,14 +4,16 @@
   method: GET
   name: Quote
   value_template: '{{value.split(" (")[0]}}'
-# Horoscope API - http://sandipbgt.com/theastrologer/api/
+# Horoscope API -
+# http://sandipbgt.com/theastrologer/api/
+# https://github.com/sandipbgt/theastrologer-api - http://theastrologer-api.herokuapp.com/api
 - platform: rest
-  scan_interval: 7200
+  scan_interval: 1800
   resource: !secret his_horoscope_url
   name: His Horoscope
   value_template: "{{ value_json.horoscope | truncate(255)}}"
 - platform: rest
-  scan_interval: 7200
+  scan_interval: 1800
   resource: !secret her_horoscope_url
   name: Her Horoscope
   value_template: "{{ value_json.horoscope | truncate(255) }}"
