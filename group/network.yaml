@@ -9,7 +9,6 @@ Network:
     - sensor.ha_uptime
     - sensor.since_last_boot_templated
     - sensor.disk_use_percent_
-    - sensor.database_sensor
     - sensor.network
     - sensor.network_detail
     - weblink.router

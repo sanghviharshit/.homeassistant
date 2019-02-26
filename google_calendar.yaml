@@ -1,0 +1,83 @@
+- cal_id: 75o0slndfi0k323c5u1cumfihh9r4k8h@import.calendar.google.com
+  entities:
+  - device_id: harshit_sanghvi_tripit
+    ignore_availability: true
+    name: Harshit Sanghvi (TripIt)
+    track: true
+
+- cal_id: fboma9t388rafo3daake50jk8c@group.calendar.google.com
+  entities:
+  - device_id: us_federal_employee_holidays
+    ignore_availability: true
+    name: U.S. Federal Employee Holidays
+    track: true
+
+- cal_id: 37flsvblqofkvih3a0sg0c9qk0@group.calendar.google.com
+  entities:
+  - device_id: udacity_nanodegree_program
+    ignore_availability: true
+    name: Udacity Nanodegree Program
+    track: false
+
+- cal_id: 6v8tlbg6628gko27lidskhe7k4@group.calendar.google.com
+  entities:
+  - device_id: india_trip
+    ignore_availability: true
+    name: India Trip
+    track: false
+
+- cal_id: sanghvi.harshit@gmail.com
+  entities:
+  - device_id: harshit
+    ignore_availability: false
+    name: Harshit
+    track: true
+
+- cal_id: h8n7sc3h0fnss6513fncc1m96o@group.calendar.google.com
+  entities:
+  - device_id: hh
+    ignore_availability: true
+    name: H&H
+    track: true
+
+- cal_id: shethheta1990@gmail.com
+  entities:
+  - device_id: heta_sanghvi
+    ignore_availability: false
+    name: Heta Sanghvi
+    track: true
+
+    - cal_id: hs2619@nyu.edu
+      entities:
+      - device_id: harshit_hs2619
+        ignore_availability: true
+        name: Harshit (hs2619)
+        track: true
+
+    - cal_id: addressbook#contacts@group.v.calendar.google.com
+      entities:
+      - device_id: contacts
+        ignore_availability: true
+        name: Contacts
+        track: true
+
+    - cal_id: en.indian#holiday@group.v.calendar.google.com
+      entities:
+      - device_id: holidays_in_india
+        ignore_availability: true
+        name: Holidays in India
+        track: true
+
+    - cal_id: en.usa#holiday@group.v.calendar.google.com
+      entities:
+      - device_id: holidays_in_united_states
+        ignore_availability: true
+        name: Holidays in United States
+        track: true
+
+    - cal_id: ht3jlfaac5lfd6263ulfh4tql8@group.calendar.google.com
+      entities:
+      - device_id: phases_of_the_moon
+        ignore_availability: true
+        name: Phases of the Moon
+        track: false
