@@ -1,8 +1,8 @@
 - platform: template
   sensors:
-    since_last_boot_templated:
+    last_boot_templated:
       value_template: >-
-        {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+        {%- set slb = states.sensor.last_boot.state.split(' ') -%}
         {%- set count = slb | length -%}
         {%- set hms = slb[count - 1] -%}
         {%- set hms_trimmed = hms.split('.')[0] -%}
@@ -43,16 +43,10 @@
         {%- endif -%}
 
 - platform: rest
-  resource: https://api.ipify.org?format=json
   scan_interval: 86400
+  resource: https://api.ipify.org/
   name: External IP
-  value_template: '{{ value_json.ip }}'
-
-# https://www.home-assistant.io/components/sensor.dnsip/
-# sensor:
-#   - platform: dnsip
-#     hostname: harshit.duckdns.org
-#     resolver: 8.8.8.8
+  value_template: '{{ value }}'
 
 #############################################################################################################
 ###  This part of the automation is hidden due to the IP address exposed  ##

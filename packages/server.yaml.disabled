@@ -1,0 +1,73 @@
+#########################################################################
+# Server
+#
+#  Monitor the server running Home Assistant.
+#########################################################################
+
+homeassistant:
+  customize:
+    sensor.glances_sensor_cpu_load:
+      friendly_name: CPU Load
+      icon: mdi:memory
+    sensor.glances_sensor_disk_used:
+      friendly_name: Disk
+      icon: mdi:harddisk
+    sensor.glances_sensor_ram_used:
+      friendly_name: Memory
+      icon: mdi:server
+    sensor.process_mosquitto:
+      friendly_name: mosquitto
+    sensor.process_postgres:
+      friendly_name: postgres
+    sensor.process_snapserver:
+      friendly_name: snapserver
+    sensor.process_glances:
+      friendly_name: glances
+  customize_glob:
+    'sensor.process_*':
+      icon: mdi:check
+
+# Group entities by server and services.
+group:
+  Server:
+    - sensor.glances_sensor_cpu_load
+    - sensor.glances_sensor_disk_used
+    - sensor.glances_sensor_ram_used
+    - sensor.ups_battery
+    - sensor.ssl_certificate_expiry
+  Services:
+    - sensor.process_mosquitto
+    - sensor.process_postgres
+    - sensor.process_glances
+    - sensor.process_snapserver
+
+# Connect to server UPS.
+apcupsd:
+  host: localhost
+  port: 3551
+
+# Link to server monitor UI.
+panel_iframe:
+  system:
+    title: Server
+    icon: mdi:server
+    url: !secret glances_url
+
+sensor:
+  # Monitor various server metrics.
+  - platform: glances
+    name: Glances sensor
+    host: localhost
+    port: 61208
+    resources:
+      - disk_use_percent
+      - memory_use_percent
+      - processor_load
+  # Monitor UPS battery level.
+  - platform: apcupsd
+    resources:
+      - bcharge
+  # Monitor SSL certificate expiry.
+  - platform: cert_expiry
+    host: !secret hass_cert_url
+    name: SSL Certificate Expiry

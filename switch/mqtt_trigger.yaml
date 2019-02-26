@@ -8,7 +8,7 @@
   payload_off: "released"
 
 - platform: mqtt
-  name: "Main Door Square Button"
+  name: "Square Door Button"
   command_topic: "smartthings/Square Door Button/button"
   state_topic: "smartthings/Square Door Button/button"
   payload_on: "pushed"
