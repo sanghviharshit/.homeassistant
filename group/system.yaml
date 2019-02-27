@@ -4,7 +4,7 @@ System:
     - binary_sensor.workday_sensor
     - sensor.last_message
     - sensor.database_sensor
-    - sensor.disk_use_percent_
+    - sensor.disk_use_percent
     - sensor.ha_installed_version
     - sensor.ha_uptime
     - sensor.low_battery

@@ -8,7 +8,7 @@ Network:
     # - sensor.sanghviharshit_ha_config_state
     - sensor.ha_uptime
     - sensor.since_last_boot_templated
-    - sensor.disk_use_percent_
+    - sensor.disk_use_percent
     - sensor.network
     - sensor.network_detail
     - weblink.router

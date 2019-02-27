@@ -1,8 +1,8 @@
 
-- platform: ups
-  username: !secret upsmychoice_username
-  password: !secret upsmychoice_password
-  update_interval: '01:00'
+# - platform: ups
+#   username: !secret upsmychoice_username
+#   password: !secret upsmychoice_password
+#   scan_interval: '01:00'
 
 # usps:
 #     Needs chrome or phantom driver
