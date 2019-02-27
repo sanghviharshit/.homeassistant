@@ -11,10 +11,19 @@ homeassistant:
     automation:
       initial_state: 'on'
   customize_glob:
-    "sensor.dark_sky_*":
+    automation.*watchdog*:
+      icon: mdi:timer
+    sensor.dark_sky_*:
+      homebridge_hidden: true
+    scene.month_*_colors:
+      hidden: true
       homebridge_hidden: true
 
   packages: !include_dir_named packages
+  auth_providers:
+   - type: homeassistant
+   - type: legacy_api_password
+   - type: trusted_networks
 
 # Enables configuration UI
 config:
@@ -57,33 +66,17 @@ cloud:
       sensor.living_room_temperature:
         display_categories: TEMPERATURE_SENSOR
 
-google:
-  client_id: !secret google_cal_clientid
-  client_secret: !secret google_cal_clientsecret
-
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables a map showing the location of tracked devices
-map:
-
 http:
   # base_url: !secret http_base_url
   # server_port: !secret http_port
   api_password: !secret http_api_password
   # ssl_certificate: !secret ssl_certificate
   # ssl_key: !secret ssl_key
-  # trusted_networks:
-    # - 192.168.1.0/24
+  trusted_networks:
+    - 192.168.1.0/24
     # - !secret external_ip
   ip_ban_enabled: True
   login_attempts_threshold: 5
-
-duckdns:
-  domain: !secret duckdns_domain
-  access_token: !secret duckdns_access_token
-
 
 # Enables the frontend
 frontend:
@@ -148,17 +141,32 @@ history:
      - sensor.ha_uptime
      - sensor.time
 
-# logger: !include logger.yaml
+logger: !include logger.yaml
+recorder: !include recorder.yaml
 
-# recorder: !include recorder.yaml
-#
-recorder:
-  purge_keep_days: 7
-  purge_interval: 1
+# recorder:
+#   purge_keep_days: 7
+#   purge_interval: 1
 
 mqtt:
   broker: 127.0.0.1
   port: 1883
+  # client_id: home-assistant-Carlo
+  # username: !secret MQTT_username
+  # password: !secret MQTT_password
+
+tts:
+  # - platform: google
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_ID
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: 'us-east-1'
+    text_type: ssml
+    cache: True
+    # https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
+    # https://console.aws.amazon.com/polly/home/SynthesizeSpeech
+    voice: Joanna
+    # cache_dir: /data/tts
 
 input_number:
   clock_animation_speed:
@@ -205,13 +213,13 @@ media_player:
 
 
 # Cameras
-camera:
-- platform: mjpeg
-  mjpeg_url: !secret camera1_mjpeg_url
-  still_image_url: !secret camera1_snapshot_url
-  username: !secret camera1_username
-  password: !secret camera1_password
-  name: Hallway Camera
+# camera:
+# - platform: mjpeg
+#   mjpeg_url: !secret camera1_mjpeg_url
+#   still_image_url: !secret camera1_snapshot_url
+#   username: !secret camera1_username
+#   password: !secret camera1_password
+#   name: Hallway Camera
 
 
 #binary_sensor:
@@ -237,32 +245,25 @@ camera:
 #     - torch
 #     - video_recording
 
+google:
+  client_id: !secret google_cal_clientid
+  client_secret: !secret google_cal_clientsecret
 
-# camera:
-#   - platform: usps
-#     scan_interval: 5
+# Mailgun
+mailgun:
+  domain: !secret mailgun_domain
+  api_key: !secret mailgun_api_key
 
-# usps:
-#     name: USPS Mail
-#     username: !secret uspsmychoice_username
-#     password: !secret uspsmychoice_password
-#     driver: phantomjs
-#     # https://stackoverflow.com/questions/36314771/how-to-install-phantomjs-for-use-with-python-selenium-on-the-raspberry-pi
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
 
+# Enables a map showing the location of tracked devices
+map:
 
+duckdns:
+  domain: !secret duckdns_domain
+  access_token: !secret duckdns_access_token
 
-tts:
-  # - platform: google
-  - platform: amazon_polly
-    aws_access_key_id: !secret aws_access_key_ID
-    aws_secret_access_key: !secret aws_secret_access_key
-    region_name: 'us-east-1'
-    text_type: ssml
-    cache: True
-    # https://docs.aws.amazon.com/polly/latest/dg/voicelist.html
-    # https://console.aws.amazon.com/polly/home/SynthesizeSpeech
-    voice: Joanna
-    # cache_dir: /data/tts
 
 ###############################################################
 ######  Merge Include Files

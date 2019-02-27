@@ -10,7 +10,7 @@
       seconds: 20
     - platform: time_pattern
       minutes: 30
-      seconds: 00
+      seconds: 0
 
   condition:
     - condition: time
