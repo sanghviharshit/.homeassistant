@@ -138,7 +138,7 @@ automation:
   - alias: 'Random House stats'
     hide_entity: True
     trigger:
-      - platform: time
+      - platform: time_pattern
         hours: '/2'
         minutes: 45
         seconds: 00

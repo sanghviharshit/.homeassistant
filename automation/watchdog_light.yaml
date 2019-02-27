@@ -32,10 +32,10 @@
 
 - alias: Daytime Lights WatchDog
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: 10
       seconds: 20
-    - platform: time
+    - platform: time_pattern
       minutes: 40
       seconds: 00
 

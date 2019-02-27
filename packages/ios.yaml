@@ -30,24 +30,6 @@ notify:
 #       - sensor.staceys_iphone_battery_level
 #       - sensor.staceys_iphone_battery_state
 
-ios:
-  # push:
-  #   categories:
-  #     - name: Medicine
-  #       identifier: 'tablet'
-  #       actions:
-  #         - identifier: 'TABLET_TAKEN'
-  #           title: 'Tablet Taken'
-  #           activationMode: 'background'
-  #           authenticationRequired: no
-  #           destructive: yes
-  #
-  #         - identifier: 'NOT_HOME'
-  #           title: 'I am not Home'
-  #           activationMode: 'background'
-  #           authenticationRequired: no
-  #           destructive: no
-
 ## - Reminders to take my medicine
 ios:
   push:

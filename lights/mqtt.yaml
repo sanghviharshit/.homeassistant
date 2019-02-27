@@ -1,8 +1,8 @@
-- platform: mqtt_json
+- platform: mqtt
   name: "Clock LED Strip"
+  schema: json
   state_topic: "sanghvi/clocklight"
   command_topic: "sanghvi/clocklight/set"
-  effect: true
   effect_list:
     - bpm
     - candy cane
@@ -22,9 +22,5 @@
     - sinelon
     - solid
     - twinkle
-  brightness: true
-  flash: true
-  rgb: true
-  color_temp: true
   optimistic: false
   qos: 0

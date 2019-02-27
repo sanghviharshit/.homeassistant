@@ -5,10 +5,10 @@
 
 - alias: Cuckoo Clock
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: 00
       seconds: 20
-    - platform: time
+    - platform: time_pattern
       minutes: 30
       seconds: 00
 
