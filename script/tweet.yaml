@@ -132,10 +132,10 @@ tweet_engine_image:
           {{ tweet }}
         retain: true
 
-    - service: notify.SanghviHA
-      data_template:
-        message: >-
-          {{ tweet }} #IOT #SmartHome
+    # - service: notify.SanghviHA
+    #   data_template:
+    #     message: >-
+    #       {{ tweet }} #IOT #SmartHome
         # data:
           # media: >-
             # {{ image }}
@@ -149,10 +149,10 @@ tweet_engine:
           {{ tweet }}
         retain: true
 
-    - service: notify.SanghviHA
-      data_template:
-        message: >-
-          {{ tweet }} #IOT #SmartHome
+    # - service: notify.SanghviHA
+    #   data_template:
+    #     message: >-
+    #       {{ tweet }} #IOT #SmartHome
 
 
 
