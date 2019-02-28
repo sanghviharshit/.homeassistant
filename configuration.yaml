@@ -64,6 +64,10 @@ cloud:
       switch.pihole:
         name: Firewall
       sensor.living_room_temperature:
+        name: Living Room Temperature
+        display_categories: TEMPERATURE_SENSOR
+      sensor.bedroom_temperature:
+        name: Bedroom Temperature
         display_categories: TEMPERATURE_SENSOR
 
 http:

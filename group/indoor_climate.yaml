@@ -3,5 +3,7 @@ indoor_climate:
   entities:
     - sensor.living_room_temperature
     - sensor.living_room_humidity
+    - sensor.bedroom_temperature
+    - sensor.bedroom_humidity
     - binary_sensor.indoor_temp_rising
     - binary_sensor.indoor_temp_falling

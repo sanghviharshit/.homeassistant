@@ -75,12 +75,12 @@ group:
     - sensor.dark_sky_cloud_coverage
     - sensor.dark_sky_wind_speed
     - sensor.dark_sky_precip_intensity
-    - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_precip_intensity_max
     - sensor.dark_sky_uv_index
     # - sensor.capitalweather_daily_digit
     # - sensor.capitalweather_snow_potential_index
-    - sensor.daily_earthquakes
-    # - camera.weather_radar
+    # - sensor.daily_earthquakes
+    - camera.weather_radar
 
     # Custom sensors
     - binary_sensor.temp_falling
@@ -99,7 +99,7 @@ group:
 # "camera" which displays local radar.
 camera:
   - platform: generic
-    still_image_url: !secret weather_map_url
+    still_image_url: !secret weather_map_url  # Get the station id from https://www.wunderground.com/weather-radar/canada/
     name: Weather Radar
 
 sensor:
@@ -126,9 +126,18 @@ sensor:
   - platform: waqi
     token: !secret waqi_token
     locations:
-      - !secret waqi_location
+      - !secret waqi_location # Get the correct location with e.g. https://api.waqi.info/nsearch/station/london
+      - !secret waqi_location2
     # stations:
     #   - XYZ
+
+  - platform: airvisual
+    api_key: !secret airvisual_key
+    monitored_conditions:
+      - "us"
+    scan_interval: 1200
+    latitude: !secret parents_home_latitude
+    longitude: !secret parents_home_longitude
 
   # Get the pollen forecast.
   - platform: rest
@@ -160,7 +169,13 @@ sensor:
           {% elif states.sensor.air_quality_numeric.state|int <= 100 %}
             Moderate
           {% elif states.sensor.air_quality_numeric.state|int <= 150 %}
+            Unhealthy (for Sensitive Groups)
+          {% elif states.sensor.air_quality_numeric.state|int <= 200 %}
             Unhealthy
+          {% elif states.sensor.air_quality_numeric.state|int <= 300 %}
+            Very unhealthy
+          {% else %}
+            Hazardous
           {% endif %}
       # Interpret the pollen level numeric value.
       pollen_level:

@@ -4,8 +4,8 @@ binary_sensor.main_door:
   hidden: False
   homebridge_hidden: true
 
-binary_sensor.storage_door:
-  friendly_name: 'Storage Door'
+binary_sensor.fridge_door:
+  friendly_name: 'Fridge Door'
 
   hidden: False
   homebridge_hidden: true

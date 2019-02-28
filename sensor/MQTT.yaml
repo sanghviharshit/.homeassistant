@@ -12,3 +12,12 @@
   unit_of_measurement: '%'
   state_topic: "smartthings/Living Room Temperature/humidity"
 
+- platform: mqtt
+  name: Bedroom Temperature
+  unit_of_measurement: '°C'
+  state_topic: "smartthings/Bedroom Temperature/temperature"
+
+- platform: mqtt
+  name: Bedroom Humidity
+  unit_of_measurement: '%'
+  state_topic: "smartthings/Bedroom Temperature/humidity"

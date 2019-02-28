@@ -188,7 +188,12 @@ sensor.living_room_humidity:
   homebridge_hidden: False
   icon: mdi:water-percent
 
+sensor.bedroom_humidity:
+  friendly_name: 'Bedroom Humidity'
 
+  hidden: False
+  homebridge_hidden: False
+  icon: mdi:water-percent
 
 # sensor.downstairs_thermostat_hvac_state:
 #   friendly_name: 'Downstairs Thermostat Hvac State'
@@ -223,6 +228,11 @@ sensor.living_room_temperature:
   hidden: False
   homebridge_hidden: False
 
+sensor.bedroom_temperature:
+  friendly_name: 'Bedroom Temperature'
+
+  hidden: False
+  homebridge_hidden: False
 
 
 
