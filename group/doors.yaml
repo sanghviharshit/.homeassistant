@@ -1,0 +1,8 @@
+all_doors:
+  entities:
+    - binary_sensor.main_door
+    - binary_sensor.fridge_door
+
+entry_points:
+  entities:
+    - binary_sensor.main_door

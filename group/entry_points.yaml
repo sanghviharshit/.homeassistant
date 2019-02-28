@@ -1,4 +1,0 @@
-entry_points:
-  entities:
-    - binary_sensor.main_door
-    - binary_sensor.storage_door

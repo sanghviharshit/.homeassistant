@@ -106,10 +106,11 @@ binary_sensor:
       traveling_home:
         entity_id: proximity.his_home
         device_class: presence
+        invert: true
       traveling_away:
         entity_id: proximity.his_home
         device_class: presence
-    invert: true
+        invert: true
 
 sensor:
   # His home departure time.

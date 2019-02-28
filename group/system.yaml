@@ -14,4 +14,3 @@ System:
     - sensor.connected_clients
     - sensor.home_assistant_errors
     - sensor.home_assistant_warnings
-    - sensor.new_commits
