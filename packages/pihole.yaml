@@ -79,9 +79,9 @@ switch:
   - platform: command_line
     switches:
       pihole:
-        command_on: "curl -X GET 'http://192.168.1.100/admin/api.php?enable&auth=bfbf9b58efb211c3b3067afe6564d93d22c135e588bf24fc01a9772fdba4863f'"
-        command_off: "curl -X GET 'http://192.168.1.100/admin/api.php?disable=3600&auth=bfbf9b58efb211c3b3067afe6564d93d22c135e588bf24fc01a9772fdba4863f'"
-        command_state: "curl -X GET 'http://192.168.1.100/admin/api.php?status'"
+        command_on: !secret pihole_enable
+        command_off: !secret pihole_disable #e.g. "curl -X GET 'http://192.168.x.x/admin/api.php?enable&auth=api_key'"
+        command_state: !secret pihole_status  #e.g. "curl -X GET 'http://192.168.x.x/admin/api.php?status'"
         value_template: "{{ value_json.status == 'enabled' }}"
 
 #-------------------------------------------
