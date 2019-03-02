@@ -9,7 +9,7 @@
 
   action:
     - wait_template: >-
-        {{ not is_state('media_player.apple_tv_wired', 'playing') }}
+        {{ not is_state('media_player.media_room', 'playing') }}
 
     - service: script.notify_engine
       data_template:

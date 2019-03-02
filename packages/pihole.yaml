@@ -39,7 +39,7 @@ homeassistant:
 #-------------------------------------------
 sensor:
   - platform: pi_hole
-    host: 192.168.1.100
+    host: 192.168.1.20
     monitored_conditions:
       - dns_queries_today
       - ads_blocked_today

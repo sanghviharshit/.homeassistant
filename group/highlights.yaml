@@ -2,5 +2,4 @@ Highlights:
   entities:
     - sensor.last_message
     - sensor.ist
-    - sensor.ups
     - sensor.people_watching_plex

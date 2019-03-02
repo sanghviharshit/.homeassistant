@@ -7,7 +7,7 @@ Network:
     - sensor.ha_installed_version
     # - sensor.sanghviharshit_ha_config_state
     - sensor.ha_uptime
-    - sensor.since_last_boot_templated
+    - sensor.last_boot_templated
     - sensor.disk_use_percent
     - sensor.network
     - sensor.network_detail

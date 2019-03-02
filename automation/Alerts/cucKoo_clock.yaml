@@ -21,7 +21,7 @@
       state: 'home'
     - condition: template
       value_template: >
-        {% if is_state('media_player.apple_tv_wired', 'playing') %}
+        {% if is_state('media_player.media_room', 'playing') %}
           false
         {% else %}
           true
