@@ -122,7 +122,7 @@ sensor:
 group:
   tweet_stats:
     entities:
-      - sensor.main_door_opened
+      - sensor.doors_opened
       - sensor.tv_time
       - sensor.speech_time
       - sensor.sensor_count

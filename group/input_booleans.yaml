@@ -30,3 +30,4 @@ Triggers:
     - input_boolean.guard_dog
     - input_boolean.self_destruct
     - input_boolean.play_briefing
+    - input_boolean.medicine

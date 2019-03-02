@@ -153,7 +153,7 @@ recorder: !include recorder.yaml
 #   purge_interval: 1
 
 mqtt:
-  broker: 127.0.0.1
+  broker: !secret mqtt_broker_url
   port: 1883
   # client_id: home-assistant-Carlo
   # username: !secret MQTT_username

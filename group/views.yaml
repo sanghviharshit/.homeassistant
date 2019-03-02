@@ -6,9 +6,9 @@ default_view:
     - group.travel_times
     - group.all_doors
     - camera.hallway_camera
-    - group.media_centers
-    - group.light_controls
     - group.all_remotes
+    - group.media_players
+    - group.light_controls
     - group.triggers
     - group.settings
     - group.home_modes
