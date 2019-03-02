@@ -89,10 +89,10 @@ automation:
   - alias: Medicine Reminder
     initial_state: true
     trigger:
-      - platform: time_pattern
-        minutes: '/45'
+      # - platform: time_pattern
+      #   minutes: '/45'
       - platform: time
-        at: '21:30:00'
+        at: '21:00:00'
       - platform: state
         entity_id: device_tracker.harshits_iphone
         to: 'home'
@@ -116,6 +116,7 @@ automation:
             push:
               category: "tablet"
             action_data:
+              # Anything passed in action_data will get echoed back to Home Assistant.
               entity_id: light.test
               my_custom_data: foo_bar
 

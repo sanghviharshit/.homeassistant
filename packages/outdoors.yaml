@@ -75,7 +75,7 @@ group:
     - sensor.dark_sky_cloud_coverage
     - sensor.dark_sky_wind_speed
     - sensor.dark_sky_precip_intensity
-    - sensor.dark_sky_precip_intensity_max
+    # - sensor.dark_sky_precip_intensity_max
     - sensor.dark_sky_uv_index
     # - sensor.capitalweather_daily_digit
     # - sensor.capitalweather_snow_potential_index
@@ -90,6 +90,7 @@ group:
     - sensor.pollen_level
     - sensor.cold_flu_risk
     - sensor.air_quality
+    - sensor.u_s_air_pollution_level
   Orbits:
     - sun.sun
     - sensor.season
@@ -225,7 +226,7 @@ sensor:
       - cloud_cover
       - wind_speed
       - precip_intensity
-      - precip_intensity_max
+      # - precip_intensity_max
       - uv_index
       # - dew_point
       # - wind_bearing

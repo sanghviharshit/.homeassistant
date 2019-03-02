@@ -19,12 +19,12 @@ Family Phone Sensors:
 Harshit Locations:
   entities:
     - device_tracker.harshits_iphone
-    - device_tracker.harshitsiphonesanghvihome
+    # - device_tracker.harshitsiphonesanghvihome
 
 Heta Locations:
   entities:
     - device_tracker.hetas_iphone
-    - device_tracker.hetasiphonesanghvihome
+    # - device_tracker.hetasiphonesanghvihome
 
 Harshit Phone Sensors:
   entities:
@@ -36,9 +36,9 @@ Heta Phone Sensors:
     - sensor.hetas_iphone_battery_level
     - sensor.hetas_iphone_battery_state
 
-Friends:
-  entities:
-    - device_tracker.salonisanghvihome
-    - device_tracker.neelshahsiphonesanghvihome
-    - device_tracker.kalpanasiphonesanghvihome
-    - device_tracker.android4d7dd24268c2601csanghvihome
+# Friends:
+#   entities:
+#     - device_tracker.salonisanghvihome
+#     - device_tracker.neelshahsiphonesanghvihome
+#     - device_tracker.kalpanasiphonesanghvihome
+#     - device_tracker.android4d7dd24268c2601csanghvihome

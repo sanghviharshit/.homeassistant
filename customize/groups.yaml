@@ -95,6 +95,12 @@ group.entry_points:
   hidden: False
   homebridge_hidden: true
 
+group.all_doors:
+  friendly_name: 'All Doors'
+
+  hidden: False
+  homebridge_hidden: true
+
 group.bedroom_lights:
   friendly_name: 'Bedroom Lights'
 

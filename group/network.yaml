@@ -20,48 +20,7 @@ Network:
 # {{ ' '}}
 # {%- endfor -%}.
 
-Network Detail:
-  entities:
-    - device_tracker.sanghviresidencesanghvihome
-    - device_tracker.886b0f6f9555
-    - device_tracker.2078f0be4d89
-    - device_tracker.smarttvsanghvihome
-    - device_tracker.dashwandsanghvihome
-    - device_tracker.dashcolgatesanghvihome
-    - device_tracker.hsanghvimbpsanghvihome
-    - device_tracker.hpsmbpsanghvihome
-    - device_tracker.hsimacsanghvihome
-    - device_tracker.hetasairsanghvihome
-    - device_tracker.spycamsanghvihome
-    - device_tracker.lifxtvsanghvihome
-    - device_tracker.lifxbedsanghvihome
-    - device_tracker.lifxskylinesanghvihome
-    - device_tracker.lifxcomputersanghvihome
-    - device_tracker.wemosanghvihome
-    - device_tracker.wemosanghvihome_2
-    - device_tracker.digiflipsanghvihome
-    - device_tracker.nexus7sanghvihome
-    - device_tracker.esp_00c46fsanghvihome
-    - device_tracker.esp_42a95esanghvihome
-    - device_tracker.esp_80e0ccsanghvihome
-    - device_tracker.esp_106262sanghvihome
-    - device_tracker.esp_51bad4sanghvihome
-    - device_tracker.esp_169263sanghvihome
-    - device_tracker.esp_33f2ebsanghvihome
-    - device_tracker.esp_42aac6sanghvihome
-    - device_tracker.st24fd5b00000303ecsanghvihome
-    - device_tracker.harmonyhubsanghvihome
-    - device_tracker.pionesanghvihome
-    - device_tracker.pitwoethsanghvihome
-    - device_tracker.pithreewifisanghvihome
-    - device_tracker.nexusplayersanghvihome
-    - device_tracker.appletvsanghvihome
-    - device_tracker.firetvethernatsanghvihome
-    - device_tracker.hetasiphonesanghvihome
-    - device_tracker.harshitsiphonesanghvihome
-    - device_tracker.cc6ea478b715 # Samsung Smart TV
-    - device_tracker.d0d2b07bb7bf #apple tv ethernet
-#
+
 # Computers:
 #   entities:
 #     - sensor.computer_imac

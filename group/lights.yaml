@@ -28,7 +28,6 @@ Light Controls:
     - group.kitchen_lights
     - group.hallway_lights
     
-
 Main lights:
   entities:
     - light.tv
