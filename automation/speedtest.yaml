@@ -15,7 +15,7 @@
   action:
     - service: script.speech_engine
       data_template:
-        value1: 'The internet speed is low again! Download: {{ states('sensor.speedtest_download') }} | Upload: {{ states('sensor.speedtest_download') }} | Ping: {{ states('sensor.speedtest_ping') }}'
+        value1: "The internet speed is low again! Download: {{ states('sensor.speedtest_download') }} | Upload: {{ states('sensor.speedtest_download') }} | Ping: {{ states('sensor.speedtest_ping') }}"
     - service: script.notify_engine
       data_template:
         who: 'harshit'
