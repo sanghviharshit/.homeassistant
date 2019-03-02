@@ -20,18 +20,18 @@ media_player.fire_tv:
   icon: mdi:amazon
 
 media_player.media_room:
-  friendly_name: 'Nexus Player (Living Room)'
+  friendly_name: 'Sonos (Media Room)'
 
   hidden: False
   homebridge_hidden: true
-  icon: mdi:android
+  icon: mdi:speaker-wireless
 
-media_player.nexus_player:
-  friendly_name: 'Nexus Player (Plex)'
-
-  hidden: False
-  homebridge_hidden: true
-  icon: mdi:plex
+# media_player.nexus_player:
+#   friendly_name: 'Nexus Player (Plex)'
+#
+#   hidden: False
+#   homebridge_hidden: true
+#   icon: mdi:plex
 
 media_player.hs_imac:
   friendly_name: "Harshit's iMac"
