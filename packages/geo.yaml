@@ -46,36 +46,36 @@ group:
 zone:
   # Home zone.
   - name: Home
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    radius: !secret zone_radius
+    latitude: !secret homeassistant_latitude
+    longitude: !secret homeassistant_longitude
+    radius: 100
     icon: mdi:account-multiple
 
   # His work location.
   - name: His Work
     latitude: !secret his_work_latitude
     longitude: !secret his_work_longitude
-    radius: !secret zone_radius
+    radius: 200
     icon: mdi:worker
 
   # Her work location.
   - name: Her Work
     latitude: !secret her_work_latitude
     longitude: !secret her_work_longitude
-    radius: !secret zone_radius
+    radius: 300
     icon: mdi:worker
 
   # Her home (for proximity tracking).
   - name: Her Home
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    radius: !secret zone_radius
+    latitude: !secret homeassistant_latitude
+    longitude: !secret homeassistant_latitude
+    radius: 200
     passive: true
   # His home (for proximity tracking).
   - name: His Home
-    latitude: !secret home_latitude
-    longitude: !secret home_longitude
-    radius: !secret zone_radius
+    latitude: !secret homeassistant_latitude
+    longitude: !secret homeassistant_latitude
+    radius: 200
     passive: true
 
 proximity:
@@ -84,20 +84,20 @@ proximity:
     devices:
       - device_tracker.hetas_iphone
     tolerance: 50
-    unit_of_measurement: mi
+    unit_of_measurement: 'km'
   # His proximity to home.
   his_home:
     devices:
       - device_tracker.harshits_iphone
     tolerance: 50
-    unit_of_measurement: mi
+    unit_of_measurement: 'km'
   # Nearest proximity to home.
   home:
     devices:
       - device_tracker.harshits_iphone
       - device_tracker.hetas_iphone
     tolerance: 50
-    unit_of_measurement: mi
+    unit_of_measurement: 'km'
 
 # TBD
 binary_sensor:
