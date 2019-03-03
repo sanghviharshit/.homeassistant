@@ -250,8 +250,8 @@ media_player:
 #     - video_recording
 
 google:
-  client_id: !secret google_cal_clientid
-  client_secret: !secret google_cal_clientsecret
+  client_id: !secret google_clientid
+  client_secret: !secret google_clientsecret
 
 # Mailgun
 mailgun:

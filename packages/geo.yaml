@@ -48,34 +48,34 @@ zone:
   - name: Home
     latitude: !secret homeassistant_latitude
     longitude: !secret homeassistant_longitude
-    radius: 100
+    radius: 150
     icon: mdi:account-multiple
 
   # His work location.
   - name: His Work
     latitude: !secret his_work_latitude
     longitude: !secret his_work_longitude
-    radius: 200
+    radius: 150
     icon: mdi:worker
 
   # Her work location.
   - name: Her Work
     latitude: !secret her_work_latitude
     longitude: !secret her_work_longitude
-    radius: 300
+    radius: 5
     icon: mdi:worker
 
   # Her home (for proximity tracking).
   - name: Her Home
     latitude: !secret homeassistant_latitude
     longitude: !secret homeassistant_latitude
-    radius: 200
+    radius: 150
     passive: true
   # His home (for proximity tracking).
   - name: His Home
     latitude: !secret homeassistant_latitude
     longitude: !secret homeassistant_latitude
-    radius: 200
+    radius: 150
     passive: true
 
 proximity:
@@ -134,7 +134,7 @@ sensor:
   # Travel time on his morning commute.
   - platform: google_travel_time
     name: His Morning Commute
-    api_key: !secret google_time_travel_api_key
+    api_key: !secret google_api_key
     origin: !secret home_address
     destination: !secret his_work_address
     options:
@@ -142,7 +142,7 @@ sensor:
   # Travel time on his evening commute.
   - platform: google_travel_time
     name: His Evening Commute
-    api_key: !secret google_time_travel_api_key
+    api_key: !secret google_api_key
     origin: !secret his_work_address
     destination: !secret home_address
     options:
@@ -151,7 +151,7 @@ sensor:
   # Travel time on her morning commute.
   - platform: google_travel_time
     name: Her Morning Commute
-    api_key: !secret google_time_travel_api_key
+    api_key: !secret google_api_key
     origin: !secret home_address
     destination: !secret her_work_address
     options:
@@ -159,7 +159,7 @@ sensor:
   # Travel time on her evening commute.
   - platform: google_travel_time
     name: Her Evening Commute
-    api_key: !secret google_time_travel_api_key
+    api_key: !secret google_api_key
     origin: !secret her_work_address
     destination: !secret home_address
     icon: mdi:home
@@ -168,7 +168,7 @@ sensor:
   # Travel time between him and her
   - platform: google_travel_time
     name: Him to Her
-    api_key: !secret google_time_travel_api_key
+    api_key: !secret google_api_key
     origin: device_tracker.harshits_iphone
     destination: device_tracker.hetas_iphone
     options:
