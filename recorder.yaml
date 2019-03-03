@@ -4,9 +4,9 @@
 #db_url: sqlite:///data/home-assistant_v2.db
 purge_interval: 1
 purge_keep_days: 7
-include:
-  entities:
-    - group.landscaping
+# include:
+#   entities:
+#     - group.landscaping
 exclude:
   domains:
     - updater
