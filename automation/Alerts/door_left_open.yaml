@@ -6,7 +6,7 @@
         - binary_sensor.fridge_door
       to: 'on'
       for:
-        seconds: 120
+        seconds: 60
   action:
     - service: script.notify_engine
       data_template:
