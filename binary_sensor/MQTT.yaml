@@ -29,7 +29,7 @@
 # https://community.smartthings.com/t/original-aqara-xiaomi-zigbee-sensors-contact-temp-motion-button-outlet-leak-etc/113253
 - platform: mqtt
   name: Leak Sensor 1
-    state_topic: "smartthings/Leak Sensor 1/water"
+  state_topic: "smartthings/Leak Sensor 1/water"
   device_class: moisture
   payload_on: "wet"
   payload_off: "dry"
