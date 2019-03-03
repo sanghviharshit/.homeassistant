@@ -137,8 +137,8 @@ sensor:
     monitored_conditions:
       - "us"
     scan_interval: 1200
-    latitude: !secret parents_home_latitude
-    longitude: !secret parents_home_longitude
+    # latitude: !secret parents_home_latitude
+    # longitude: !secret parents_home_longitude
 
   # Get the pollen forecast.
   - platform: rest
