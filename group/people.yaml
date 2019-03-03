@@ -1,10 +1,11 @@
 Family Card:
   entities:
+    - camera.family_map
     - group.harshit_phone_sensors
     - group.heta_phone_sensors
     # - group.time_travel_card
-    - group.harshit_locations_card
-    - group.heta_locations_card
+    # - group.harshit_locations_card
+    # - group.heta_locations_card
 
 Family:
   entities:

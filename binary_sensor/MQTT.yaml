@@ -18,3 +18,18 @@
   device_class: door
   payload_on: "open"
   payload_off: "closed"
+
+- platform: mqtt
+  name: Media Room Motion
+  state_topic: "smartthings/Motion Sensor 1/motion"
+  device_class: motion
+  payload_on: "active"
+  payload_off: "inactive"
+
+# https://community.smartthings.com/t/original-aqara-xiaomi-zigbee-sensors-contact-temp-motion-button-outlet-leak-etc/113253
+- platform: mqtt
+  name: Leak Sensor 1
+    state_topic: "smartthings/Leak Sensor 1/water"
+  device_class: moisture
+  payload_on: "wet"
+  payload_off: "dry"

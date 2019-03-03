@@ -225,6 +225,11 @@ media_player:
 #   password: !secret camera1_password
 #   name: Hallway Camera
 
+camera:
+  name: Family Map
+  platform: generic
+  still_image_url: !secret google_static_map_url
+  limit_refetch_to_url_change: true
 
 #binary_sensor:
 #  - platform: rest

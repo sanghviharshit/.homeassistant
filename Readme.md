@@ -6,3 +6,4 @@
 TODO:
 - Crime alerts
 - Dash buttons
+- Install home assistant on parent's phones and add automations
