@@ -2,3 +2,8 @@ Horoscope:
   entities:
     - sensor.his_horoscope
     - sensor.her_horoscope
+
+Misc Sensors:
+  entities:
+    - binary_sensor.leak_sensor_1
+    - binary_sensor.media_room_motion

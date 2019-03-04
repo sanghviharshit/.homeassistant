@@ -137,8 +137,8 @@ sensor:
   - platform: google_travel_time
     name: His Morning Commute
     api_key: !secret google_api_key
-    # TODO: Variable scan interval based on time of the day because google API is not free ($10 per 1000 requests)
-    scan interval: 300
+    # TODO: Variable scan_interval based on time of the day because google API is not free ($10 per 1000 requests)
+    scan_interval: 300
     origin: !secret home_address
     destination: !secret his_work_address
     options:
@@ -156,7 +156,7 @@ sensor:
   # Travel time on her morning commute.
   - platform: google_travel_time
     name: Her Morning Commute
-    scan interval: 1200
+    scan_interval: 1200
     api_key: !secret google_api_key
     origin: !secret home_address
     destination: !secret her_work_address
@@ -165,7 +165,7 @@ sensor:
   # Travel time on her evening commute.
   - platform: google_travel_time
     name: Her Evening Commute
-    scan interval: 1200
+    scan_interval: 1200
     api_key: !secret google_api_key
     origin: !secret her_work_address
     destination: !secret home_address
@@ -175,7 +175,7 @@ sensor:
   # Travel time between him and her
   - platform: google_travel_time
     name: Him to Her
-    scan interval: 300
+    scan_interval: 300
     api_key: !secret google_api_key
     origin: device_tracker.harshits_iphone
     destination: device_tracker.hetas_iphone
