@@ -10,8 +10,14 @@ Kitchen lights:
 
 Living Room lights:
   entities:
-    - light.tv
-    - light.skyline
+    - light.black_lamp_top
+    - light.black_lamp_center
+    - light.black_lamp_bottom
+
+Media Room lights:
+  entities:
+    - light.side_lamp_left
+    - light.side_lamp_right
 
 Living Room Accents:  # TODO - Use counter lights instead
   entities:
@@ -21,21 +27,22 @@ Living Room Accents:  # TODO - Use counter lights instead
 Light Controls:
   entities:
     - group.main_lights
-    - group.bedroom_lights
-    - group.interior_lights
+    # - group.bedroom_lights
+    # - group.interior_lights
     - group.living_room_lights
+    - group.media_room_lights
     # - group.dinette_lights
-    - group.kitchen_lights
-    - group.hallway_lights
-    
+    # - group.kitchen_lights
+    # - group.hallway_lights
+
 Main lights:
   entities:
-    - light.tv
-    - light.skyline
-    - light.platform
-    - light.fridge
-    - light.passage
-    - light.entrance
+    - light.black_lamp_top
+    - light.black_lamp_center
+    - light.black_lamp_bottom
+    - light.side_lamp_left
+    - light.side_lamp_right
+
 
 # Dinette lights: # TODO - Use couch lights and counter lights
 #   entities:

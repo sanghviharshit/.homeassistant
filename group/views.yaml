@@ -3,6 +3,7 @@ default_view:
   view: yes
   entities:
     - group.highlights
+    - group.misc_sensors
     - group.travel_times
     - group.all_doors
     - camera.hallway_camera
@@ -21,15 +22,16 @@ default_view:
 #     - group.bedroom_media_center
 #     - light.tv_ambilight
 
-# lights_view:
-#   name: Lights
-#   view: yes
-#   entities:
-#     - group.living_room_lights
-#     - group.kitchen_lights
-#     - group.hallway_lights
-#     - group.bedroom_lights
-#     - group.interior_lights
+lights_view:
+  name: Lights
+  view: yes
+  entities:
+    - group.living_room_lights
+    - group.media_room_lights
+    # - group.kitchen_lights
+    # - group.hallway_lights
+    # - group.bedroom_lights
+    # - group.interior_lights
 
 family_view:
   name: Family

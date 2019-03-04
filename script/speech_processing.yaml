@@ -43,6 +43,11 @@ speech_processing:
           entity_id: input_boolean.speech_notifications
           state: 'on'
 
+    - service: media_player.sonos_snapshot
+      data_template:
+        entity_id: "{{ media_player }}"
+
+
     - service: media_player.volume_set
       data_template:
         entity_id: >
@@ -60,10 +65,6 @@ speech_processing:
             0.3
           {% endif %}
 
-    - service: media_player.sonos_snapshot
-      data_template:
-        entity_id: "{{ media_player }}"
-
     - service: tts.amazon_polly_say
       data_template:
         entity_id: >
@@ -74,7 +75,7 @@ speech_processing:
           </speak>
         cache: true
 
-    - delay: '00:00:05'
+    - delay: '00:00:10'
 
     - service: media_player.sonos_restore
       data_template:
