@@ -1,0 +1,11 @@
+- id: turn_kitchen_light_on
+  alias: Hello world
+  trigger:
+    - platform: state
+      entity_id: sun.sun
+      from: below_horizon
+      to: above_horizon
+  action:
+    - service: light.turn_on
+      entity_id:
+        - light.island_top
