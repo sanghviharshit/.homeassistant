@@ -1,1 +1,2 @@
-- platform: lifx
+# Lifx has been moved to integrations setup
+# - platform: lifx
