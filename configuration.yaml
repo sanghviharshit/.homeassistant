@@ -196,7 +196,6 @@ media_player:
     name: Fire TV
     host: !secret fire_tv_ip
 
-media_player:
   - platform: plex
     entity_namespace: 'plex'
     # include_non_clients: true
@@ -205,7 +204,6 @@ media_player:
     remove_unavailable_clients: true
     use_custom_entity_ids: true
 
-media_player:
   - platform: samsungtv
     host: !secret samsung_tv_ip
 
@@ -293,7 +291,8 @@ device_tracker: !include_dir_merge_list device_tracker
 sensor: !include_dir_merge_list sensor
 binary_sensor: !include_dir_merge_list binary_sensor
 light: !include_dir_merge_list lights
-automation: !include_dir_merge_list automation
+automation: !include automations.yaml
+automation old: !include_dir_merge_list automation
 scene: !include_dir_merge_list scene
 switch: !include_dir_merge_list switch
 script: !include_dir_merge_named script
