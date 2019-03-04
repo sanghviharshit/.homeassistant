@@ -54,15 +54,15 @@ speech_processing:
           {{ media_player }}
         volume_level: >-
           {% if now().strftime('%H')|int < 12 and now().strftime('%H')|int > 6 %}
-            0.3
+            0.1
           {% elif now().strftime('%H')|int > 12 and now().strftime('%H')|int < 16 %}
-            0.5
-          {% elif now().strftime('%H')|int > 16 and now().strftime('%H')|int < 21 %}
-            0.8
-          {% elif now().strftime('%H')|int > 21 and now().strftime('%H')|int < 24 %}
-            0.5
-          {% else %}
             0.3
+          {% elif now().strftime('%H')|int > 16 and now().strftime('%H')|int < 21 %}
+            0.5
+          {% elif now().strftime('%H')|int > 21 and now().strftime('%H')|int < 24 %}
+            0.3
+          {% else %}
+            0.1
           {% endif %}
 
     - service: tts.amazon_polly_say
