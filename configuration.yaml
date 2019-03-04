@@ -191,6 +191,12 @@ input_number:
 #       - 192.168.1.82
 
 media_player:
+  # a device that does not require ADB authentication
+  - platform: firetv
+    name: Fire TV
+    host: !secret fire_tv_ip
+
+media_player:
   - platform: plex
     entity_namespace: 'plex'
     # include_non_clients: true
@@ -198,6 +204,10 @@ media_player:
     use_episode_art: true
     remove_unavailable_clients: true
     use_custom_entity_ids: true
+
+media_player:
+  - platform: samsungtv
+    host: !secret samsung_tv_ip
 
 # apple_tv:
 #   - host: 192.168.1.229

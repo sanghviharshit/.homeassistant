@@ -1,23 +1,23 @@
 Media Players:
   entities:
     - media_player.media_room
-    - media_player.apple_tv
-    - media_player.fire_tv
+    # - media_player.apple_tv
+    # - media_player.fire_tv
     # - media_player.media_room
     # - media_player.nexus_player
     # - media_player.hs_imac
 
-Media Centers:
-  entities:
-    - switch.wemo_switch_1
-    - media_player.fire_tv
-
-Living Room Media Center:
-  entities:
-    - switch.wemo_switch_1
-    - media_player.apple_tv
-    - media_player.media_room
-    - media_player.fire_tv
+# Media Centers:
+#   entities:
+#     - switch.wemo_switch_1
+#     - media_player.fire_tv
+#
+# Living Room Media Center:
+#   entities:
+#     - switch.wemo_switch_1
+#     - media_player.apple_tv
+#     - media_player.media_room
+#     - media_player.fire_tv
 
 # Bedroom Media Center:
 #   entities:
