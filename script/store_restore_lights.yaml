@@ -1,0 +1,18 @@
+# From https://github.com/pnbruckner/homeassistant-config/blob/fb5640ba654eaaa0b5ee021991f8a2f0b403daa9/docs/light_store.md
+store_lights:
+  alias: Save Lights current state
+  sequence:
+    - service: python_script.light_store
+      data:
+        store_name: flash_store
+        entity_id:
+          - group.kitchen_lights
+          - group.living_room_lights
+
+restore_lights:
+  alias: Restore saved lights to the way they were
+  sequence:
+    - service: python_script.light_store
+      data:
+        store_name: flash_store
+        operation: restore

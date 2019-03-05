@@ -16,8 +16,8 @@ Living Room lights:
 
 Media Room lights:
   entities:
-    - light.side_lamp_left
-    - light.side_lamp_right
+    - light.single_lamp_1
+    - light.single_lamp_2
 
 Living Room Accents:  # TODO - Use counter lights instead
   entities:
@@ -40,8 +40,8 @@ Main lights:
     - light.black_lamp_top
     - light.black_lamp_center
     - light.black_lamp_bottom
-    - light.side_lamp_left
-    - light.side_lamp_right
+    - light.single_lamp_1
+    - light.single_lamp_2
 
 
 # Dinette lights: # TODO - Use couch lights and counter lights

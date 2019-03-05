@@ -179,9 +179,8 @@
 
     - service: logbook.log
       data_template:
-        who: 'harshit'
-        value1: "Plex {{ trigger.to_state.state }} people streaming. "
-        value2: >
+        name: "Plex {{ trigger.to_state.state }} people streaming. "
+        message: >
           {%- if states.sensor.plexspy.attributes -%}
             {% set space = joiner(' ') %}
             {%- for attr in states.sensor.plexspy.attributes -%}

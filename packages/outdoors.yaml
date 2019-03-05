@@ -215,6 +215,8 @@ sensor:
   # Monitor various local weather conditions.
   - platform: darksky
     api_key: !secret forecast_key
+    latitude: !secret homeassistant_latitude
+    longitude: !secret homeassistant_longitude
     monitored_conditions:
       - summary
       - temperature

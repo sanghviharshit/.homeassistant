@@ -1,0 +1,4 @@
+# Custom Component
+- platform: illuminance
+  name: "Illuminance"
+  entity_id: sensor.dark_sky_icon
