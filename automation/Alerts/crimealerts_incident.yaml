@@ -1,4 +1,4 @@
-alias: neighborhood Crime Alert
+alias: Neighborhood Crime Alert
 trigger:
   platform: event
   event_type: crimealerts_incident

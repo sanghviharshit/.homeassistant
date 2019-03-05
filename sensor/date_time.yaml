@@ -1,5 +1,4 @@
 - platform: time_date
-  name: Local Datetime
   display_options:
     - 'time'
     - 'date'
