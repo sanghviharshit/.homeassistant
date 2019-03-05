@@ -1,0 +1,17 @@
+- platform: template
+  sensors:
+    living_room:
+      value_template: >-
+        {%- if states.states.remote.livingroom != None -%}
+          {{ states.remote.livingroom.attributes.current_activity }}
+        {%- else -%}
+          NA
+        {%- endif -%}
+    sonos_volume:
+      value_template: >-
+        {%- if states.media_player.media_room.attributes.volume_level != None -%}
+          {{ (states.media_player.media_room.attributes.volume_level|default(0) * 100) |int }}
+        {%- else -%}
+          NA
+        {%- endif -%}
+      friendly_name: 'Sonos Volume'

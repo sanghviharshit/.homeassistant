@@ -1,0 +1,45 @@
+initialize_hass:
+  alias: 'Initialize HASS after restart'
+  sequence:
+    - service: frontend.set_theme
+      data:
+        name: "oxfordblue"
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.current_theme
+        option: "oxfordblue"
+    - service: script.updatetracker
+      data_template:
+        entityid: 'device_tracker.harshits_iphone'
+        fromstate: '{{states.device_tracker.harshits_iphone.state}}'
+        tostate: '{{states.device_tracker.harshits_iphone.state}}'
+    - service: script.updatetracker
+      data_template:
+        entityid: 'device_tracker.hetas_iphone'
+        fromstate: '{{states.device_tracker.hetas_iphone.state}}'
+        tostate: '{{states.device_tracker.hetas_iphone.state}}'
+    - service_template: "homeassistant.turn_{{ 'on' if states.media_player.living_room_tv.state == 'on' else 'off' }}"
+      entity_id:
+        - input_boolean.tv
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.livingroomharmony
+        option: "{{states.sensor.living_room.state}}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.hdmiswitcher
+        option: >
+          {%- if states.remote.livingroom.attributes.current_activity == "Watch Apple TV" -%}
+            AppleTV
+          {%- elif states.remote.livingroom.attributes.current_activity == "Watch Fire TV" -%}
+            FireTV
+          {%- else -%}
+            Pi
+          {%- endif -%}
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.harmonyvolume
+        value: >
+            {{ (state_attr('media_player.media_room', 'volume_level') * 100) | int }}
+    # - service: homeassistant.turn_on
+    #   entity_id: script.classify_images

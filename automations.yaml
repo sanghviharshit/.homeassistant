@@ -179,8 +179,9 @@
 
     - service: logbook.log
       data_template:
-        name: "Plex {{ trigger.to_state.state }} people streaming. "
-        message: >
+        who: 'harshit'
+        value1: "Plex {{ trigger.to_state.state }} people streaming. "
+        value2: >
           {%- if states.sensor.plexspy.attributes -%}
             {% set space = joiner(' ') %}
             {%- for attr in states.sensor.plexspy.attributes -%}
@@ -224,3 +225,279 @@
         value1: "{{ trigger.to_state.name }} status updated"
         value2: >
           {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}
+
+# - alias: 'Sleeping - turn on'
+#   initial_state: True
+#   hide_entity: true
+#   trigger:
+#     platform: event
+#     event_type: xiaomi_aqara.movement
+#     event_data:
+#       entity_id: binary_sensor.vibration_158d0002a51fc2
+#       movement_type: vibrate
+#   condition:
+#     - condition: time
+#       after: '21:00:00'
+#       before: '06:00:00'
+#     - condition: state
+#       entity_id: input_boolean.sleeping
+#       state: 'off'
+#   action:
+#     - service: input_boolean.turn_on
+#       entity_id: input_boolean.sleeping
+
+#################################################################
+## Harmony Remote
+#################################################################
+- id: set_initial_values_on_harmony_start
+  alias: "Set initial values on Harmony Start"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: remote.livingroom
+    to: 'on'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.tv
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.livingroomharmony
+        option: >
+          {{ state_attr('remote.livingroom','current_activity') }}
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.harmonyvolume
+        value: >
+            {{ (state_attr('media_player.family_room_2', 'volume_level') * 100) | int }}
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.hdmiswitcher
+        option: >
+          {%- if state_attr('remote.livingroom','current_activity') == "Watch Apple TV" -%}
+            AppleTV
+          {%- elif state_attr('remote.livingroom','current_activity') == "Watch Fire TV" -%}
+            FireTV
+          {%- else -%}
+            Pi
+          {%- endif -%}
+
+- id: update_tv_status_in_ha
+  alias: Update TV status in HA
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: media_player.living_room_tv
+  action:
+    - service_template: "homeassistant.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}"
+      data:
+        entity_id: input_boolean.tv
+
+- id: turn_on_off_media_center_with_tv
+  alias: Turn Shield on/off with TV
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: media_player.living_room_tv
+  action:
+    - service: remote.send_command
+      data_template:
+        command: "{{ 'PowerOff' if trigger.to_state.state == 'off' else 'PowerOn' }}"
+        device: 31747959
+        entity_id: remote.livingroom
+
+- id: turn_tv_on_off
+  alias: Turn TV on/off
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: input_boolean.tv
+  action:
+    - service: remote.send_command
+      data_template:
+        command: Home
+        device: 31747959
+        entity_id: remote.livingroom
+    - service: remote.send_command
+      data_template:
+        command: "{{ 'PowerOff' if trigger.to_state.state == 'off' else 'PowerOn' }}"
+        device: 56988979
+        entity_id: remote.livingroom
+
+- id: set_volume
+  alias: "Set Volume"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: input_number.harmonyvolume
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.family_room_2
+        volume_level: >
+          {{states('input_number.harmonyvolume') | int / 100}}
+- id: start_harmony_activity_from_input_select
+  alias: "Start Harmony activity from input_select"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: input_select.livingroomharmony
+  action:
+  - service: remote.turn_on
+    data_template:
+      entity_id: remote.livingroom
+      activity: "{{trigger.to_state.state}}"
+
+- id: update_ha_if_harmony_activity_changes
+  alias: "Update HA if Harmony activity changes"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: sensor.living_room
+  action:
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.livingroomharmony
+        option: "{{trigger.to_state.state}}"
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.hdmiswitcher
+        option: >
+          {%- if trigger.to_state.state == "Watch Apple TV" -%}
+            AppleTV
+          {%- elif trigger.to_state.state == "Watch Fire TV" -%}
+            FireTV
+          {%- else -%}
+            Pi
+          {%- endif -%}
+
+- id: update_ha_after_startup
+  alias: Update HA after startup
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - delay: '00:00:01'
+    - service: homeassistant.turn_on
+      entity_id: script.initialize_hass
+
+- id: change_hdmi_switcher
+  alias: "Change HDMI Switcher"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: input_select.hdmiswitcher
+  action:
+  - service: remote.send_command
+    data_template:
+      command: >-
+        {%- if trigger.to_state.state == "AppleTV" -%}
+          Input1
+        {%- elif trigger.to_state.state == "FireTV" -%}
+          Input2
+        {%- elif trigger.to_state.state == "Pi" -%}
+          Input3
+        {%- endif -%}
+      device: 31766668
+      entity_id: remote.livingroom
+
+- id: change_hdmi_input
+  alias: "Change HDMI Input"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: input_select.hdmiinput
+  action:
+  - service: remote.send_command
+    data_template:
+      command: >-
+        {%- if trigger.to_state.state == "InputHdmi1" -%}
+          InputHdmi1
+        {%- elif trigger.to_state.state == "InputHdmi2" -%}
+          InputHdmi2
+        {%- elif trigger.to_state.state == "InputHDMI3" -%}
+          InputHDMI3
+        {%- elif trigger.to_state.state == "InputHdmi4" -%}
+          InputHdmi4
+        {%- endif -%}
+      device: 56988979
+      entity_id: remote.livingroom
+
+- id: update_volume_slider
+  alias: "Update Volume Slider"
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: sensor.sonos_volume
+  action:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.harmonyvolume
+        value: '{{ trigger.to_state.state }}'
+    # - service: notify.shield
+    #   data_template:
+    #     title: "Home Assistant"
+    #     message: >
+    #         Volume changed to {{ trigger.to_state.state }}
+#
+# - id: notify_sonos_audio_in
+#   alias: "Notify Sonos audio-in state"
+#   initial_state: 'on'
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.sonos_stereo
+#       to: '2'
+#   condition:
+#     - condition: template
+#       value_template: "{{state_attr('media_player.family_room_2','source')=='TV'}}"
+#     - condition: state
+#       entity_id: media_player.family_room_2
+#       state: 'playing'
+#   action:
+#     service: notify.telegram
+#     data_template:
+#       message: Sonos audio-in is {{states('sensor.sonos_audio_in')}}
+#       title: Sonos in Stereo
+
+# - id: sonos_enable_speech_enhance_and_night_sound
+#   alias: "Sonos Enable speech enhance and night sound"
+#   initial_state: 'on'
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.television
+#       from: 'off'
+#       to: 'on'
+#   condition:
+#     - condition: time
+#       after: '20:30:00'
+#       before: '23:00:00'
+#   action:
+#     - service: media_player.sonos_set_option
+#       data:
+#         entity_id: media_player.family_room_2
+#         night_sound: true
+#     - service: media_player.sonos_set_option
+#       data:
+#         entity_id: media_player.family_room_2
+#         speech_enhance: true
+
+# - id: sonos_disable_speech_enhance_and_night_sound
+#   alias: "Sonos Disable speech enhance and night sound"
+#   initial_state: 'on'
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.television
+#       to: 'off'
+#   condition:
+#     - condition: time
+#       after: '20:30:00'
+#       before: '07:00:00'
+#   action:
+#     - service: media_player.sonos_set_option
+#       data:
+#         entity_id: media_player.family_room_2
+#         night_sound: false
+#     - service: media_player.sonos_set_option
+#       data:
+#         entity_id: media_player.family_room_2
+#         speech_enhance: false

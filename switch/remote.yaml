@@ -1,0 +1,15 @@
+# - platform: template
+#   switches:
+#     sonos_speech_enhance:
+#       friendly_name: Sonos Speech Enhance
+#       value_template: "{{state_attr('media_player.media_room','speech_enhance')}}"
+#       turn_on:
+#         - service: media_player.sonos_set_option
+#           data:
+#             entity_id: media_player.media_room
+#             speech_enhance: True
+#       turn_off:
+#         - service: media_player.sonos_set_option
+#           data:
+#             entity_id: media_player.media_room
+#             speech_enhance: False

@@ -1,0 +1,10 @@
+portfolio:
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.portfoliovalue
+        value: "{{ value }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.portfoliochange
+        value: "{{ change }}"
