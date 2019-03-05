@@ -30,3 +30,18 @@ color_tornado:
 guard_dog:
   name: Guard Dog
   initial: off
+
+tv:
+  name: TV
+  initial: off
+  icon: mdi:television
+
+devmode:
+  name: Developer Mode
+  initial: off
+  icon: mdi:tune
+
+partymode:
+  name: Party Mode
+  initial: off
+  icon: mdi:theme-light-dark

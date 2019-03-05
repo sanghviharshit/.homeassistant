@@ -26,8 +26,8 @@ group:
     - sensor.him_to_her
     - sensor.his_morning_commute
     - sensor.his_evening_commute
-    - sensor.her_morning_commute
-    - sensor.her_evening_commute
+    # - sensor.her_morning_commute
+    # - sensor.her_evening_commute
     - sensor.her_distance_mean
     - sensor.his_distance_mean
     - proximity.her_home
@@ -40,8 +40,8 @@ group:
   Travel Times:
     - sensor.his_morning_commute
     - sensor.his_evening_commute
-    - sensor.her_morning_commute
-    - sensor.her_evening_commute
+    # - sensor.her_morning_commute
+    # - sensor.her_evening_commute
 
 zone:
   # Home zone.
@@ -58,12 +58,12 @@ zone:
     radius: 150
     icon: mdi:worker
 
-  # Her work location.
-  - name: Her Work
-    latitude: !secret her_work_latitude
-    longitude: !secret her_work_longitude
-    radius: 5
-    icon: mdi:worker
+  # # Her work location.
+  # - name: Her Work
+  #   latitude: !secret her_work_latitude
+  #   longitude: !secret her_work_longitude
+  #   radius: 5
+  #   icon: mdi:worker
 
   # Her home (for proximity tracking).
   - name: Her Home
@@ -108,7 +108,6 @@ binary_sensor:
       traveling_home:
         entity_id: proximity.his_home
         device_class: presence
-        invert: true
       traveling_away:
         entity_id: proximity.his_home
         device_class: presence
@@ -138,7 +137,7 @@ sensor:
     name: His Morning Commute
     api_key: !secret google_api_key
     # TODO: Variable scan_interval based on time of the day because google API is not free ($10 per 1000 requests)
-    scan_interval: 300
+    scan_interval: 60000
     origin: !secret home_address
     destination: !secret his_work_address
     options:
@@ -146,35 +145,36 @@ sensor:
   # Travel time on his evening commute.
   - platform: google_travel_time
     name: His Evening Commute
-    scan_interval: 300
+    scan_interval: 60000
     api_key: !secret google_api_key
     origin: !secret his_work_address
     destination: !secret home_address
     options:
       mode: transit
 
-  # Travel time on her morning commute.
-  - platform: google_travel_time
-    name: Her Morning Commute
-    scan_interval: 1200
-    api_key: !secret google_api_key
-    origin: !secret home_address
-    destination: !secret her_work_address
-    options:
-      mode: transit
-  # Travel time on her evening commute.
-  - platform: google_travel_time
-    name: Her Evening Commute
-    scan_interval: 1200
-    api_key: !secret google_api_key
-    origin: !secret her_work_address
-    destination: !secret home_address
-    options:
-      mode: transit
+  # # Travel time on her morning commute.
+  # - platform: google_travel_time
+  #   name: Her Morning Commute
+  #   scan_interval: 60000
+  #   api_key: !secret google_api_key
+  #   origin: !secret home_address
+  #   destination: !secret her_work_address
+  #   options:
+  #     mode: transit
+  # # Travel time on her evening commute.
+  # - platform: google_travel_time
+  #   name: Her Evening Commute
+  #   scan_interval: 60000
+  #   api_key: !secret google_api_key
+  #   origin: !secret her_work_address
+  #   destination: !secret home_address
+  #   options:
+  #     mode: transit
+
   # Travel time between him and her
   - platform: google_travel_time
     name: Him to Her
-    scan_interval: 300
+    scan_interval: 60000
     api_key: !secret google_api_key
     origin: device_tracker.harshits_iphone
     destination: device_tracker.hetas_iphone
