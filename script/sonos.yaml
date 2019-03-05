@@ -1,0 +1,6 @@
+sonos_speech_toggle:
+  alias: Sonos - toggle speech mode
+  sequence:
+      service: homeassistant.toggle
+      data:
+        entity_id: switch.sonos_speech_enhance

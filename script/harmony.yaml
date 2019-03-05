@@ -1,0 +1,18 @@
+tv_off:
+  alias: 'Turn Television off'
+  sequence:
+    - condition: state
+      entity_id: input_boolean.tv
+      state: 'on'
+    - service: remote.send_command
+      data_template:
+        command: Home
+        device: 31747959
+        entity_id: remote.livingroom
+    - service: remote.turn_on
+      data_template:
+        entity_id: remote.livingroom
+        activity: PowerOff
+    - service: homeassistant.turn_off
+      data:
+        entity_id: input_boolean.tv

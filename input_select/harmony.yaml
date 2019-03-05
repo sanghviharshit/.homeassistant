@@ -1,0 +1,29 @@
+livingroomharmony:
+  name: Harmony Activity
+  options:
+    - PowerOff
+    - Watch Smart TV
+    - Watch Fire TV
+    - Watch Apple TV
+    - Watch Projector
+  initial: PowerOff
+  icon: mdi:remote
+
+hdmiswitcher:
+  name: HDMI Switcher
+  options:
+    - AppleTV
+    - FireTV
+    - Pi
+  initial: AppleTV
+  icon: mdi:remote
+
+hdmiinput:
+  name: HDMI Input
+  options:
+    - InputHdmi1
+    - InputHdmi2
+    - InputHDMI3
+    - InputHdmi4
+  initial: InputHdmi4
+  icon: mdi:remote
