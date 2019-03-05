@@ -12,21 +12,29 @@
 #       hidden: False
 #-------------------------------------------
 sensor:
-  # pip install simplejson
-  - platform: alpha_vantage
-    scan_interval: 300
+  - platform: sectorperformance
     api_key: !secret vantage_api
-    symbols:
-      - name: Shutterstock
-        currency: USD
-        symbol: SSTK
-      - name: Tesla
-        currency: USD
-        symbol: TSLA
+  - platform: alpha_vantage
+    api_key: !secret vantage_api
     foreign_exchange:
-      - from: BTC
-        to: USD
-        name: Bitcoin
+      - from: USD
+        to: INR
+        name: USDINR
+  # pip install simplejson
+  # - platform: alpha_vantage
+  #   scan_interval: 300
+  #   api_key: !secret vantage_api
+  #   symbols:
+  #     - name: Shutterstock
+  #       currency: USD
+  #       symbol: SSTK
+  #     - name: Tesla
+  #       currency: USD
+  #       symbol: TSLA
+  #   foreign_exchange:
+  #     - from: BTC
+  #       to: USD
+  #       name: Bitcoin
 #-------------------------------------------
 group:
   finance:

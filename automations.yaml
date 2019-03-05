@@ -9,3 +9,219 @@
     - service: light.turn_on
       entity_id:
         - light.island_top
+
+- id: change_current_theme
+  alias: 'Change Current Theme'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: input_select.current_theme
+  action:
+    - service: frontend.set_theme
+      data_template:
+        name: "{{states('input_select.current_theme')}}"
+
+#################################################################
+## Commute Times
+#################################################################
+
+- id: update_morning_commute_sensor
+  alias: "Commute - Update morning commute sensor"
+  initial_state: 'on'
+  trigger:
+    - platform: time_pattern
+      minutes: '/2'
+  condition:
+    - condition: time
+      after: '09:00:00'
+      before: '11:00:00'
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: device_tracker.harshits_iphone
+      state: 'home'
+  action:
+    - service: sensor.google_travel_sensor_update
+      data:
+        entity_id: sensor.his_morning_commute
+
+- id: update_evening_commute_sensor
+  alias: "Commute - Update evening commute sensor"
+  initial_state: 'on'
+  trigger:
+    - platform: time_pattern
+      minutes: '/2'
+  condition:
+    - condition: time
+      after: '16:00:00'
+      before: '18:00:00'
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: template
+      value_template: >
+        {%- if states('device_tracker.harshits_iphone') -%}
+          {{ states('device_tracker.harshits_iphone')|lower in ('his_work', 'her_work') }}
+        {%- else -%}
+          false
+        {%- endif -%}
+  action:
+    - service: sensor.google_travel_sensor_update
+      data:
+        entity_id: sensor.his_evening_commute
+
+- id: morning_commute
+  alias: "Morning Commute"
+  initial_state: 'on'
+  condition:
+    condition: and
+    conditions:
+     - condition: time
+       after: '10:15:00'
+       before: '11:00:00'
+     - condition: time
+       weekday:
+         - mon
+         - tue
+         - wed
+         - thu
+         - fri
+     - condition: state
+       entity_id: device_tracker.harshits_iphones
+       state: 'home'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.his_morning_commute
+    below: 30
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: 'harshit'
+        value1: "Commute time is 30 minutes"
+    - service: homeassistant.turn_on
+      entity_id: script.notificationleavework
+
+- id: evening_commute
+  alias: "Evening Commute"
+  initial_state: 'on'
+  condition:
+    condition: and
+    conditions:
+     - condition: time
+       after: '17:00:00'
+       before: '20:00:00'
+     - condition: time
+       weekday:
+         - mon
+         - tue
+         - wed
+         - thu
+         - fri
+     - condition: template
+       value_template: >
+         {%- if states('device_tracker.harshits_iphone') -%}
+           {{ states('device_tracker.harshits_iphone') != 'home' }}
+         {%- else -%}
+           false
+         {%- endif -%}
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.his_morning_commute
+    below: 30
+
+    # When driving
+    # platform: template
+    # value_template: >
+    #   {%- if states.sensor.his_evening_commute.attributes.duration_in_traffic -%}
+    #     {{(states.sensor.his_evening_commute.attributes.duration_in_traffic.split(' ')[0]|int) / (states.sensor.his_evening_commute.attributes.duration.split(' ')[0]|int) < 1.25}}
+    #   {%- else -%}
+    #     false
+    #   {%- endif -%}
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: 'harshit'
+        value1: "Commute time is {{states.sensor.his_evening_commute.attributes.duration.split(' ')[0]|int}} minutes"
+
+#################################################################
+## Alerts and notifications
+#################################################################
+
+- id: plexspy_notification
+  alias: "Plex Spy notification"
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: sensor.people_watching_plex
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: 'harshit'
+        value1: "Plex {{ trigger.to_state.state }} people streaming. "
+        value2: >
+          {%- if states.sensor.plexspy.attributes -%}
+            {% set space = joiner(' ') %}
+            {%- for attr in states.sensor.plexspy.attributes -%}
+             {%- if not attr=="friendly_name" and not attr=="unit_of_measurement" and not attr=="homebridge_hidden"-%}
+              {{space()}}{{attr}} is watching {{states.sensor.plexspy.attributes[attr]}}.
+             {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+
+    - service: logbook.log
+      data_template:
+        who: 'harshit'
+        value1: "Plex {{ trigger.to_state.state }} people streaming. "
+        value2: >
+          {%- if states.sensor.plexspy.attributes -%}
+            {% set space = joiner(' ') %}
+            {%- for attr in states.sensor.plexspy.attributes -%}
+             {%- if not attr=="friendly_name" and not attr=="unit_of_measurement" and not attr=="homebridge_hidden"-%}
+              {{space()}}{{attr}} is watching {{states.sensor.plexspy.attributes[attr]}}.
+             {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+
+- id: ensure_switches_lights_on
+  alias: 'Ensure smart switches and lights are on'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id:
+        - switch.wemo_switch_1
+        - switch.wemo_switch_1
+        - group.living_room_lights
+        - group.media_room_lights
+        - group.kitchen_lights
+      to: 'unavailable'
+      for: '00:05:00'
+  action:
+    - service: notify.ios
+      data_template:
+        who: harshit
+        value1: "Check {{ trigger.to_state.name }}"
+        value2: "Looks like {{ trigger.to_state.name }} is turned off"
+
+- id: uscis_update_notification
+  alias: "USCIS - Notify on update"
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.heta_1
+  action:
+    - service: notify.ios
+      data_template:
+        who: harshit
+        value1: "{{ trigger.to_state.name }} status updated"
+        value2: >
+          {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}
