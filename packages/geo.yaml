@@ -169,7 +169,6 @@ sensor:
     api_key: !secret google_api_key
     origin: !secret her_work_address
     destination: !secret home_address
-    icon: mdi:home
     options:
       mode: transit
   # Travel time between him and her
