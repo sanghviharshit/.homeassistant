@@ -5,7 +5,6 @@ Settings:
     - input_boolean.text_notifications
     - input_boolean.delay_alerts
     # TODO Use either switch or input_booleans
-    - input_boolean.work
     - switch.briefings
 
 Home Modes:
@@ -15,6 +14,8 @@ Home Modes:
     - input_boolean.sleeping_mode
     - input_boolean.vacation_mode
     - input_boolean.alert_mode
+    - input_boolean.dev_mode
+    - input_boolean.party_mode
 
 Triggers:
   control: hidden
@@ -31,3 +32,4 @@ Triggers:
     - input_boolean.self_destruct
     - input_boolean.play_briefing
     - input_boolean.medicine
+    - input_boolean.tv

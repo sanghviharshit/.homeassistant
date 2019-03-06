@@ -14,13 +14,13 @@
       device_class: heat
 
     indoor_temp_falling:
-      entity_id: sensor.living_room_temperature
+      entity_id: sensor.bedroom_temperature
       sample_duration: 3600
       min_gradient: -0.0005
       device_class: cold
 
     indoor_temp_rising:
-      entity_id: sensor.living_room_temperature
+      entity_id: sensor.bedroom_temperature
       sample_duration: 3600
       min_gradient: 0.0005
       device_class: heat

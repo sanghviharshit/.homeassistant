@@ -1,15 +1,15 @@
 # TODO Add dash button and xiaomi buttons
 
 - platform: mqtt
-  name: "Round Bedside Button"
-  command_topic: "smartthings/Round Bedside Button/button"
-  state_topic: "smartthings/Round Bedside Button/button"
+  name: "Round Button 1"
+  command_topic: "smartthings/Round Button 1/button"
+  state_topic: "smartthings/Round Button 1/button"
   payload_on: "pushed"
   payload_off: "released"
 
 - platform: mqtt
-  name: "Square Door Button"
-  command_topic: "smartthings/Square Door Button/button"
-  state_topic: "smartthings/Square Door Button/button"
+  name: "Square Button 1"
+  command_topic: "smartthings/Square Button 1/button"
+  state_topic: "smartthings/Square Button 1/button"
   payload_on: "pushed"
   payload_off: "released"

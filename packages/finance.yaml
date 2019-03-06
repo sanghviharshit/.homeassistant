@@ -39,9 +39,9 @@ sensor:
 group:
   finance:
     entities:
-      - sensor.tesla
-      - sensor.bitcoin
-      - sensor.shutterstock
+      - sensor.usdinr
+      # - sensor.bitcoin
+      # - sensor.shutterstock
 
 ##############################################################################
 ###  Automations - Detect when things are not right. Like any Good Watchdog.

@@ -1,0 +1,11 @@
+Media Control:
+  control: hidden
+  entities:
+    - input_number.volume
+
+Portfolio:
+  control: hidden
+  entities:
+    - input_number.portfoliochange
+    - input_number.portfoliovalue
+    - input_number.portfolioreturn
