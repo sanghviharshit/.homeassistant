@@ -1,5 +1,6 @@
 Highlights:
   entities:
+    - sensor.quote
     - sensor.last_message
     - sensor.ist
     - sensor.people_watching_plex

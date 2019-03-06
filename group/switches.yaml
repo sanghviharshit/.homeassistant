@@ -1,0 +1,6 @@
+All Switches:
+  entities:
+    - switch.wemo_switch_1
+    - switch.wemo_switch_2
+    - switch.round_button_1
+    - switch.square_button_1

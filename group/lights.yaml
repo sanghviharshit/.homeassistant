@@ -1,12 +1,12 @@
-Bedroom lights:
-  entities:
-    - light.computer
-    - light.bed
-
-Kitchen lights:
-  entities:
-    - light.platform
-    - light.fridge
+# Bedroom lights:
+#   entities:
+#     - light.computer
+#     - light.bed
+#
+# Kitchen lights:
+#   entities:
+#     - light.platform
+#     - light.fridge
 
 Living Room lights:
   entities:
@@ -49,18 +49,18 @@ Main lights:
 #     - light.tv
 #     - light.skyline
 
-Dining Room lights:
-  entities:
-    - light.tv
-    - light.skyline
-
-Hallway lights:
-  entities:
-    - light.passage
-    - light.entrance
-
-Interior Lights:  # TODO - add couch light, counter light, ladder lights, hyperion lights
-  entities:
-    - light.clock_led_strip
-    - light.tv_ambilight
-    - switch.night_light
+# Dining Room lights:
+#   entities:
+#     - light.tv
+#     - light.skyline
+#
+# Hallway lights:
+#   entities:
+#     - light.passage
+#     - light.entrance
+#
+# Interior Lights:  # TODO - add couch light, counter light, ladder lights, hyperion lights
+#   entities:
+#     - light.clock_led_strip
+#     - light.tv_ambilight
+#     - switch.night_light

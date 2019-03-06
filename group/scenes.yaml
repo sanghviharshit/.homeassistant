@@ -17,3 +17,7 @@ All Scenes:
     - scene.month_thanksgiving_colors
     - scene.month_valentine_colors
     - scene.tv_time
+
+    # From Lifx Cloud
+    - scene.dinner_time
+    - scene.movie_time
