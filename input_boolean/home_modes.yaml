@@ -27,3 +27,13 @@ vacation_mode:
   name: Vacation Mode
   icon: mdi:airplane
   initial: off
+
+dev_mode:
+  name: Developer Mode
+  initial: off
+  icon: mdi:tune
+
+party_mode:
+  name: Party Mode
+  initial: off
+  icon: mdi:theme-light-dark

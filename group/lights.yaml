@@ -3,10 +3,9 @@
 #     - light.computer
 #     - light.bed
 #
-# Kitchen lights:
-#   entities:
-#     - light.platform
-#     - light.fridge
+Kitchen lights:
+  entities:
+    - light.island_top
 
 Living Room lights:
   entities:
@@ -32,7 +31,7 @@ Light Controls:
     - group.living_room_lights
     - group.media_room_lights
     # - group.dinette_lights
-    # - group.kitchen_lights
+    - group.kitchen_lights
     # - group.hallway_lights
 
 Main lights:
@@ -42,6 +41,7 @@ Main lights:
     - light.black_lamp_bottom
     - light.single_lamp_1
     - light.single_lamp_2
+    - light.island_top
 
 
 # Dinette lights: # TODO - Use couch lights and counter lights

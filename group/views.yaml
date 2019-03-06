@@ -6,10 +6,11 @@ default_view:
     - group.misc_sensors
     - group.travel_times
     - group.all_doors
-    - camera.hallway_camera
+    # - camera.hallway_camera
     - group.all_remotes
     - group.media_players
     - group.light_controls
+    - group.all_switches
     - group.triggers
     - group.settings
     - group.home_modes
