@@ -3,9 +3,6 @@ Family Card:
     - camera.family_map
     - group.harshit_phone_sensors
     - group.heta_phone_sensors
-    # - group.time_travel_card
-    # - group.harshit_locations_card
-    # - group.heta_locations_card
 
 Family:
   entities:
@@ -20,12 +17,12 @@ Family Phone Sensors:
 Harshit Locations:
   entities:
     - device_tracker.harshits_iphone
-    # - device_tracker.harshitsiphonesanghvihome
+    - device_tracker.life360_harshit
 
 Heta Locations:
   entities:
     - device_tracker.hetas_iphone
-    # - device_tracker.hetasiphonesanghvihome
+    - device_tracker.life360_heta
 
 Harshit Phone Sensors:
   entities:
