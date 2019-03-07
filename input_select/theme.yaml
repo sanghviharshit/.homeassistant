@@ -1,0 +1,22 @@
+current_theme:
+  name: 'Current Theme'
+  options:
+   - 'default'
+   - 'carbongreen'
+   - 'clear'
+   - 'darkblue'
+   - 'darkcyan'
+
+   - 'darkorange'
+   - 'darkred'
+   - 'happy'
+   - 'minimal'
+   - 'oxfordblue'
+   - 'oxforddark'
+   - 'sad'
+   - 'stormy_hues'
+   - 'teal'
+   - 'vintage'
+
+  initial: 'default'
+  icon: 'mdi:palette'

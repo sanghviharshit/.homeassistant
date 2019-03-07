@@ -1,3 +1,3 @@
-# TODO - Lifx Cloud Scenes
+# For Lifx cloud scenes
 - platform: lifx_cloud
   token: !secret lifx_token

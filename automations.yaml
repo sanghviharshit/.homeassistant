@@ -268,7 +268,7 @@
       data_template:
         entity_id: input_number.harmonyvolume
         value: >
-            {{ (state_attr('media_player.family_room_2', 'volume_level') * 100) | int }}
+            {{ (state_attr('media_player.media_room', 'volume_level') * 100) | int }}
     - service: input_select.select_option
       data_template:
         entity_id: input_select.hdmiswitcher
@@ -332,7 +332,7 @@
   action:
     - service: media_player.volume_set
       data_template:
-        entity_id: media_player.family_room_2
+        entity_id: media_player.media_room
         volume_level: >
           {{states('input_number.harmonyvolume') | int / 100}}
 - id: start_harmony_activity_from_input_select
@@ -449,9 +449,9 @@
 #       to: '2'
 #   condition:
 #     - condition: template
-#       value_template: "{{state_attr('media_player.family_room_2','source')=='TV'}}"
+#       value_template: "{{state_attr('media_player.media_room','source')=='TV'}}"
 #     - condition: state
-#       entity_id: media_player.family_room_2
+#       entity_id: media_player.media_room
 #       state: 'playing'
 #   action:
 #     service: notify.telegram
@@ -459,45 +459,45 @@
 #       message: Sonos audio-in is {{states('sensor.sonos_audio_in')}}
 #       title: Sonos in Stereo
 
-# - id: sonos_enable_speech_enhance_and_night_sound
-#   alias: "Sonos Enable speech enhance and night sound"
-#   initial_state: 'on'
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.television
-#       from: 'off'
-#       to: 'on'
-#   condition:
-#     - condition: time
-#       after: '20:30:00'
-#       before: '23:00:00'
-#   action:
-#     - service: media_player.sonos_set_option
-#       data:
-#         entity_id: media_player.family_room_2
-#         night_sound: true
-#     - service: media_player.sonos_set_option
-#       data:
-#         entity_id: media_player.family_room_2
-#         speech_enhance: true
+- id: sonos_enable_speech_enhance_and_night_sound
+  alias: "Sonos Enable speech enhance and night sound"
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.television
+      from: 'off'
+      to: 'on'
+  condition:
+    - condition: time
+      after: '20:30:00'
+      before: '23:00:00'
+  action:
+    - service: media_player.sonos_set_option
+      data:
+        entity_id: media_player.media_room
+        night_sound: true
+    - service: media_player.sonos_set_option
+      data:
+        entity_id: media_player.media_room
+        speech_enhance: true
 
-# - id: sonos_disable_speech_enhance_and_night_sound
-#   alias: "Sonos Disable speech enhance and night sound"
-#   initial_state: 'on'
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.television
-#       to: 'off'
-#   condition:
-#     - condition: time
-#       after: '20:30:00'
-#       before: '07:00:00'
-#   action:
-#     - service: media_player.sonos_set_option
-#       data:
-#         entity_id: media_player.family_room_2
-#         night_sound: false
-#     - service: media_player.sonos_set_option
-#       data:
-#         entity_id: media_player.family_room_2
-#         speech_enhance: false
+- id: sonos_disable_speech_enhance_and_night_sound
+  alias: "Sonos Disable speech enhance and night sound"
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.television
+      to: 'off'
+  condition:
+    - condition: time
+      after: '20:30:00'
+      before: '07:00:00'
+  action:
+    - service: media_player.sonos_set_option
+      data:
+        entity_id: media_player.media_room
+        night_sound: false
+    - service: media_player.sonos_set_option
+      data:
+        entity_id: media_player.media_room
+        speech_enhance: false

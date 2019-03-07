@@ -1,11 +1,3 @@
-# see how many new commit there are.
-# TODO not working
-# - platform: command_line
-#   name: New Commits
-#   scan_interval: 600
-#   unit_of_measurement: commits
-#   command: "git fetch origin && git log master..origin/master --pretty=oneline | wc -l"
-
 # Track how many errors are in the log.
 - platform: command_line
   name: Home Assistant Errors
