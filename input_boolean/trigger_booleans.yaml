@@ -35,13 +35,3 @@ tv:
   name: TV
   initial: off
   icon: mdi:television
-
-devmode:
-  name: Developer Mode
-  initial: off
-  icon: mdi:tune
-
-partymode:
-  name: Party Mode
-  initial: off
-  icon: mdi:theme-light-dark

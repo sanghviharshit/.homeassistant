@@ -136,7 +136,6 @@ sensor:
   - platform: google_travel_time
     name: His Morning Commute
     api_key: !secret google_api_key
-    # TODO: Variable scan_interval based on time of the day because google API is not free ($10 per 1000 requests)
     scan_interval: 60000
     origin: !secret home_address
     destination: !secret his_work_address

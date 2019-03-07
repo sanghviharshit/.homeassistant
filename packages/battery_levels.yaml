@@ -15,8 +15,8 @@
 sensor:
   - platform: template
     sensors:
-      low_battery:
-        friendly_name: 'Low Battery'
+      critical_battery:
+        friendly_name: 'Critical Battery'
         value_template: >
           {%- set threshold = 15 -%}
           {%- set domains = ['light', 'switch', 'sensor', 'zwave', 'lock', 'binary_sensor'] -%}
@@ -44,14 +44,14 @@ automation:
         at: '18:00:00'
     condition:
       condition: template
-      value_template: "{% if states('sensor.low_battery') %}true{% endif %}"
+      value_template: "{% if states('sensor.critical_battery') %}true{% endif %}"
     action:
       - service: persistent_notification.create
         data_template:
-          title: Low Battery
-          message: "{{ states('sensor.low_battery') }}"
+          title: Critical Battery
+          message: "{{ states('sensor.critical_battery') }}"
           notification_id: low-battery-alert
       - service: script.notify_engine
         data_template:
-          value1: "Low battery levels: {{ states('sensor.low_battery') }}"
+          value1: "Low battery levels: {{ states('sensor.critical_battery') }}"
           who: 'harshit'

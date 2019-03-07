@@ -28,6 +28,8 @@ homeassistant:
 # Enables configuration UI
 config:
 
+system_health:
+
 cloud:
   alexa:
     filter:

@@ -157,4 +157,4 @@ automation:
           value1: !include ../templates/briefing.yaml
 
     # TODO - Play the morning briefing. This briefing is triggered
-    # when the bedroom light switch is turned on.
+    # when both phone's are unplugged from charger and it's after 8AM and someone is home
