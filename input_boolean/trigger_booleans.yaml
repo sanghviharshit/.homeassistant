@@ -32,6 +32,6 @@ guard_dog:
   initial: off
 
 tv:
-  name: TV
+  name: TV Switch
   initial: off
   icon: mdi:television
