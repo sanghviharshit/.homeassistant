@@ -4,8 +4,8 @@
 
 entities:
 - name: Router
-  url: http://192.168.1.1/
+  url: !secret router_url_admin
   icon: mdi:router-wireless
 - name: Pihole
-  url: http://192.168.1.20/admin
+  url: !secret pihole_url_admin
   icon: mdi:filter-remove
