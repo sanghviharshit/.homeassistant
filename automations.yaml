@@ -96,17 +96,17 @@
          - thu
          - fri
      - condition: state
-       entity_id: device_tracker.harshits_iphones
+       entity_id: device_tracker.harshits_iphone
        state: 'home'
   trigger:
     platform: numeric_state
     entity_id: sensor.his_morning_commute
-    below: 30
+    below: 25
   action:
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "Commute time is 30 minutes"
+        value1: "{{states.sensor.his_morning_commute.attributes.duration.split(' ')[0]|int}} minutes"
     - service: homeassistant.turn_on
       entity_id: script.notificationleavework
 
@@ -135,8 +135,8 @@
          {%- endif -%}
   trigger:
     platform: numeric_state
-    entity_id: sensor.his_morning_commute
-    below: 30
+    entity_id: sensor.his_evening_commute
+    below: 25
 
     # When driving
     # platform: template
@@ -217,11 +217,11 @@
   trigger:
     - platform: state
       entity_id:
-        - sensor.heta_1
+        - sensor.heta_1 # TODO Rename
   action:
     - service: notify.ios
       data_template:
-        who: harshit
+        who: family
         value1: "{{ trigger.to_state.name }} status updated"
         value2: >
           {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}

@@ -76,8 +76,9 @@ speech_processing:
         cache: true
 
     - delay: "{{ delay|default('00:00:00') }}"
+
     - wait_template: "{{ is_state(sonos_entity|default('media_player.media_room'), 'playing') }}"
-      timeout: '00:00:05'
+      timeout: '00:00:10'
 
     - service: media_player.sonos_restore
       data_template:

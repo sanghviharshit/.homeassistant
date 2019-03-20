@@ -4,9 +4,10 @@
 #db_url: sqlite:///data/home-assistant_v2.db
 purge_interval: 1
 purge_keep_days: 7
-# include:
-#   entities:
-#     - group.landscaping
+include:
+  entities:
+    - binary_sensor.main_door
+    - binary_sensor.fridge_door
 exclude:
   domains:
     - updater
@@ -15,11 +16,13 @@ exclude:
     - group
     - scene
     - script
+    - weblink
   entities:
     - sensor.dark_sky_summary
     - sensor.dark_sky_temperature
-    - sensor.dark_sky_apparent_temperature
+    # - sensor.dark_sky_apparent_temperature
     - sensor.dark_sky_humidity
+    - sensor.dark_sky_minutely_summary
     - sensor.dark_sky_hourly_summary
     - sensor.dark_sky_hourly_summary
     - sensor.dark_sky_daily_summary
@@ -34,6 +37,7 @@ exclude:
     - sensor.ha_uptime
     - sensor.last_message
     - sensor.low_battery
+    - sensor.moon
     - sensor.network
     - sensor.network_detail
     - sensor.pihole_ads_blocked_today
@@ -44,6 +48,7 @@ exclude:
     - sensor.since_last_boot_templated
     - sensor.speech_time
     - sensor.tesla
+    - senswor.usdinr
     - sensor.time
     - sun.sun
     - zone.home

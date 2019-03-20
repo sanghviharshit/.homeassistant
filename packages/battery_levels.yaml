@@ -21,7 +21,7 @@ sensor:
           {%- set threshold = 15 -%}
           {%- set domains = ['light', 'switch', 'sensor', 'zwave', 'lock', 'binary_sensor'] -%}
           {%- for domain in domains -%}
-            {%- for item in states[domain] if ((item.attributes.battery_level is defined and item.attributes['battery_level'] | int < threshold) or ("battery" in item.name | lower and ((item.state | int < threshold and item.state|int != 0) or item.state | lower == "low" or item.state | lower == "unknown"))) -%}
+            {%- for item in states[domain] if ((item.attributes.battery_level is defined and item.attributes['battery_level'] | int < threshold) or ("battery" in item.name | lower and item.attributes.friendly_name != "Critical Battery" and ((item.state | int < threshold and item.state|int != 0) or item.state | lower == "low" or item.state | lower == "unknown"))) -%}
               {{ item.attributes.friendly_name }} (
               {%- if item.attributes.battery_level is defined -%}
                 {{ item.attributes.battery_level}}
