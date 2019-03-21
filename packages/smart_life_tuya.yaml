@@ -4,8 +4,8 @@
 ###################################
 ## Tuya compatible Devices - https://www.vcloudinfo.com/2018/12/how-to-waterproof-your-outdoor-smart.html
 ###################################
-tuya:
-  username: !secret tuya_username
-  password: !secret tuya_password
-  country_code: 1
-  platform: smart_life # tuya for Tuya Smart, smart_life for Smart Life
+# tuya:
+#   username: !secret tuya_username
+#   password: !secret tuya_password
+#   country_code: 1
+#   platform: tuya # tuya for Tuya Smart, smart_life for Smart Life
