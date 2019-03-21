@@ -1,4 +1,4 @@
-# Custom Component
-- platform: illuminance
-  name: "Illuminance"
-  entity_id: sensor.dark_sky_icon
+# # Custom Component
+# - platform: illuminance
+#   name: "Illuminance"
+#   entity_id: weather.dark_sky
