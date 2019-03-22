@@ -26,7 +26,7 @@ homeassistant:
      api_password: !secret http_api_password
    - type: trusted_networks
      trusted_networks:
-       - 192.168.1.1/24
+       - 192.168.1.0/24
 
 # Enables configuration UI
 config:
