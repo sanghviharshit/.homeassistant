@@ -8,16 +8,16 @@ initialize_hass:
       data:
         entity_id: input_select.current_theme
         option: "oxfordblue"
-    - service: script.updatetracker
-      data_template:
-        entityid: 'device_tracker.life360_harshit'
-        fromstate: '{{states.device_tracker.life360_harshit.state}}'
-        tostate: '{{states.device_tracker.life360_harshit.state}}'
-    - service: script.updatetracker
-      data_template:
-        entityid: 'device_tracker.life360_heta'
-        fromstate: '{{states.device_tracker.life360_heta.state}}'
-        tostate: '{{states.device_tracker.life360_heta.state}}'
+    # - service: script.updatetracker
+    #   data_template:
+    #     entityid: 'device_tracker.life360_harshit'
+    #     fromstate: '{{states.device_tracker.life360_harshit.state}}'
+    #     tostate: '{{states.device_tracker.life360_harshit.state}}'
+    # - service: script.updatetracker
+    #   data_template:
+    #     entityid: 'device_tracker.life360_heta'
+    #     fromstate: '{{states.device_tracker.life360_heta.state}}'
+    #     tostate: '{{states.device_tracker.life360_heta.state}}'
     - service_template: "homeassistant.turn_{{ 'on' if states.media_player.living_room_tv.state == 'on' else 'off' }}"
       entity_id:
         - input_boolean.tv
