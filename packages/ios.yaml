@@ -81,7 +81,7 @@ automation:
         data:
           message: "Ok. I will remind you when you get home."
       - wait_template: >-
-          {{ states.device_tracker.harshits_iphone.state == 'home' }}
+          {{ states.device_tracker.life360_harshit.state == 'home' }}
       - service: notify.ios_family
         data:
           message: "Now that your home, please take your medicine!"
@@ -94,14 +94,14 @@ automation:
       # - platform: time
       #   at: '21:00:00'
       - platform: state
-        entity_id: device_tracker.harshits_iphone
+        entity_id: device_tracker.life360_harshit
         to: 'home'
 
     condition:
       - condition: time
         after: '21:00:00'
       - condition: state
-        entity_id: device_tracker.harshits_iphone
+        entity_id: device_tracker.life360_harshit
         state: 'home'
       - condition: state
         entity_id: input_boolean.medicine

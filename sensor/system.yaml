@@ -9,7 +9,7 @@
   name: Home Assistant Warnings
   scan_interval: 1800
   unit_of_measurement: warnings
-  command: grep -r -E ":[0-9][0-9] ERROR" /config/home-assistant.log | wc -l
+  command: grep -r -E ":[0-9][0-9] WARNiNG" /config/home-assistant.log | wc -l
 
 # Track number of connected clients.
 - platform: api_streams

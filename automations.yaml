@@ -43,7 +43,7 @@
         - thu
         - fri
     - condition: state
-      entity_id: device_tracker.harshits_iphone
+      entity_id: device_tracker.life360_harshit
       state: 'home'
   action:
     - service: sensor.google_travel_sensor_update
@@ -69,8 +69,8 @@
         - fri
     - condition: template
       value_template: >
-        {%- if states('device_tracker.harshits_iphone') -%}
-          {{ states('device_tracker.harshits_iphone')|lower in ('his_work', 'her_work') }}
+        {%- if states('device_tracker.life360_harshit') -%}
+          {{ states('device_tracker.life360_harshit')|lower in ('his_work', 'her_work') }}
         {%- else -%}
           false
         {%- endif -%}
@@ -96,7 +96,7 @@
          - thu
          - fri
      - condition: state
-       entity_id: device_tracker.harshits_iphone
+       entity_id: device_tracker.life360_harshit
        state: 'home'
   trigger:
     platform: numeric_state
@@ -128,8 +128,8 @@
          - fri
      - condition: template
        value_template: >
-         {%- if states('device_tracker.harshits_iphone') -%}
-           {{ states('device_tracker.harshits_iphone') != 'home' }}
+         {%- if states('device_tracker.life360_harshit') -%}
+           {{ states('device_tracker.life360_harshit') != 'home' }}
          {%- else -%}
            false
          {%- endif -%}
@@ -161,19 +161,32 @@
   initial_state: 'on'
   trigger:
     platform: state
-    entity_id: sensor.people_watching_plex
+    entity_id: sensor.tautulli
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.tautulli
+      above: 1
+
+    - condition: template
+      value_template: >
+        {%- if states('device_tracker.life360_harshit') -%}
+          {{ states('device_tracker.life360_harshit') != 'home' }}
+        {%- else -%}
+          false
+        {%- endif -%}
   action:
     - service: script.notify_engine
       data_template:
         who: 'harshit'
         value1: "Plex {{ trigger.to_state.state }} people streaming. "
         value2: >
-          {%- if states.sensor.plexspy.attributes -%}
-            {% set space = joiner(' ') %}
-            {%- for attr in states.sensor.plexspy.attributes -%}
-             {%- if not attr=="friendly_name" and not attr=="unit_of_measurement" and not attr=="homebridge_hidden"-%}
-              {{space()}}{{attr}} is watching {{states.sensor.plexspy.attributes[attr]}}.
-             {%- endif -%}
+          {%- if states.sensor.tautulli.attributes -%}
+          People currently watching Plex:
+            {% set space = joiner(', ') %}
+            {%- for attr in states.sensor.tautulli.attributes -%}
+              {%- if states.sensor.tautulli.attributes[attr]['Activity'] and attr != '1' -%}
+                {{space()}}{{attr}}
+              {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
 
@@ -182,12 +195,12 @@
         who: 'harshit'
         value1: "Plex {{ trigger.to_state.state }} people streaming. "
         value2: >
-          {%- if states.sensor.plexspy.attributes -%}
-            {% set space = joiner(' ') %}
-            {%- for attr in states.sensor.plexspy.attributes -%}
-             {%- if not attr=="friendly_name" and not attr=="unit_of_measurement" and not attr=="homebridge_hidden"-%}
-              {{space()}}{{attr}} is watching {{states.sensor.plexspy.attributes[attr]}}.
-             {%- endif -%}
+          {%- if states.sensor.tautulli.attributes -%}
+            {% set space = joiner(', ') %}
+            {%- for attr in states.sensor.tautulli.attributes -%}
+              {%- if states.sensor.tautulli.attributes[attr]['Activity'] and attr != '1' -%}
+                {{space()}}{{attr}} is watching {{states.sensor.plexspy.attributes[attr]}}.
+              {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
 

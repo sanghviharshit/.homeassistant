@@ -84,20 +84,20 @@ proximity:
   # Her proximity to home.
   her_home:
     devices:
-      - device_tracker.hetas_iphone
+      - device_tracker.life360_heta
     tolerance: 50
     unit_of_measurement: 'km'
   # His proximity to home.
   his_home:
     devices:
-      - device_tracker.harshits_iphone
+      - device_tracker.life360_harshit
     tolerance: 50
     unit_of_measurement: 'km'
   # Nearest proximity to home.
   home:
     devices:
-      - device_tracker.harshits_iphone
-      - device_tracker.hetas_iphone
+      - device_tracker.life360_harshit
+      - device_tracker.life360_heta
     tolerance: 50
     unit_of_measurement: 'km'
 
@@ -117,11 +117,11 @@ sensor:
   # His home departure time.
   - platform: mqtt
     name: "His Departure Time"
-    state_topic: "home/departure/harshits"
+    state_topic: "home/departure/harshit"
   # Her home departure time.
   - platform: mqtt
     name: "Her Departure Time"
-    state_topic: "home/departure/hetas"
+    state_topic: "home/departure/heta"
 
   # His average distance from home.
   - platform: statistics
@@ -175,8 +175,8 @@ sensor:
     name: Him to Her
     scan_interval: 60000
     api_key: !secret google_api_key
-    origin: device_tracker.harshits_iphone
-    destination: device_tracker.hetas_iphone
+    origin: device_tracker.life360_harshit
+    destination: device_tracker.life360_heta
     options:
         mode: driving
 
@@ -186,12 +186,12 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          - device_tracker.harshits_iphone
-          - device_tracker.hetas_iphone
+          - device_tracker.life360_harshit
+          - device_tracker.life360_heta
         from: home
         to: not_home
     action:
       - service: mqtt.publish
         data_template:
-          topic: 'home/departure/{{trigger.entity_id.split(".")[1].split("_")[0]}}'
+          topic: 'home/departure/{{trigger.entity_id.split(".")[1].split("_")[1]}}'
           payload: '{{now().hour}}:{{now().minute}}'

@@ -126,7 +126,7 @@ automation:
       - service: mqtt.publish
         data_template:
           payload: >
-            {{states.device_tracker[states.sensor.latest_arrival.state ~ "_iphone"].attributes.friendly_name}}
+            {{states.device_tracker["life360_" ~ states.sensor.latest_arrival.state].attributes.friendly_name}}
           topic: 'home/briefing_target'
           retain: true
       - delay:
@@ -147,7 +147,7 @@ automation:
       - service: mqtt.publish
         data_template:
           payload: >
-            {{states.device_tracker[states.sensor.latest_arrival.state ~ "_iphone"].attributes.friendly_name}}
+            {{states.device_tracker["life360_" ~ states.sensor.latest_arrival.state].attributes.friendly_name}}
           topic: 'home/briefing_target'
           retain: true
       - delay:
