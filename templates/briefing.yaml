@@ -85,12 +85,12 @@
 
       {# Her name #}
       {%- macro her_name() -%}
-        {{states.device_tracker.hetas_iphone.attributes.friendly_name}}
+        {{states.device_tracker.life360_heta.attributes.friendly_name}}
       {%- endmacro -%}
 
       {# His name #}
       {%- macro his_name() -%}
-        {{states.device_tracker.harshits_iphone.attributes.friendly_name}}
+        {{states.device_tracker.life360_harshit.attributes.friendly_name}}
       {%- endmacro -%}
 
 

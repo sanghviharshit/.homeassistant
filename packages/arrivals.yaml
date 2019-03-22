@@ -36,13 +36,13 @@ automation:
     trigger:
       platform: state
       entity_id:
-        - device_tracker.harshits_iphone
-        - device_tracker.hetas_iphone
+        - device_tracker.life360_harshit
+        - device_tracker.life360_heta
       to: 'home'
     action:
       - service: mqtt.publish
         data_template:
-          payload: '{{trigger.entity_id.split(".")[1].split("_")[0]}}'
+          payload: '{{trigger.entity_id.split(".")[1].split("_")[1]}}'
           topic: 'home/latest_arrival'
           retain: true
   # Reset the first arrival daily.

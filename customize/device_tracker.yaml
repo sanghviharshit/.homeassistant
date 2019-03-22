@@ -25,26 +25,12 @@ device_tracker.hetas_iphone:
   homebridge_hidden: True
   gravatar: shethheta1990@gmail.com
 
-device_tracker.salonisanghvihome:
-  friendly_name: 'Saloni'
-
+device_tracker.life360_harshit:
+  friendly_name: 'Harshit'
   hidden: False
   homebridge_hidden: True
 
-device_tracker.neelshahsiphonesanghvihome:
-  friendly_name: 'Neel'
-
-  hidden: False
-  homebridge_hidden: True
-
-device_tracker.kalpanasiphonesanghvihome:
-  friendly_name: 'Kalpana'
-
-  hidden: False
-  homebridge_hidden: True
-
-device_tracker.android4d7dd24268c2601csanghvihome:
-  friendly_name: 'Hemant'
-
+device_tracker.life360_heta:
+  friendly_name: 'Heta'
   hidden: False
   homebridge_hidden: True

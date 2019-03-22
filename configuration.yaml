@@ -227,7 +227,7 @@ media_player:
     # show_all_controls: true
     use_episode_art: true
     remove_unavailable_clients: true
-    use_custom_entity_ids: true
+    # use_custom_entity_ids: true
 
   - platform: samsungtv
     host: !secret samsung_tv_ip

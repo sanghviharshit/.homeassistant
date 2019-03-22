@@ -30,6 +30,5 @@ notify_engine:
             notify.ios_family
           {% endif %}
       data_template:
-        message: "{{ value1 }} {{ value2 }} {{ value3 }}"
-        data:
-          subtitle: "Home Assistant Notify"
+        title: "{{ value1 }}"
+        message: "{{ value2 }} {{ value3 }}"
