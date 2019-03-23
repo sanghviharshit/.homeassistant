@@ -7,7 +7,7 @@
 # Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
 ######################################################################################################
 
-play_media:
+play_custom_media:
   sequence:
     - condition: and
       conditions:
