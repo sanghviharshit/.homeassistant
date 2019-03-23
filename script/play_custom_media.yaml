@@ -45,9 +45,10 @@ play_custom_media:
     #     media_player: 'media_player.livingroomcc'
     #     volume_level: 0.22
 
+    # TODO - remove duplicate code from speech_processing.yaml (<- has tts)
     - wait_template: >
         {{ states.media_player.media_room.attributes.media_duration and states.media_player.media_room.attributes.media_duration < 30 and not is_state(sonos_entity|default('media_player.media_room'), 'playing') }}
-      timeout: '00:00:10'
+      timeout: '00:00:05'
 
     - service: media_player.sonos_snapshot
       data_template:
@@ -79,7 +80,7 @@ play_custom_media:
         media_content_id: "{{ media_content_id }}"
         media_content_type: "{{ media_content_type }}"
 
-    - delay: "{{ delay|default('00:00:05') }}"
+    - delay: "{{ delay|default('00:00:01') }}"
 
     - wait_template: "{{ is_state(sonos_entity|default('media_player.media_room'), 'playing') }}"
       timeout: '00:00:10'
