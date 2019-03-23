@@ -554,17 +554,16 @@
       data_template:
         entity_id: >
           {{ media_player|default('media_player.media_room') }}
-        volume_level: 0.1
+        volume_level: 0
 
+    - wait_template: "{{ states.media_player.media_room.attributes and states.media_player.media_room.attributes.media_title != 'Advertisement'}}"
+      timeout: '00:00:30'
+
+    - delay: 00:00:02
+    # when there are 2 ads back to back.
     - wait_template: "{{ states.media_player.media_room.attributes and states.media_player.media_room.attributes.media_title != 'Advertisement'}}"
       timeout: '00:00:30'
 
     - service: media_player.sonos_restore
       data_template:
         entity_id: "{{ media_player|default('media_player.media_room') }}"
-
-    - service: script.notify_engine
-      data_template:
-        who: 'harshit'
-        value1: "Spotify ad finished playing"
-        value2: "And you got your music back"
