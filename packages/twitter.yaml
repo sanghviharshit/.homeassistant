@@ -36,7 +36,7 @@ sensor:
       tts_time:
         friendly_name: "TTS Time"
         value_template: >
-          {% if (states.media_player.media_room.state == 'playing' and  states.media_player.media_room.media_album_name == 'Amazon Polly') %}
+          {% if (states.media_player.media_room.state == 'playing' and  states.media_player.media_room.attributes.media_album_name and states.media_player.media_room.attributes.media_album_name == 'Amazon Polly') %}
             {{states.media_player.media_room.state}}
           {% else %}
             idle
