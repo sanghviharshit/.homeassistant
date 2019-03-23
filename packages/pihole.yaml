@@ -99,6 +99,7 @@ group:
 
 automation:
   - alias: PiHole Daily stats Tweet!
+    initial_state: 'off'
     trigger:
       platform: time
       at: '23:50:00'
@@ -120,6 +121,7 @@ automation:
             ] | random }}
 
   - alias: PiHole Daily Client Tweet!
+    initial_state: 'off'
     trigger:
       platform: time
       at: '04:30:00'

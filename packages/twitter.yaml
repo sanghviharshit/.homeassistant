@@ -147,7 +147,7 @@ group:
 
 automation:
   - alias: 'Random House stats'
-    hide_entity: True
+    initial_state: 'off'
     trigger:
       - platform: time_pattern
         hours: '/2'
