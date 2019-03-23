@@ -15,7 +15,7 @@ condition:
     - thu
     - fri
   - condition: state
-    entity_id: switch.delay_alerts
+    entity_id: input_boolean.delay_alerts
     state: 'on'
   - condition: state
     entity_id: device_tracker.life360_harshit
