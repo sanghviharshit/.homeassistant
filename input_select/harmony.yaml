@@ -12,10 +12,9 @@ livingroomharmony:
 hdmiswitcher:
   name: HDMI Switcher
   options:
-    - AppleTV
     - FireTV
     - Pi
-  initial: AppleTV
+  initial: FireTV
   icon: mdi:remote
 
 hdmiinput:
@@ -23,7 +22,5 @@ hdmiinput:
   options:
     - InputHdmi1
     - InputHdmi2
-    - InputHDMI3
-    - InputHdmi4
-  initial: InputHdmi4
+  initial: InputHdmi1
   icon: mdi:remote

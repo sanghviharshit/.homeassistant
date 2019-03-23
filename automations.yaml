@@ -296,12 +296,21 @@
       data_template:
         entity_id: input_select.hdmiswitcher
         option: >
-          {%- if state_attr('remote.livingroom','current_activity') == "Watch Apple TV" -%}
-            AppleTV
-          {%- elif state_attr('remote.livingroom','current_activity') == "Watch Fire TV" -%}
+          {%- if state_attr('remote.livingroom','current_activity') == "Watch Fire TV" -%}
             FireTV
-          {%- else -%}
+          {%- elif state_attr('remote.livingroom','current_activity') == "Watch Pi" -%}
             Pi
+          {%- else -%}
+            Input3
+          {%- endif -%}
+    - service: input_select.select_option
+      data_template:
+        entity_id: input_select.hdmiinput
+        option: >
+          {%- if state_attr('remote.livingroom','current_activity') == "Watch Apple TV" -%}
+            InputHdmi2
+          {%- else -%}
+            InputHdmi1
           {%- endif -%}
 
 - id: update_tv_status_in_ha
@@ -315,18 +324,18 @@
       data:
         entity_id: input_boolean.tv
 
-- id: turn_on_off_media_center_with_tv
-  alias: Turn Shield on/off with TV
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: media_player.living_room_tv
-  action:
-    - service: remote.send_command
-      data_template:
-        command: "{{ 'PowerOff' if trigger.to_state.state == 'off' else 'PowerOn' }}"
-        device: 31747959
-        entity_id: remote.livingroom
+# - id: turn_on_off_media_center_with_tv
+#   alias: Turn Shield on/off with TV
+#   initial_state: 'on'
+#   trigger:
+#     - platform: state
+#       entity_id: media_player.living_room_tv
+#   action:
+#     - service: remote.send_command
+#       data_template:
+#         command: "{{ 'PowerOff' if trigger.to_state.state == 'off' else 'PowerOn' }}"
+#         device: 31747959
+#         entity_id: remote.livingroom
 
 - id: turn_tv_on_off
   alias: Turn TV on/off
@@ -338,12 +347,12 @@
     - service: remote.send_command
       data_template:
         command: Home
-        device: 31747959
+        device: 61623541
         entity_id: remote.livingroom
     - service: remote.send_command
       data_template:
         command: "{{ 'PowerOff' if trigger.to_state.state == 'off' else 'PowerOn' }}"
-        device: 56988979
+        device: 61623541
         entity_id: remote.livingroom
 
 - id: set_volume
@@ -414,14 +423,12 @@
     - service: remote.send_command
       data_template:
         command: >-
-          {%- if trigger.to_state.state == "AppleTV" -%}
+          {%- if trigger.to_state.state == "FireTV" -%}
             Input1
-          {%- elif trigger.to_state.state == "FireTV" -%}
-            Input2
           {%- elif trigger.to_state.state == "Pi" -%}
-            Input3
+            Input2
           {%- endif -%}
-        device: 31766668
+        device: 61854830
         entity_id: remote.livingroom
 
 - id: change_hdmi_input
@@ -438,12 +445,8 @@
             InputHdmi1
           {%- elif trigger.to_state.state == "InputHdmi2" -%}
             InputHdmi2
-          {%- elif trigger.to_state.state == "InputHDMI3" -%}
-            InputHDMI3
-          {%- elif trigger.to_state.state == "InputHdmi4" -%}
-            InputHdmi4
           {%- endif -%}
-        device: 56988979
+        device: 61623541
         entity_id: remote.livingroom
 
 - id: update_volume_slider
