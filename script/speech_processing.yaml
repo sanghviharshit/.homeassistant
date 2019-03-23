@@ -40,7 +40,7 @@ speech_processing:
         #       entity_id: input_boolean.alert_mode
         #       state: 'on'
         - condition: state
-          entity_id: switch.speech_notifications
+          entity_id: input_boolean.speech_notifications
           state: 'on'
 
     - service: media_player.sonos_snapshot

@@ -115,7 +115,7 @@ input_boolean.sleepy_dog:
 
 
 
-switch.speech_notifications:
+input_boolean.speech_notifications:
   friendly_name: 'Speech Notifications'
 
   hidden: False
@@ -133,7 +133,7 @@ input_boolean.tv_time:
 
 
 
-switch.workday:
+input_boolean.workday:
   friendly_name: 'Workday'
 
   hidden: False

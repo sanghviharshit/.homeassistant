@@ -3,27 +3,26 @@
   trigger:
     # TODO - integrate with google calendar for PTO events
     - platform: state
-      entity_id: switch.workday
+      entity_id: input_boolean.workday
       to: 'on'
     - platform: state
       entity_id: binary_sensor.workday_sensor
       to: 'on'
 
   action:
-    - service: switch.turn_on
-      entity_id: switch.workday
-
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.workday
 
 - alias: Workday Off
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: switch.workday
+      entity_id: input_boolean.workday
       to: 'off'
     - platform: state
       entity_id: binary_sensor.workday_sensor
       to: 'off'
 
   action:
-    - service: switch.turn_off
-      entity_id: switch.workday
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.workday
