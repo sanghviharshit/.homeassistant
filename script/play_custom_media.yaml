@@ -45,10 +45,13 @@ play_custom_media:
     #     media_player: 'media_player.livingroomcc'
     #     volume_level: 0.22
 
+    - wait_template: >
+        {{ states.media_player.media_room.attributes.media_duration and states.media_player.media_room.attributes.media_duration < 30 and not is_state(sonos_entity|default('media_player.media_room'), 'playing') }}
+      timeout: '00:00:10'
+
     - service: media_player.sonos_snapshot
       data_template:
         entity_id: "{{ media_player|default('media_player.media_room') }}"
-
 
     - service: media_player.volume_set
       data_template:
@@ -73,13 +76,8 @@ play_custom_media:
       data_template:
         entity_id: >
           {{ media_player_entity|default('media_player.media_room') }}
-        media_content_id: >
-          {% if now().strftime("%M")|int == 30 %}
-          https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/cuckoo-clock-01.wav
-          {% else %}
-          https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/cuckoo-clock-{{now().strftime("%I")}}.wav
-          {% endif %}
-        media_content_type: audio/mp4
+        media_content_id: "{{ media_content_id }}"
+        media_content_type: "{{ media_content_type }}"
 
     - delay: "{{ delay|default('00:00:05') }}"
 
