@@ -534,7 +534,7 @@
   trigger:
     - platform: template
       value_template: >
-        {% if (states.media_player.media_room.state == 'playing' and  states.media_player.media_room.media_title == 'Advertisement') %}
+        {% if (states.media_player.media_room.state == 'playing' and  states.media_player.media_room.attributes and states.media_player.media_room.attributes.media_title == 'Advertisement') %}
           true
         {% else %}
           false
