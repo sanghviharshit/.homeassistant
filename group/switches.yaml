@@ -4,3 +4,13 @@ All Switches:
     - switch.wemo_switch_2
     - switch.round_button_1
     - switch.square_button_1
+
+
+Settings:
+  control: hidden
+  entities:
+    - switch.speech_notifications
+    - switch.text_notifications
+    - switch.delay_alerts
+    - switch.workday
+    - switch.briefings

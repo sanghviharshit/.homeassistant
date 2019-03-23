@@ -3,6 +3,7 @@
 ######################################################################
 
 - alias: Meal Time
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: input_boolean.meal_time

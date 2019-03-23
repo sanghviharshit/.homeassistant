@@ -8,16 +8,6 @@ alert_mode:
   icon: mdi:alert-octagram
   initial: off
 
-speech_notifications:
-  name: Speech Notifications
-  icon: mdi:speaker-wireless
-  initial: on
-
-text_notifications:
-  name: Text Notifications
-  icon: mdi:cellphone-wireless
-  initial: on
-
 sleeping_mode:
   name: Sleeping Mode
   icon: mdi:sleep

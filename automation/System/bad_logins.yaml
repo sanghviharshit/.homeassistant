@@ -3,6 +3,7 @@
 ###################################
 
 - alias: Login Failure
+  initial_state: 'on'
   hide_entity: True
   trigger:
     platform: template
@@ -11,9 +12,8 @@
   action:
     - service: script.notify_engine
       data_template:
-        value1: 'Bad Login: '
-        value2: 'There was a Hack attempt!'
-        value3: 'Go Check the GUI for details.'
+        value1: "{{ states.persistent_notification.httplogin.attributes.message }}"
+        value2: 'url: https://whatismyipaddress.com/ip/{{ states.persistent_notification.httplogin.attributes.message.split("from")[1]}}'
         who: 'harshit'
 
     - service: script.tweet_engine

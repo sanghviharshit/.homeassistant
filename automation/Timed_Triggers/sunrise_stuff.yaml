@@ -2,7 +2,8 @@
 ##  Sunrise and Sunset stuff
 ###################################
 
-- alias: 'Sunrise Stuff Off'
+- alias: 'Sunrise Stuff'
+  initial_state: 'off'
   trigger:
     - platform: sun
       event: sunrise

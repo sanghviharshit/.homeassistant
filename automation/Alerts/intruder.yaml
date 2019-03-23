@@ -2,7 +2,7 @@
 ##  Door Open Announcements
 ######################################################################
 - alias: 'Intruder Alert'
-
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id:
@@ -40,9 +40,3 @@
     - service: script.speech_engine
       data_template:
         value1: 'Intruder detected. Please leave or I am alerting the authorities.'
-
-    - service: light.turn_on
-      entity_id:
-        - group.interior_lights
-      data_template:
-        color_name: red

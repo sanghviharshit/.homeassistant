@@ -3,6 +3,7 @@
 ######################################################################
 
 - alias: 'Dark House Extra Lights'
+  initial_state: 'off'
   trigger:
     - platform: numeric_state
       entity_id: sun.sun

@@ -2,27 +2,27 @@
 ##  Speak Max!  Speak Max!!
 ######################################################################
 
-# TODO - merge with intruder alert, so they don't go in race condition.
 - alias: Guard Dog
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: input_boolean.guard_dog
       to: 'on'
       from: 'off'
-    - platform: state
-      entity_id: binary_sensor.entry_points
-      from: 'off'
-      to: 'on'
+    # - platform: state
+    #   entity_id: binary_sensor.entry_points
+    #   from: 'off'
+    #   to: 'on'
 
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: group.family
-        state: 'not_home'
-      - condition: state
-        entity_id: input_boolean.guest_mode
-        state: 'off'
+  # condition:
+  #   condition: and
+  #   conditions:
+  #     - condition: state
+  #       entity_id: group.family
+  #       state: 'not_home'
+  #     - condition: state
+  #       entity_id: input_boolean.guest_mode
+  #       state: 'off'
 
   action:
     - service: script.dog_bark

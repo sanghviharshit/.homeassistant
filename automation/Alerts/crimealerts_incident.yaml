@@ -1,11 +1,12 @@
 alias: Neighborhood Crime Alert
+initial_state: 'on'
 trigger:
   platform: event
   event_type: crimealerts_incident
 action:
   - service: script.notify_engine
     data_template:
-      who: 'harshit'
+      who: 'family'
       value1: 'Crime alert in the neighborhood. {{trigger.event.data}}'
 
   - service: script.speech_engine

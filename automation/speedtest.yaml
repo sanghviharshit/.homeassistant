@@ -9,13 +9,15 @@
 
 
 - alias: "Internet Speed Poor"
+  initial_state: 'on'
+
   trigger:
     - platform: template
       value_template: "{{ states('sensor.speedtest_download')|float < 10 }}"
   action:
-    - service: script.speech_engine
-      data_template:
-        value1: "The internet speed is low again! Download: {{ states('sensor.speedtest_download') }} | Upload: {{ states('sensor.speedtest_download') }} | Ping: {{ states('sensor.speedtest_ping') }}"
+    # - service: script.speech_engine
+    #   data_template:
+    #     value1: "The internet speed is low again! Download: {{ states('sensor.speedtest_download') }} | Upload: {{ states('sensor.speedtest_download') }} | Ping: {{ states('sensor.speedtest_ping') }}"
     - service: script.notify_engine
       data_template:
         who: 'harshit'

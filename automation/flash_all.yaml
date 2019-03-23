@@ -2,6 +2,7 @@
 ##  Flash all the lights!
 ######################################################################
 - alias: 'Flash All Lights'
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: input_boolean.flash
@@ -17,8 +18,8 @@
         entity_id:
           - group.living_room_lights
           - group.kitchen_lights
-          - group.hallway_lights
-          - group.bedroom_lights
+          # - group.hallway_lights
+          # - group.bedroom_lights
         # Integer between 0 and 255 for how bright the color should be.
         brightness: >
           {% set hour=states("sensor.time").split(':')[0] | int %}

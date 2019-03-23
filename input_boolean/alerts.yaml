@@ -1,4 +1,0 @@
-delay_alerts:
-  name: Delays Alert
-  initial: on
-  icon: mdi:car-connected

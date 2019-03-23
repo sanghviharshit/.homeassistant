@@ -3,6 +3,7 @@
 ##############################################################################
 
 - alias: "New Device Alert"
+  initial_state: 'on'
   trigger:
     - platform: event
       event_type: device_tracker_new_device

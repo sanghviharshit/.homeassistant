@@ -15,10 +15,6 @@ tv_time:
   name: TV Time
   initial: off
 
-work:
-  name: Work
-  initial: off
-
 flash:
   name: Flash
   initial: off

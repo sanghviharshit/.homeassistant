@@ -4,15 +4,12 @@
 
 
 - alias: Forgotten Lights WatchDog
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: group.all_lights
       to: 'on'
-      for: '01:00:00'
-    - platform: state
-      entity_id: group.all_switches
-      to: 'on'
-      for: '01:00:00'
+      for: '00:30:00'
 
   condition:
     condition: and
@@ -26,11 +23,12 @@
 
 
   action:
-    - service: switch.turn_off
+    - service: light.turn_off
       data_template:
         entity_id: "{{ trigger.entity_id }}"
 
 - alias: Daytime Lights WatchDog
+  initial_state: 'off'
   trigger:
     - platform: time_pattern
       minutes: 10
@@ -44,10 +42,42 @@
       entity_id: sun.sun
       state: 'above_horizon'
 
-#Turn it off!
   action:
     - service: homeassistant.turn_off
       data_template:
         entity_id:
           - group.hallway_lights
           - group.bedroom_lights
+
+
+- alias: Nighttime Lights WatchDog
+  trigger:
+    - platform: state
+      entity_id: group.all_lights
+      to: 'on'
+      for: '00:10:00'
+
+  condition:
+    condition: or
+    conditions:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: group.family
+            state: 'not_home'
+          - condition: state
+            entity_id: input_boolean.guest_mode
+            state: 'off'
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_boolean.guest_mode
+            state: 'off'
+      - condition: time
+        after: '01:00:00'
+        before: '07:00:00'
+
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: "{{ trigger.entity_id }}"
