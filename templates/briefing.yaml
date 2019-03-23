@@ -173,7 +173,7 @@
 
       {# Get person's pronoun #}
       {%- macro get_pronoun(device_entity) -%}
-        {%- if device_entity.split('.')[1].split('_')[0] == "harshits" -%}
+        {%- if device_entity.split('.')[1].split('_')[1] == "harshit" -%}
           his
         {%- else -%}
           her
@@ -287,19 +287,21 @@
       {%- endmacro %}
       #}
 
-      {# Pollen sentence #}
+      {# Pollen sentence
       {% macro pollen_sentence() -%}
         {%- if states.sensor.pollen.state|float > 7.2 -%}
           High pollen levels today.
         {%- endif -%}
       {%- endmacro %}
+      #}
 
-      {# Cold/Flu sentence #}
+      {# Cold/Flu sentence
       {% macro cold_flu_sentence() -%}
         {%- if states.sensor.cold_flu.state|float > 7.2 -%}
           High risk for airborne sickness today. Be careful!
         {%- endif -%}
       {%- endmacro %}
+      #}
 
       {# Org status sentence
       {% macro org_status_sentence() -%}
@@ -334,8 +336,8 @@
           Good evening.
         {% endif %}
         {{weather_sentence(true)}}
-        {{pollen_sentence()}}
-        {{cold_flu_sentence()}}
+        {# {{pollen_sentence()}} #}
+        {# {{cold_flu_sentence()}} #}
         {# {{org_status_sentence()}} #}
         {{everyones_commute_sentence()}}
         {{morning_closing_sentence("")}}
