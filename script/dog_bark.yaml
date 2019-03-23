@@ -9,7 +9,7 @@
 
 dog_bark:
   sequence:
-    - service: media_player.play_custom_media
+    - service: script.play_custom_media
       data_template:
         media_content_id: "https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/dog-barking-2-bullmastiff.mp3"
         media_content_type: audio/mp4
