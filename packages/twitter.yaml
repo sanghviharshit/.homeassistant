@@ -31,6 +31,17 @@ sensor:
     duration:
       hours: 24
 
+  - platform: template
+    sensors:
+      tts_time:
+        friendly_name: "TTS Time"
+        value_template: >
+          {% if (states.media_player.media_room.state == 'playing' and  states.media_player.media_room.media_album_name == 'Amazon Polly') %}
+            {{states.media_player.media_room.state}}
+          {% else %}
+            idle
+          {% endif %}
+
   - platform: history_stats
     name: TV time
     entity_id: group.media_players
@@ -42,7 +53,7 @@ sensor:
 
   - platform: history_stats
     name: Speech time
-    entity_id: media_player.media_room
+    entity_id: sensor.tts_time
     state: 'playing'
     type: time
     end: '{{ now() }}'

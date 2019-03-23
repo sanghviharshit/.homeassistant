@@ -1,6 +1,11 @@
 initialize_hass:
   alias: 'Initialize HASS after restart'
   sequence:
+    - service: script.notify_engine
+      data_template:
+        value1: 'Startup: Home Assistant is Up and Running!'
+        who: 'harshit'
+
     - service: frontend.set_theme
       data:
         name: "oxfordblue"

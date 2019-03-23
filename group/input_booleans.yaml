@@ -1,12 +1,3 @@
-Settings:
-  control: hidden
-  entities:
-    - input_boolean.speech_notifications
-    - input_boolean.text_notifications
-    - input_boolean.delay_alerts
-    # TODO Use either switch or input_booleans
-    - switch.briefings
-
 Home Modes:
   control: hidden
   entities:

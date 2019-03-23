@@ -4,7 +4,8 @@
 # Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
 ###################################
 
-- alias: 'Sunset Stuff On'
+- alias: 'Sunset Stuff'
+  initial_state: 'off'
   trigger:
     - platform: state
       entity_id: sun.sun

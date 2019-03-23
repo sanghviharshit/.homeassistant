@@ -5,6 +5,7 @@
 ##############################################################################
 
 - alias: "Notify if IP changes"
+  initial_state: 'on'
   hide_entity: True
   trigger:
     - platform: state
@@ -16,7 +17,7 @@
       data_template:
         value1: 'Changed IP address:'
         value2: "New IP: {{ states('sensor.exteral_ip') }}"
-        value3: ' - Be sure to Change DNS!'
+        # value3: ' - Be sure to Change DNS!'
         who: 'harshit'
 
     - service: script.tweet_engine

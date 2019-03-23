@@ -35,16 +35,19 @@
     - condition: time
       after: '09:00:00'
       before: '11:00:00'
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+    # - condition: time
+    #   weekday:
+    #     - mon
+    #     - tue
+    #     - wed
+    #     - thu
+    #     - fri
     - condition: state
       entity_id: device_tracker.life360_harshit
       state: 'home'
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
   action:
     - service: sensor.google_travel_sensor_update
       data:
@@ -58,15 +61,18 @@
       minutes: '/2'
   condition:
     - condition: time
-      after: '16:00:00'
+      after: '16:30:00'
       before: '18:00:00'
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+    # - condition: time
+    #   weekday:
+    #     - mon
+    #     - tue
+    #     - wed
+    #     - thu
+    #     - fri
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
     - condition: template
       value_template: >
         {%- if states('device_tracker.life360_harshit') -%}
@@ -83,25 +89,27 @@
   alias: "Morning Commute"
   initial_state: 'on'
   condition:
-    condition: and
-    conditions:
-     - condition: time
-       after: '10:15:00'
-       before: '11:00:00'
-     - condition: time
-       weekday:
-         - mon
-         - tue
-         - wed
-         - thu
-         - fri
-     - condition: state
-       entity_id: device_tracker.life360_harshit
-       state: 'home'
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+     # - condition: time
+     #   weekday:
+     #     - mon
+     #     - tue
+     #     - wed
+     #     - thu
+     #     - fri
+    - condition: time
+      after: '9:00:00'
+      before: '11:00:00'
+
+    - condition: state
+      entity_id: device_tracker.life360_harshit
+      state: 'home'
   trigger:
-    platform: numeric_state
-    entity_id: sensor.his_morning_commute
-    below: 25
+    - platform: numeric_state
+      entity_id: sensor.his_morning_commute
+      below: 25
   action:
     - service: script.notify_engine
       data_template:
@@ -114,29 +122,31 @@
   alias: "Evening Commute"
   initial_state: 'on'
   condition:
-    condition: and
-    conditions:
-     - condition: time
-       after: '17:00:00'
-       before: '20:00:00'
-     - condition: time
-       weekday:
-         - mon
-         - tue
-         - wed
-         - thu
-         - fri
-     - condition: template
-       value_template: >
-         {%- if states('device_tracker.life360_harshit') -%}
-           {{ states('device_tracker.life360_harshit') != 'home' }}
-         {%- else -%}
-           false
-         {%- endif -%}
+
+    - condition: time
+      after: '16:30:00'
+      before: '18:00:00'
+    # - condition: time
+    #   weekday:
+    #    - mon
+    #    - tue
+    #    - wed
+    #    - thu
+    #    - fri
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'on'
+    - condition: template
+      value_template: >
+       {%- if states('device_tracker.life360_harshit') -%}
+         {{ states('device_tracker.life360_harshit') != 'home' }}
+       {%- else -%}
+         false
+       {%- endif -%}
   trigger:
-    platform: numeric_state
-    entity_id: sensor.his_evening_commute
-    below: 25
+    - platform: numeric_state
+      entity_id: sensor.his_evening_commute
+      below: 25
 
     # When driving
     # platform: template
@@ -160,8 +170,8 @@
   alias: "Plex Spy notification"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: sensor.tautulli
+    - platform: state
+      entity_id: sensor.tautulli
   condition:
     - condition: numeric_state
       entity_id: sensor.tautulli
@@ -266,9 +276,9 @@
   alias: "Set initial values on Harmony Start"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: remote.livingroom
-    to: 'on'
+    - platform: state
+      entity_id: remote.livingroom
+      to: 'on'
   action:
     - service: homeassistant.turn_on
       entity_id: input_boolean.tv
@@ -298,8 +308,8 @@
   alias: Update TV status in HA
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: media_player.living_room_tv
+    - platform: state
+      entity_id: media_player.living_room_tv
   action:
     - service_template: "homeassistant.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}"
       data:
@@ -309,8 +319,8 @@
   alias: Turn Shield on/off with TV
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: media_player.living_room_tv
+    - platform: state
+      entity_id: media_player.living_room_tv
   action:
     - service: remote.send_command
       data_template:
@@ -322,8 +332,8 @@
   alias: Turn TV on/off
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: input_boolean.tv
+    - platform: state
+      entity_id: input_boolean.tv
   action:
     - service: remote.send_command
       data_template:
@@ -340,8 +350,8 @@
   alias: "Set Volume"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: input_number.harmonyvolume
+    - platform: state
+      entity_id: input_number.harmonyvolume
   action:
     - service: media_player.volume_set
       data_template:
@@ -352,20 +362,20 @@
   alias: "Start Harmony activity from input_select"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: input_select.livingroomharmony
+    - platform: state
+      entity_id: input_select.livingroomharmony
   action:
-  - service: remote.turn_on
-    data_template:
-      entity_id: remote.livingroom
-      activity: "{{trigger.to_state.state}}"
+    - service: remote.turn_on
+      data_template:
+        entity_id: remote.livingroom
+        activity: "{{trigger.to_state.state}}"
 
 - id: update_ha_if_harmony_activity_changes
   alias: "Update HA if Harmony activity changes"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: sensor.living_room
+    - platform: state
+      entity_id: sensor.living_room
   action:
     - service: input_select.select_option
       data_template:
@@ -387,8 +397,8 @@
   alias: Update HA after startup
   initial_state: 'on'
   trigger:
-    platform: homeassistant
-    event: start
+    - platform: homeassistant
+      event: start
   action:
     - delay: '00:00:01'
     - service: homeassistant.turn_on
@@ -398,43 +408,43 @@
   alias: "Change HDMI Switcher"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: input_select.hdmiswitcher
+    - platform: state
+      entity_id: input_select.hdmiswitcher
   action:
-  - service: remote.send_command
-    data_template:
-      command: >-
-        {%- if trigger.to_state.state == "AppleTV" -%}
-          Input1
-        {%- elif trigger.to_state.state == "FireTV" -%}
-          Input2
-        {%- elif trigger.to_state.state == "Pi" -%}
-          Input3
-        {%- endif -%}
-      device: 31766668
-      entity_id: remote.livingroom
+    - service: remote.send_command
+      data_template:
+        command: >-
+          {%- if trigger.to_state.state == "AppleTV" -%}
+            Input1
+          {%- elif trigger.to_state.state == "FireTV" -%}
+            Input2
+          {%- elif trigger.to_state.state == "Pi" -%}
+            Input3
+          {%- endif -%}
+        device: 31766668
+        entity_id: remote.livingroom
 
 - id: change_hdmi_input
   alias: "Change HDMI Input"
   initial_state: 'on'
   trigger:
-    platform: state
-    entity_id: input_select.hdmiinput
+    - platform: state
+      entity_id: input_select.hdmiinput
   action:
-  - service: remote.send_command
-    data_template:
-      command: >-
-        {%- if trigger.to_state.state == "InputHdmi1" -%}
-          InputHdmi1
-        {%- elif trigger.to_state.state == "InputHdmi2" -%}
-          InputHdmi2
-        {%- elif trigger.to_state.state == "InputHDMI3" -%}
-          InputHDMI3
-        {%- elif trigger.to_state.state == "InputHdmi4" -%}
-          InputHdmi4
-        {%- endif -%}
-      device: 56988979
-      entity_id: remote.livingroom
+    - service: remote.send_command
+      data_template:
+        command: >-
+          {%- if trigger.to_state.state == "InputHdmi1" -%}
+            InputHdmi1
+          {%- elif trigger.to_state.state == "InputHdmi2" -%}
+            InputHdmi2
+          {%- elif trigger.to_state.state == "InputHDMI3" -%}
+            InputHDMI3
+          {%- elif trigger.to_state.state == "InputHdmi4" -%}
+            InputHdmi4
+          {%- endif -%}
+        device: 56988979
+        entity_id: remote.livingroom
 
 - id: update_volume_slider
   alias: "Update Volume Slider"

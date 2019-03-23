@@ -232,6 +232,13 @@ media_player:
   - platform: samsungtv
     host: !secret samsung_tv_ip
 
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+    # aliases:
+        # abc123def456: 'Living Room'
+        # 9183abas000: 'Bed Room'
+
 remote:
   - platform: harmony
     name: livingroom
@@ -239,8 +246,7 @@ remote:
 
 # apple_tv:
 #   - host: 192.168.1.229
-#     login_id: 00000000-4ed1-c48d-9df9-df88baa045bc
-#     name: Apple TV (Wired)
+#     name: Apple TV
 
 # Kodi
 #media_player:

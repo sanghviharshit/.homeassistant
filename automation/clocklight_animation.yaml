@@ -1,7 +1,6 @@
-automation: 
+automation:
   - alias: "Clock Animation Speed"
-    initial_state: True
-    hide_entity: False
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: input_number.clock_animation_speed

@@ -3,6 +3,7 @@
 ## Announce over all Chromecast Audios
 ######################################################################
 - alias: 'Friends Greeting'
+  initial_state: 'off'
   trigger:
     - platform: state
       entity_id:

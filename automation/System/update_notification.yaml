@@ -1,4 +1,5 @@
 - alias: "Update Available Notification"
+  initial_state: 'on'
   hide_entity: True
   trigger:
     platform: state
@@ -11,7 +12,8 @@
   action:
     - service: script.notify_engine
       data_template:
-        value1: "Home Assistant {{ states.updater.updater.state }} is now available. Current v{{ sensor.ha_installed_version }}"
+        value1: "Home Assistant {{ states.updater.updater.state }} is now available."
+        value2: "Current v{{ sensor.ha_installed_version }}"
         who: 'harshit'
 
     - service: script.tweet_engine_image

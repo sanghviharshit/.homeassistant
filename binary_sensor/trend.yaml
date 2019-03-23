@@ -1,4 +1,3 @@
-#TODO fix error with numpy python package import
 - platform: trend
   sensors:
     temp_falling:
@@ -16,11 +15,14 @@
     indoor_temp_falling:
       entity_id: sensor.bedroom_temperature
       sample_duration: 3600
-      min_gradient: -0.0005
+      # The gradient is measured in sensor units per second -
+      # so if you want to know when the temperature is falling by 2 degrees per hour -
+      #   use a gradient of (-2) / (60 x 60) = -0.00055
+      min_gradient: -0.0002
       device_class: cold
 
     indoor_temp_rising:
       entity_id: sensor.bedroom_temperature
       sample_duration: 3600
-      min_gradient: 0.0005
+      min_gradient: 0.0002
       device_class: heat

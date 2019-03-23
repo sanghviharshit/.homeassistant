@@ -2,8 +2,10 @@
 ##  LOG Medicine
 ###################################
 - alias: 'Log Medicine Activity'
+  initial_state: 'on'
   hide_entity: True
   trigger:
+    # TODO - dash button trigger
     # - platform: event
     #   event_type: medicine_dash
     - platform: state
