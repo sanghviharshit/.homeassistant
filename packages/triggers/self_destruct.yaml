@@ -41,7 +41,7 @@ automation:
       data:
         volume_level: 0.22
 
-    - service: media_player.play_custom_media
+    - service: script.play_custom_media
       data_template:
         media_content_id: >
           "https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/speechcons/self_destruct.mp3"
