@@ -183,6 +183,7 @@ sensor:
 automation:
   # Track and record departure time from home for everyone.
   - alias: Track Departure Time
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id:

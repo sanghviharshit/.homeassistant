@@ -58,6 +58,7 @@ input_boolean:
 
 automation:
   - alias: Tablet Already taken
+    initial_state: 'on'
     trigger:
       platform: event
       event_type: ios.notification_action_fired
@@ -71,6 +72,7 @@ automation:
         entity_id: input_boolean.medicine
 
   - alias: Remind Me Later
+    initial_state: 'on'
     trigger:
       platform: event
       event_type: ios.notification_action_fired
@@ -87,7 +89,7 @@ automation:
           message: "Now that your home, please take your medicine!"
 
   - alias: Medicine Reminder
-    initial_state: true
+    initial_state: 'on'
     trigger:
       - platform: time_pattern
         minutes: '/45'

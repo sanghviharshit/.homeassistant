@@ -79,6 +79,7 @@ switch:
 automation:
   # Set a briefing target manually.
   - alias: Set Briefing Target
+    initial_state: 'on'
     trigger:
       platform: state
       entity_id: input_select.briefing_target
@@ -93,6 +94,7 @@ automation:
   # wait a few seconds and then play the targeted briefing over TTS.
   # This briefing plays after individuals get home from work.
   - alias: Play Evening Briefing
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: binary_sensor.main_door
@@ -136,6 +138,7 @@ automation:
           value1: !include ../templates/briefing.yaml
 
   - alias: Play Briefing Trigger
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: input_boolean.play_briefing

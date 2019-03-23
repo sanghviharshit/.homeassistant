@@ -33,6 +33,7 @@ sensor:
 automation:
   # Set the most recent arrival.
   - alias: Set Latest Arrival
+    initial_state: 'on'
     trigger:
       platform: state
       entity_id:
@@ -47,6 +48,7 @@ automation:
           retain: true
   # Reset the first arrival daily.
   - alias: Reset first arrival
+    initial_state: 'on'
     trigger:
         platform: time
         at: '15:00:00'

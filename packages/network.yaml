@@ -60,6 +60,7 @@ sensor:
 #-------------------------------------------------------------------------------------
 automation:
   - alias: 'Device Status'
+    initial_state: 'on'
     hide_entity: True
     trigger:
       - platform: state
