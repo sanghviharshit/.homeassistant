@@ -41,15 +41,12 @@ automation:
       data:
         volume_level: 0.22
 
-    - service: media_player.play_media
-      entity_id:
-          - media_player.media_room
-          # - media_player.entry_alarm_panel
-          # - media_player.bedroom_alarm_panel
+    - service: media_player.play_custom_media
       data_template:
         media_content_id: >
           "https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/config/sounds/speechcons/self_destruct.mp3"
         media_content_type: audio/mp4
+
     - service: light.lifx_effect_pulse
       data:
         entity_id:

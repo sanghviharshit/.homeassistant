@@ -32,15 +32,10 @@ automation:
         to: 'on'
 
     action:
-      - service: tts.amazon_polly_say
-        entity_id:
-          - media_player.media_room
+      - service: script.speech_processing
         data_template:
-          message: >
-            <speak>
+          speech_message: >-
             {{states.sensor.last_message.state}}
-            </speak>
-          cache: true
 
       - service: input_boolean.turn_off
         entity_id:
