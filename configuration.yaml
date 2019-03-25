@@ -231,6 +231,10 @@ media_player:
     remove_unavailable_clients: true
     # use_custom_entity_ids: true
 
+  - platform: androidtv
+    name: Fire TV 1
+    host: 192.168.1.81
+
   - platform: samsungtv
     host: !secret samsung_tv_ip
 
