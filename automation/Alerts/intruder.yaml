@@ -32,7 +32,8 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "The {{ trigger.to_state.attributes.friendly_name }} was opened."
+        value1: "Intruder detected."
+        value2: "The {{ trigger.to_state.attributes.friendly_name }} was opened."
 
     - service: input_boolean.turn_on
       entity_id: input_boolean.alert_mode

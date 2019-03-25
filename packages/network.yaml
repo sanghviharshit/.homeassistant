@@ -81,7 +81,7 @@ automation:
       - service: script.notify_engine
         data_template:
           value1: 'Offline Devices:'
-          value3: "{{ states.sensor.network_detail.state }}"
+          value2: "{{ states.sensor.network_detail.state }}"
           who: 'harshit'
 
       # - service: script.speech_engine

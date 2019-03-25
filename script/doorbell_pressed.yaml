@@ -16,7 +16,8 @@ doorbell_pressed:
     - service: script.flash_notify
     - service: script.speech_engine
       data:
-        value1: 'Please check the Front Door. Someone Pressed the Doorbell.'
+        value1: 'Please check the Front Door'
+        value2: 'Someone Pressed the Doorbell.'
 
     - service: notify.ios_family
       data:

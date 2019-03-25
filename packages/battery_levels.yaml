@@ -53,5 +53,6 @@ automation:
           notification_id: low-battery-alert
       - service: script.notify_engine
         data_template:
-          value1: "Low battery levels: {{ states('sensor.critical_battery') }}"
+          value1: "Low battery level"
+          value2: "{{ states('sensor.critical_battery') }}"
           who: 'harshit'

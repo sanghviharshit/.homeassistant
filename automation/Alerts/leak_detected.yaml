@@ -1,0 +1,19 @@
+- alias: Alert if leak detected
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.leak_sensor_1
+      to: 'on'
+      for:
+        seconds: 30
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: 'harshit'
+        value1: 'Leak detected!'
+        value2: 'Please check.'
+
+    - service: script.speech_engine
+      data_template:
+        value1: 'There is a leak detected. Please check.'
