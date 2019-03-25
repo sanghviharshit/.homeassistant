@@ -1,4 +1,6 @@
 # Doesn't install uscisstatus on current docker image I'm using
-# - platform: uscis
-#   case_id: !secret uscis_heta_case_id
-#   friendly_name: Heta USCIS Case Status
+- platform: uscis
+  # TODO: Throws WARNING:homeassistant.helpers.config_validation:Your configuration contains extra keys that the platform does not support.
+  name: USCIS Case Heta
+  case_id: !secret uscis_case_id_heta
+  friendly_name: Heta USCIS Case Status
