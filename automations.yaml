@@ -114,7 +114,9 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "{{states.sensor.his_morning_commute.attributes.duration.split(' ')[0]|int}} minutes"
+        value1: "Your morning commute"
+        value2: "{{states.sensor.his_morning_commute.attributes.duration.split(' ')[0]|int}} minutes"
+
     - service: homeassistant.turn_on
       entity_id: script.notificationleavework
 
@@ -160,7 +162,8 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "Commute time is {{states.sensor.his_evening_commute.attributes.duration.split(' ')[0]|int}} minutes"
+        value1: "Your evening commute"
+        value2: "{{states.sensor.his_evening_commute.attributes.duration.split(' ')[0]|int}} minutes"
 
 #################################################################
 ## Alerts and notifications
@@ -179,8 +182,8 @@
 
     - condition: template
       value_template: >
-        {%- if states('device_tracker.life360_harshit') -%}
-          {{ states('device_tracker.life360_harshit') != 'home' }}
+        {%- if (states.sensor.tautulli.attributes['harshit_ps']['Activity'] == 'playing') -%}
+          true
         {%- else -%}
           false
         {%- endif -%}
@@ -188,7 +191,10 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: "Plex {{ trigger.to_state.state }} people streaming. "
+        value1: >
+          Plex 0 people streaming.
+          {%- if states.sensor.tautulli.attributes -%} (Bandwidth Total: {{states.sensor.tautulli.attributes['total_bandwidth']}}, LAN: {{states.sensor.tautulli.attributes['total_bandwidth']}})
+          {%- endif -%}
         value2: >
           {%- if states.sensor.tautulli.attributes -%}
           People currently watching Plex:

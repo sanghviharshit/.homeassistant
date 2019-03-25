@@ -7,7 +7,8 @@ action:
   - service: script.notify_engine
     data_template:
       who: 'family'
-      value1: 'Crime alert in the neighborhood. {{trigger.event.data}}'
+      value1: 'Crime alert in the neighborhood.'
+      value2: '{{trigger.event.data}}'
 
   - service: script.speech_engine
     data_template:
