@@ -246,8 +246,12 @@
   trigger:
     - platform: state
       entity_id:
-        - sensor.heta_1 # TODO Rename
+        - sensor.uscis_case_heta # TODO Rename
   action:
+    - service: script.speech_engine
+      data_template:
+        value1: "{{ trigger.to_state.name }} status updated. The new status is - {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}"
+
     - service: script.notify_engine
       data_template:
         who: family
