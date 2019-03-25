@@ -234,7 +234,7 @@
       to: 'unavailable'
       for: '00:05:00'
   action:
-    - service: notify.ios
+    - service: script.notify_engine
       data_template:
         who: harshit
         value1: "Check {{ trigger.to_state.name }}"
@@ -248,7 +248,7 @@
       entity_id:
         - sensor.heta_1 # TODO Rename
   action:
-    - service: notify.ios
+    - service: script.notify_engine
       data_template:
         who: family
         value1: "{{ trigger.to_state.name }} status updated"
@@ -373,6 +373,7 @@
         entity_id: media_player.media_room
         volume_level: >
           {{states('input_number.harmonyvolume') | int / 100}}
+
 - id: start_harmony_activity_from_input_select
   alias: "Start Harmony activity from input_select"
   initial_state: 'on'

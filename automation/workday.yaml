@@ -1,28 +1,12 @@
-- alias: Workday On
-  initial_state: 'on'
-  trigger:
-    # TODO - integrate with google calendar for PTO events
-    - platform: state
-      entity_id: input_boolean.workday
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.workday_sensor
-      to: 'on'
-
-  action:
-    - service: input_boolean.turn_on
-      entity_id: input_boolean.workday
-
-- alias: Workday Off
+- alias: Workday Switch
   initial_state: 'on'
   trigger:
     - platform: state
       entity_id: input_boolean.workday
-      to: 'off'
     - platform: state
       entity_id: binary_sensor.workday_sensor
-      to: 'off'
 
   action:
-    - service: input_boolean.turn_off
-      entity_id: input_boolean.workday
+    - service_template: "homeassistant.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}"
+      data:
+        entity_id: input_boolean.workday
