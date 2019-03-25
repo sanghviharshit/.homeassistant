@@ -534,18 +534,12 @@
   trigger:
     - platform: template
       value_template: >
-        {% if (states.media_player.media_room.state == 'playing' and  states.media_player.media_room.attributes and states.media_player.media_room.attributes.media_title == 'Advertisement') %}
+        {% if (states.media_player.spotify.state == 'playing' and states.sensor.sonos_volume.state == 0 and states.media_player.spotify.attributes and states.media_player.spotify.attributes.media_title == 'Advertisement') %}
           true
         {% else %}
           false
         {% endif %}
   action:
-    - service: script.notify_engine
-      data_template:
-        who: 'harshit'
-        value1: "Spotify ad playing"
-        value2: "Worry not, I am muting it!"
-
     - service: media_player.sonos_snapshot
       data_template:
         entity_id: "{{ media_player|default('media_player.media_room') }}"
