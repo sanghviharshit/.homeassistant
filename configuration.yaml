@@ -215,12 +215,10 @@ tts:
 # Media Players
 # TODO - add universal media player - https://www.home-assistant.io/components/media_player.universal/
 
-# cast:
-#   media_player:
-#     host:
-#       - 192.168.1.80
-#       - 192.168.1.30
-#       - 192.168.1.82
+cast:
+  media_player:
+    host:
+      - 192.168.1.90
 
 media_player:
   - platform: plex
@@ -233,7 +231,7 @@ media_player:
 
   - platform: androidtv
     name: Fire TV 1
-    host: 192.168.1.81
+    host: !secret fire_tv_ip
 
   - platform: samsungtv
     host: !secret samsung_tv_ip
@@ -245,25 +243,27 @@ media_player:
         # abc123def456: 'Living Room'
         # 9183abas000: 'Bed Room'
 
+  - platform: kodi
+    # Kodi - https://www.home-assistant.io/components/media_player.kodi/
+    host: !secret fire_tv_ip
+    port: 8080
+    # tcp_port: 9090
+    name: Kodi on Fire TV
+    username: !secret kodi_username
+    password: !secret kodi_password
+    # turn_on_action: none
+    # turn_off_action: none #The desired turn off action. Options are none, quit, hibernate, suspend, reboot, or shutdown. Default none.
+    enable_websocket: true
+
 remote:
   - platform: harmony
     name: livingroom
     host: !secret harmony_ip
 
-# apple_tv:
-#   - host: 192.168.1.229
-#     name: Apple TV
-
-# Kodi
-#media_player:
-#  platform: kodi
-#  host: http://192.168.1.80
-#  port: 8090
-#  name: Kodi on TV
-#  user: kodi
-#  password:
-#  turn_off_action: none #The desired turn off action. Options are none, quit, hibernate, suspend, reboot, or shutdown. Default none.
-#  enable_websocket: true
+apple_tv:
+  - host: 192.168.1.85
+    # name: Media Room ATV
+    login_id: 00000000-4ed1-c48d-9df9-df88baa045bc
 
 
 # Cameras

@@ -10,3 +10,14 @@
     - service_template: "homeassistant.turn_{{ 'on' if trigger.to_state.state == 'on' else 'off' }}"
       data:
         entity_id: input_boolean.workday
+
+- alias: Workday Reset Daily
+  initial_state: 'on'
+  trigger:
+    - platform: time
+      at: '06:00:00'
+
+  action:
+    - service_template: "homeassistant.turn_{{ 'on' if is_state('binary_sensor.workday_sensor', 'on') else 'off' }}"
+      data:
+        entity_id: input_boolean.workday
