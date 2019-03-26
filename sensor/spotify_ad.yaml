@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    spotify_ad_playing:
+      value_template: "{{ 'on' if states.media_player.media_room.attributes.media_title == 'Advertisement' else 'off' }}"
+      friendly_name: Spotify Ad
