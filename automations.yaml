@@ -529,13 +529,19 @@
   alias: "Mute spotify advrtisements"
   initial_state: 'on'
   trigger:
-    - platform: template
-      value_template: >
-        {% if (states.media_player.spotify.state == 'playing' and states.sensor.sonos_volume.state == 0 and states.media_player.spotify.attributes and states.media_player.spotify.attributes.media_title == 'Advertisement') %}
-          true
-        {% else %}
-          false
-        {% endif %}
+    - platform: state
+      entity_id: sensor.spotify_ad_playing
+      to: 'on'
+      from: 'off'
+
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.sonos_volume
+      above: 0
+    - condition: state
+      entity_id: media_player.media_room
+      state: 'playing'
+
   action:
     - service: media_player.sonos_snapshot
       data_template:
@@ -548,12 +554,12 @@
         volume_level: 0
 
     - wait_template: "{{ states.media_player.media_room.attributes and states.media_player.media_room.attributes.media_title != 'Advertisement'}}"
-      timeout: '00:00:30'
+      timeout: '00:00:40'
 
-    - delay: 00:00:02
+    - delay: 00:00:03
     # when there are 2 ads back to back.
     - wait_template: "{{ states.media_player.media_room.attributes and states.media_player.media_room.attributes.media_title != 'Advertisement'}}"
-      timeout: '00:00:30'
+      timeout: '00:00:40'
 
     - service: media_player.sonos_restore
       data_template:
