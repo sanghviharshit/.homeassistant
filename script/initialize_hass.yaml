@@ -13,6 +13,9 @@ initialize_hass:
       data:
         entity_id: input_select.current_theme
         option: "oxfordblue"
+    - service_template: "homeassistant.turn_{{ 'on' if is_state('binary_sensor.workday_sensor', 'on') else 'off' }}"
+      data:
+        entity_id: input_boolean.workday
     # - service: script.updatetracker
     #   data_template:
     #     entityid: 'device_tracker.life360_harshit'
