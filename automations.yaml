@@ -34,17 +34,10 @@
   condition:
     - condition: time
       after: '09:00:00'
-      before: '11:00:00'
-    # - condition: time
-    #   weekday:
-    #     - mon
-    #     - tue
-    #     - wed
-    #     - thu
-    #     - fri
+      before: '10:30:00'
     - condition: state
       entity_id: device_tracker.life360_harshit
-      state: 'home'
+      state: 'Home'
     - condition: state
       entity_id: input_boolean.workday
       state: 'on'
@@ -61,24 +54,14 @@
   condition:
     - condition: time
       after: '16:30:00'
-      before: '18:00:00'
-    # - condition: time
-    #   weekday:
-    #     - mon
-    #     - tue
-    #     - wed
-    #     - thu
-    #     - fri
+      before: '17:30:00'
     - condition: state
       entity_id: input_boolean.workday
       state: 'on'
-    - condition: template
-      value_template: >
-        {%- if states('device_tracker.life360_harshit') -%}
-          {{ states('device_tracker.life360_harshit')|lower in ('his_work', 'her_work') }}
-        {%- else -%}
-          false
-        {%- endif -%}
+    - condition: state
+      entity_id: device_tracker.life360_harshit
+      state: 'Work'
+
   action:
     - service: homeassistant.update_entity
       entity_id: sensor.his_evening_commute
@@ -93,11 +76,11 @@
 
     - condition: time
       after: '9:00:00'
-      before: '11:00:00'
+      before: '10:30:00'
 
     - condition: state
       entity_id: device_tracker.life360_harshit
-      state: 'home'
+      state: 'Home'
 
   trigger:
     - platform: numeric_state
@@ -120,17 +103,14 @@
   condition:
     - condition: time
       after: '16:30:00'
-      before: '18:00:00'
+      before: '17:30:00'
     - condition: state
       entity_id: binary_sensor.workday_sensor
       state: 'on'
-    - condition: template
-      value_template: >
-       {%- if states('device_tracker.life360_harshit') -%}
-         {{ states('device_tracker.life360_harshit') != 'home' }}
-       {%- else -%}
-         false
-       {%- endif -%}
+    - condition: state
+      entity_id: device_tracker.life360_harshit
+      state: 'Work'
+
   trigger:
     - platform: numeric_state
       entity_id: sensor.his_evening_commute
@@ -177,25 +157,24 @@
     - service: script.notify_engine
       data_template:
         who: 'harshit'
-        value1: >
-          Plex 0 people streaming.
-          {%- if states.sensor.tautulli.attributes -%} (Bandwidth Total: {{states.sensor.tautulli.attributes['total_bandwidth']}}, LAN: {{states.sensor.tautulli.attributes['total_bandwidth']}})
-          {%- endif -%}
+        value1: "Plex {{ trigger.to_state.state }} people streaming."
         value2: >
           {%- if states.sensor.tautulli.attributes -%}
-          People currently watching Plex:
             {% set space = joiner(', ') %}
             {%- for attr in states.sensor.tautulli.attributes -%}
               {%- if states.sensor.tautulli.attributes[attr]['Activity'] and attr != '1' -%}
-                {{space()}}{{attr}}
+              {{space()}}{{attr}}
               {%- endif -%}
             {%- endfor -%}
+          {%- endif -%}
+          {%- if states.sensor.tautulli.attributes -%}
+          (Bandwidth Total: {{states.sensor.tautulli.attributes['total_bandwidth']}}, LAN: {{states.sensor.tautulli.attributes['total_bandwidth']}})
           {%- endif -%}
 
     - service: logbook.log
       data_template:
         who: 'harshit'
-        value1: "Plex {{ trigger.to_state.state }} people streaming. "
+        value1: "Plex {{ trigger.to_state.state }} people streaming."
         value2: >
           {%- if states.sensor.tautulli.attributes -%}
             {% set space = joiner(', ') %}
