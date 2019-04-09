@@ -1,0 +1,19 @@
+######################################################################
+##  TV Time at sunset or 8pm.  Whichever is later.
+######################################################################
+
+- alias: Find my iPhone
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.find_my_iphone_harshit
+      to: 'on'
+      from: 'off'
+    - platform: state
+      entity_id: input_boolean.find_my_iphone_heta
+      to: 'on'
+      from: 'off'
+
+  action:
+    - service: icloud.icloud_lost_iphone
+      # device_name:

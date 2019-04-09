@@ -164,11 +164,16 @@
 
       {# Get person's device #}
       {% macro get_device(person) -%}
+        {#
         {% for device in states.device_tracker -%}
           {% if device.name == person -%}
             {{device.entity_id}}
           {%- endif %}
         {%- endfor %}
+        #}
+        {% macro get_device(person) -%}
+          {{"device_tracker.life360_" ~ person | lower}}
+        {%- endmacro %}
       {%- endmacro %}
 
       {# Get person's pronoun #}
