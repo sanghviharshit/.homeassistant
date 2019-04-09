@@ -11,7 +11,7 @@
   action:
     - service: script.notify_engine
       data_template:
-        who: 'family'
+        who: 'home'
         value1: 'The {{ trigger.to_state.attributes.friendly_name }} is open!'
         value2: 'Please close it.'
 
@@ -27,7 +27,7 @@
         - binary_sensor.main_door
       to: 'off'
       for:
-        seconds: 60
+        seconds: 120
 
   condition:
     - condition: state
@@ -41,7 +41,7 @@
   action:
     - service: script.notify_engine
       data_template:
-        who: 'family'
+        who: 'home'
         value1: 'The deadbolt is open!'
         value2: 'Please lock it'
 

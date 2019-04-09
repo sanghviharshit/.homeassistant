@@ -31,3 +31,13 @@ tv:
   name: TV Switch
   initial: off
   icon: mdi:television
+
+find_my_iphone_harshit:
+  name: Find Harshit's iPhone
+  initial: off
+  icon: mdi:cellphone-iphone
+
+find_my_iphone_heta:
+  name: Find Heta's iPhone
+  initial: off
+  icon: mdi:cellphone-iphone

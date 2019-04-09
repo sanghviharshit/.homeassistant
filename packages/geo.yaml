@@ -101,17 +101,16 @@ proximity:
     tolerance: 50
     unit_of_measurement: 'km'
 
-# TBD
+# TODO - automations based on the traveling direction sensors e.g. set thermostat
 binary_sensor:
   - platform: trend
     sensors:
       traveling_home:
         entity_id: proximity.his_home
-        device_class: presence
+        invert: true
       traveling_away:
         entity_id: proximity.his_home
-        device_class: presence
-        invert: true
+
 
 sensor:
   # His home departure time.

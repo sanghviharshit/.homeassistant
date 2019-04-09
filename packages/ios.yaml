@@ -3,11 +3,6 @@
 # @CCOSTAN
 # Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
 #-------------------------------------------
-# homeassistant:
-#   customize_glob:
-#     "sensor.harshits_iphone_6*":
-#
-#     "sensor.staceys_iphone_*":
 
 notify:
   - platform: ios
@@ -16,19 +11,7 @@ notify:
     services:
       - service: ios_harshits_iphone
       - service: ios_hetas_iphone
-  # - name: ios_parents
-  #   platform: group
-  #   services:
-  #     - service: ios_staceys_iphone
-  #     - service: ios_harshits_iphone_6s
 
-# group:
-#   Phones:
-#     entities:
-#       - sensor.harshits_iphone_6s_battery_level
-#       - sensor.harshits_iphone_6s_battery_state
-#       - sensor.staceys_iphone_battery_level
-#       - sensor.staceys_iphone_battery_state
 
 ## - Reminders to take my medicine
 ios:

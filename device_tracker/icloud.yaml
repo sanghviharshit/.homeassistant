@@ -1,0 +1,9 @@
+- platform: icloud
+  username: !secret icloud_uname_harshit
+  password: !secret icloud_pwd_harshit
+  account_name: harshit
+
+# - platform: icloud
+#   username: !secret icloud_uname_heta
+#   password: !secret icloud_pwd_heta
+#   account_name: heta

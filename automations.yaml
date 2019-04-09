@@ -37,7 +37,7 @@
       before: '10:30:00'
     - condition: state
       entity_id: device_tracker.life360_harshit
-      state: 'Home'
+      state: 'home'
     - condition: state
       entity_id: input_boolean.workday
       state: 'on'
@@ -543,3 +543,40 @@
     - service: media_player.sonos_restore
       data_template:
         entity_id: "{{ media_player|default('media_player.media_room') }}"
+
+###############################################################################
+# Alert me When the sensor fails
+###############################################################################
+- id: life360_overdue_update
+  alias: Life360 Overdue Update
+  initial_state: true
+  hide_entity: true
+  trigger:
+    - platform: event
+      event_type: life360_update_overdue
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: harshit
+        value1: "Life360 Sensor"
+        value2: >
+          Update for {{
+            state_attr(trigger.event.data.entity_id, 'friendly_name') or
+            trigger.event.data.entity_id
+          }} is overdue.
+
+- id: life360_update_restored
+  alias: Life360 Update Restored
+  trigger:
+    platform: event
+    event_type: life360_update_restored
+  action:
+    - service: script.notify_engine
+      data_template:
+        who: harshit
+        value1: "Life360 Sensor"
+        value2: >
+          Update for {{
+            state_attr(trigger.event.data.entity_id, 'friendly_name') or
+            trigger.event.data.entity_id
+          }} restored after {{ trigger.event.data.wait }}.

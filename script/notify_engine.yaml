@@ -26,6 +26,16 @@ notify_engine:
             notify.ios_harshits_iphone
           {% elif who == 'heta' %}
             notify.ios_hetas_iphone
+          {% elif who == 'home' %}
+            {% if (is_state("device_tracker.life360_harshit", "home") and is_state("device_tracker.life360_heta", "home")) %}
+              notify.ios_family
+            {% elif (not is_state("device_tracker.life360_harshit", "home") and is_state("device_tracker.life360_heta", "home")) %}
+              notify.ios_hetas_iphone
+            {% elif (is_state("device_tracker.life360_harshit", "home") and not is_state("device_tracker.life360_heta", "home")) %}
+              notify.ios_harshits_iphone
+            {% else %}
+              notify.ios_family
+            {% endif %}
           {% else %}
             notify.ios_family
           {% endif %}
