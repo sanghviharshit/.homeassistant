@@ -15,5 +15,15 @@
       from: 'off'
 
   action:
-    - service: icloud.icloud_lost_iphone
-      # device_name:
+    - service: device_tracker.icloud_lost_iphone
+      data_template:
+        device_name: >-
+          {% if (trigger.entity_id == 'input_boolean.find_my_iphone_heta') %}
+            hetasiphone
+          {% else %}
+            harshitsiphone
+          {% endif %}
+
+    - service: input_boolean.turn_off
+      data_template:
+        entity_id: "{{ trigger.entity_id }}"
