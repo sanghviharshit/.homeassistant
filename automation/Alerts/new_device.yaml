@@ -16,11 +16,11 @@
       data_template:
         who: 'harshit'
         value1: "New device detected on the network"
-        value2: "{{trigger.event.data.host_name}} - {{trigger.event.entity_id}}"
+        value2: "{{trigger.event.data.host_name}}"
 
     - service: script.speech_engine
       data_template:
-        NewDevice: "New device detected on the network. Be sure to appropriately catagorize {{trigger.event.data.host_name}} - {{trigger.event.entity_id}}."
+        NewDevice: "New device detected on the network. Be sure to appropriately catagorize {{trigger.event.data.host_name}}."
 
     - service: script.tweet_engine
       data_template:
