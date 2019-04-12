@@ -2,7 +2,7 @@
   username: !secret icloud_uname_harshit
   password: !secret icloud_pwd_harshit
   account_name: harshit
-
+  max_interval: 360
 # - platform: icloud
 #   username: !secret icloud_uname_heta
 #   password: !secret icloud_pwd_heta
