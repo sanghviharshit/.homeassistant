@@ -27,3 +27,15 @@
     - service: input_boolean.turn_off
       data_template:
         entity_id: "{{ trigger.entity_id }}"
+
+
+- alias: Reset iCloud interval to max
+  initial_state: 'on'
+  trigger:
+    - platform: time_pattern
+      minutes: 10
+
+  action:
+    - service: device_tracker.icloud_set_interval
+      data_template:
+        interval: 360
