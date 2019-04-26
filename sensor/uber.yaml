@@ -5,3 +5,6 @@
   start_longitude: !secret homeassistant_longitude
   end_latitude: !secret his_work_latitude
   end_longitude: !secret his_work_longitude
+  product_ids:
+    - '4a30e418-f41c-4279-a443-b14cb0900199'
+    - 'd1e548ac-4be5-46c0-8c86-201ac8a36fc6'
