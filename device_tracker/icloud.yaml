@@ -3,7 +3,9 @@
   password: !secret icloud_pwd_harshit
   account_name: harshit
   max_interval: 360
-# - platform: icloud
-#   username: !secret icloud_uname_heta
-#   password: !secret icloud_pwd_heta
-#   account_name: heta
+
+- platform: icloud
+  username: !secret icloud_uname_heta
+  password: !secret icloud_pwd_heta
+  account_name: heta
+  max_interval: 360

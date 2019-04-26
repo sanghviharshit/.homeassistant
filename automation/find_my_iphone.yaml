@@ -23,7 +23,12 @@
           {% else %}
             harshitsiphone
           {% endif %}
-
+        account_name: >-
+          {% if (trigger.entity_id == 'input_boolean.find_my_iphone_heta') %}
+            heta
+          {% else %}
+            harshit
+          {% endif %}
     - service: input_boolean.turn_off
       data_template:
         entity_id: "{{ trigger.entity_id }}"
@@ -33,7 +38,7 @@
   initial_state: 'on'
   trigger:
     - platform: time_pattern
-      minutes: 10
+      minutes: 30
 
   action:
     - service: device_tracker.icloud_set_interval
