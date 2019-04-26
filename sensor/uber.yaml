@@ -1,0 +1,7 @@
+# Uber ride sharing
+- platform: uber
+  server_token: !secret uber_server_token
+  start_latitude: !secret homeassistant_latitude
+  start_longitude: !secret homeassistant_longitude
+  end_latitude: !secret his_work_latitude
+  end_longitude: !secret his_work_longitude
