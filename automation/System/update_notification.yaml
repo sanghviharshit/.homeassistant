@@ -13,7 +13,7 @@
     - service: script.notify_engine
       data_template:
         value1: "Home Assistant {{ states.updater.updater.state }} is now available."
-        value2: "Current v{{ sensor.ha_installed_version }}"
+        value2: "Current v{{ states.sensor.ha_installed_version.state }}"
         who: 'harshit'
 
     - service: script.tweet_engine_image

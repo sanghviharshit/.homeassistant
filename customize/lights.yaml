@@ -1,17 +1,8 @@
-# light.computer:
-#   friendly_name: 'Computer'
-#
-#   hidden: False
-#   homebridge_hidden: True
-#
-#
-#
-#
-# light.bed:
-#   friendly_name: 'Bed'
-#
-#   hidden: False
-#   homebridge_hidden: True
-#
-#
-#
+light.single_lamp_1:
+  icon: mdi:floor-lamp
+
+light.single_lamp_2:
+  icon: mdi:floor-lamp
+
+light.island_top:
+  icon: mdi:ceiling-light
