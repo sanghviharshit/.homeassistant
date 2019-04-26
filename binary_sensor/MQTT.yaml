@@ -18,6 +18,8 @@
   device_class: door
   payload_on: "open"
   payload_off: "closed"
+  icon: mdi:fridge-outline
+
 
 - platform: mqtt
   name: "Deadbolt"
@@ -26,6 +28,7 @@
   device_class: door
   payload_on: "open"
   payload_off: "closed"
+  icon: mdi:lock-smart
 
 - platform: mqtt
   name: Media Room Motion

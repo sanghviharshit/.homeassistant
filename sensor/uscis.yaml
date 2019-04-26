@@ -1,4 +1,4 @@
 # Doesn't install uscisstatus on current docker image I'm using
-- platform: uscis
-  case_id: !secret uscis_case_id_heta
-  friendly_name: USCIS Case Heta
+# - platform: uscis
+#   case_id: !secret uscis_case_id_heta
+#   friendly_name: USCIS Case Heta

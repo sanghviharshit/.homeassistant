@@ -17,6 +17,7 @@ sensor:
     sensors:
       critical_battery:
         friendly_name: 'Critical Battery'
+        icon_template: mdi:battery-alert
         value_template: >
           {%- set threshold = 15 -%}
           {%- set domains = ['light', 'switch', 'sensor', 'zwave', 'lock', 'binary_sensor'] -%}

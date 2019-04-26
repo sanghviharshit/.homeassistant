@@ -54,6 +54,7 @@ sensor:
   - platform: mqtt
     name: 'Briefing Target'
     state_topic: 'home/briefing_target'
+    icon: mdi:bullseye
 
 script:
   # Create a persistent notification with the briefing message.

@@ -111,16 +111,17 @@ binary_sensor:
       traveling_away:
         entity_id: proximity.his_home
 
-
 sensor:
   # His home departure time.
   - platform: mqtt
     name: "His Departure Time"
     state_topic: "home/departure/harshit"
+    icon: mdi:exit-run
   # Her home departure time.
   - platform: mqtt
     name: "Her Departure Time"
     state_topic: "home/departure/heta"
+    icon: mdi:exit-run
 
   # His average distance from home.
   - platform: statistics

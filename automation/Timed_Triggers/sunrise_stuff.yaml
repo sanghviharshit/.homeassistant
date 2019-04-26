@@ -3,7 +3,7 @@
 ###################################
 
 - alias: 'Sunrise Stuff'
-  initial_state: 'off'
+  initial_state: 'on'
   trigger:
     - platform: sun
       event: sunrise
@@ -11,9 +11,6 @@
 
   action:
     - service: script.interior_off
-    # - service: homeassistant.turn_off
-    #   entity_id:
-    #     - group.hallway_lights
     - delay: '00:{{ (range(1, 55)|random|int) }}:00'
     - service: homeassistant.turn_off
       entity_id:

@@ -1,4 +1,4 @@
-sensor.harshits_iphone_battery_level:
+sensor.harshit_iphone_battery_level:
   friendly_name: "Harshit's iPhone Battery Level"
   hidden: False
   homebridge_hidden: True
@@ -14,17 +14,17 @@ sensor.harshits_iphone_battery_level:
       mdi:battery-alert
     {% endif %}
 
-sensor.harshits_iphone_battery_state:
-  friendly_name: "Harshit's iPhone Battery State"
+sensor.harshit_iphone_battery_charging:
+  friendly_name: "Harshit's iPhone Battery Charging"
   hidden: False
   homebridge_hidden: True
-  icon: mdi:power-plug-off
+  icon_template: >
+    {{ "mdi:power-plug" if states.device_tracker.life360_harshit.attributes.battery_charging else "mdi:power-plug-off" }}
 
-sensor.hetas_iphone_battery_level:
+sensor.heta_iphone_battery_level:
   friendly_name: "Heta's iPhone Battery Level"
   hidden: False
   homebridge_hidden: True
-  # icon: mdi:battery-40
   icon_template: >
     {% set battery_level = states.device_tracker.life360_heta.attributes.battery | default(0) | int %}
     {% set battery_round = (battery_level / 10) |int * 10 %}
@@ -36,29 +36,12 @@ sensor.hetas_iphone_battery_level:
       mdi:battery-alert
     {% endif %}
 
-sensor.hetas_iphone_battery_state:
-  friendly_name: "Heta's iPhone Battery State"
+sensor.hetas_iphone_battery_charging:
+  friendly_name: "Heta's iPhone Battery Charging"
   hidden: False
   homebridge_hidden: True
-  icon: mdi:power-plug-off
-
-# sensor.pihole:
-#   friendly_name: 'Pi Hole Server'
-#
-#   hidden: False
-#   homebridge_hidden: true
-#   icon: mdi:filter-variant
-
-
-#
-# sensor.circle:
-#   friendly_name: 'Disney Circle'
-#
-#   hidden: False
-#   homebridge_hidden: True
-#   icon: mdi:google-circles-group
-#
-#
+  icon_template: >
+    {{ "mdi:power-plug" if states.device_tracker.life360_heta.attributes.battery_charging else "mdi:power-plug-off" }}
 
 sensor.dark_sky_cloud_coverage:
   friendly_name: 'Dark Sky Cloud Coverage'
@@ -173,6 +156,7 @@ sensor.ha_installed_version:
 
 sensor.ha_uptime:
   friendly_name: 'Ha Uptime'
+  icon: mdi:clock-start
   hidden: False
   homebridge_hidden: True
 
@@ -251,19 +235,15 @@ sensor.last_boot_templated:
 
 sensor.speedtest_download:
   friendly_name: 'Download'
-
+  icon: mdi:progress-download
   hidden: False
   homebridge_hidden: True
-  icon: mdi:speedometer
-
-
 
 sensor.speedtest_upload:
   friendly_name: 'Upload'
-
+  icon: mdi:progress-upload
   hidden: False
   homebridge_hidden: True
-  icon: mdi:speedometer
 
 
 
