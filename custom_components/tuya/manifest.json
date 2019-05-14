@@ -1,0 +1,8 @@
+{
+  "domain": "tuya",
+  "name": "Tuya SmartLife",
+  "documentation": "https://www.home-assistant.io/components",
+  "dependencies": [],
+  "codeowners": ["@harshit"],
+  "requirements": ["pytuya==5.0"]
+}

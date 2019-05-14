@@ -1,0 +1,8 @@
+{
+  "domain": "life360",
+  "name": "Life360",
+  "documentation": "https://www.home-assistant.io/components",
+  "dependencies": ["zone"],
+  "codeowners": ["@harshit"],
+  "requirements": ["life360==2.2.0", "timezonefinderL==2.0.1"]
+}

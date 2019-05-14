@@ -6,7 +6,6 @@
 - platform: mqtt
   name: "Main Door"
   state_topic: "smartthings/Main Door/contact"
-  # device_class: door
   device_class: door
   payload_on: "open"
   payload_off: "closed"
@@ -14,21 +13,20 @@
 - platform: mqtt
   name: "Fridge Door"
   state_topic: "smartthings/Fridge Door/contact"
-  # device_class: door
   device_class: door
   payload_on: "open"
   payload_off: "closed"
-  icon: mdi:fridge-outline
+  # icon: mdi:fridge-outline
 
 
 - platform: mqtt
   name: "Deadbolt"
   state_topic: "smartthings/Deadbolt/contact"
-  # device_class: door
+  # TODO: icon not supported
   device_class: door
   payload_on: "open"
   payload_off: "closed"
-  icon: mdi:lock-smart
+  # icon: mdi:lock-smart
 
 - platform: mqtt
   name: Media Room Motion

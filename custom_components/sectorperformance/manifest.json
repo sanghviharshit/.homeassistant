@@ -1,0 +1,8 @@
+{
+  "domain": "sectorperformance",
+  "name": "Sector Performance",
+  "documentation": "https://www.home-assistant.io/components",
+  "dependencies": [],
+  "codeowners": ["@harshit"],
+  "requirements": []
+}

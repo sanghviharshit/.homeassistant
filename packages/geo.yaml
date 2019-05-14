@@ -107,9 +107,11 @@ binary_sensor:
     sensors:
       traveling_home:
         entity_id: proximity.his_home
+        device_class: occupancy
         invert: true
       traveling_away:
         entity_id: proximity.his_home
+        device_class: occupancy
 
 sensor:
   # His home departure time.

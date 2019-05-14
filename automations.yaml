@@ -206,24 +206,24 @@
         value2: "Looks like {{ trigger.to_state.name }} is turned off"
 
 
-# - id: uscis_update_notification
-#   alias: "USCIS - Notify on update"
-#   initial_state: 'on'
-#   trigger:
-#     - platform: state
-#       entity_id:
-#         - sensor.uscis_case_heta # TODO Rename
-#   action:
-#     - service: script.speech_engine
-#       data_template:
-#         value1: "{{ trigger.to_state.name }} status updated. The new status is - {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}"
-#
-#     - service: script.notify_engine
-#       data_template:
-#         who: family
-#         value1: "{{ trigger.to_state.name }} status updated"
-#         value2: >
-#           {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}
+- id: uscis_update_notification
+  alias: "USCIS - Notify on update"
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.uscis_case_harshit
+  action:
+    - service: script.speech_engine
+      data_template:
+        value1: "{{ trigger.to_state.name }} status updated. The new status is - {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}"
+
+    - service: script.notify_engine
+      data_template:
+        who: family
+        value1: "{{ trigger.to_state.name }} status updated"
+        value2: >
+          {{ states.sensor[trigger.entity_id.split('.')[1]].attributes.current_status }}
 
 
 

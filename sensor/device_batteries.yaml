@@ -2,9 +2,11 @@
   sensors:
     harshit_iphone_battery_level:
       value_template: "{{ states.device_tracker.life360_harshit.attributes.battery }}"
+      unit_of_measurement:  "%"
       friendly_name: Harshit's iPhone Battery Level
     heta_iphone_battery_level:
       value_template: "{{ states.device_tracker.life360_heta.attributes.battery }}"
+      unit_of_measurement:  "%"
       friendly_name: Heta's iPhone Battery Level
     harshit_iphone_battery_charging:
       value_template: "{{ states.device_tracker.life360_harshit.attributes.battery_charging }}"
