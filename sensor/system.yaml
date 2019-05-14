@@ -12,4 +12,4 @@
   command: grep -r -E ":[0-9][0-9] WARNiNG" /home/pi/.homeassistant/home-assistant.log | wc -l
 
 # Track number of connected clients.
-- platform: api_streams
+- platform: websocket_api

@@ -3,7 +3,7 @@
   resource: 'http://api.forismatic.com/api/1.0/?method=getQuote&format=text&lang=en'
   method: GET
   name: Quote
-  value_template: '{{value.split(" (")[0]}}'
+  value_template: '{{ value.split(" (")[0] | truncate(255) }}'
 
 # Horoscope API -
 # https://github.com/tapaswenipathak/Horoscope-API
@@ -11,12 +11,14 @@
   scan_interval: 1800
   resource: !secret his_horoscope_url
   name: His Horoscope
-  value_template: "{{ value_json.horoscope }}"
-  icon: mdi:zodiac-gemini
+  value_template: "{{ value_json.horoscope | truncate(255) }}"
+  # TODO: icon not supported
+  # icon: mdi:zodiac-gemini
 
 - platform: rest
   scan_interval: 1800
   resource: !secret her_horoscope_url
   name: Her Horoscope
-  value_template: "{{ value_json.horoscope }}"
-  icon: mdi:zodiac-virgo
+  value_template: "{{ value_json.horoscope | truncate(255) }}"
+  # TODO: icon not supported
+  # icon: mdi:zodiac-virgo

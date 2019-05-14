@@ -6,12 +6,10 @@
   name: HA Installed Version
   scan_interval: 86400
 
-# - platform: uptime
-  # unit_of_measurement: minutes
-
 - platform: command_line
   name: "HA Uptime"
-  icon: mdi:progress-upload
+  # TODO: icon not supported
+  # icon: mdi:progress-upload
   command: echo "$(($(date +%s) - $(date -d "$(head -n1 /home/homeassistant/.homeassistant/home-assistant.log | cut -d' ' -f-2)" +%s)))"
   scan_interval: 720
   value_template: >-

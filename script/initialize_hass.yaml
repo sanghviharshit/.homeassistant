@@ -38,8 +38,6 @@ initialize_hass:
         entity_id: input_select.hdmiswitcher
         option: >
           {%- if states.remote.livingroom.attributes.current_activity == "Watch Apple TV" -%}
-            AppleTV
-          {%- elif states.remote.livingroom.attributes.current_activity == "Watch Fire TV" -%}
             FireTV
           {%- else -%}
             Pi
