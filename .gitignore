@@ -33,3 +33,4 @@ production_auth.json
 google_calendars.yaml
 
 .mint-session
+.spotify-token-cache
