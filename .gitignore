@@ -31,3 +31,5 @@ ipchange.yaml
 production_auth.json
 .google.token
 google_calendars.yaml
+
+.mint-session
