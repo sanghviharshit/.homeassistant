@@ -1,0 +1,14 @@
+- platform: mint_finance
+  username: !secret mint_username
+  password: !secret mint_password
+  monitored_categories:
+    - investment
+    - bank
+    - 'other property'
+    - credit
+    # - 'real estate'
+    # - vehicle
+
+  account_currency_override:
+    CAD: !secret mint_account_list
+    # USD: [12345, 67890]
