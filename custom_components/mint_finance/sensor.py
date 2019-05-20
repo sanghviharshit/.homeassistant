@@ -112,7 +112,7 @@ class MintClient(Entity):
             mint_client = Mint(username,
                 password,
                 session_path=SESSION_PATH,
-                wait_for_sync=False,
+                # wait_for_sync=False,
                 headless=HEADLESS)
             return mint_client
         except  MintException as exp:
