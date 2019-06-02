@@ -1,8 +1,8 @@
 #!/bin/bash
-cd /home/hass/docker_files
-docker-compose exec home-assistant python -m homeassistant --config /config --script check_config
 
-cd /home/hass/docker_files/homeassistant
+cd ~/.homeassistant
+source /srv/homeassistant/bin/activate
+hass --script check_config
 
 git add .
 git status
@@ -12,5 +12,4 @@ CHANGE_MSG=${CHANGE_MSG:-Minor Edit}
 git commit -m "${CHANGE_MSG}"
 git push origin master
 
-cd ~
 exit
