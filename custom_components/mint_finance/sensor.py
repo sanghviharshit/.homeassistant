@@ -33,11 +33,12 @@ SESSION_PATH = '.mint-session'
 ATTR_NETWORTH = 'networth'
 ATTR_ASSETS = 'assets'
 ATTR_LIABILITIES = 'liabilities'
+
+# Mint account types
 ATTR_INVESTMENT = 'investment'
 ATTR_MORTGAGE = 'mortgage'
 ATTR_CASH = 'bank'
 ATTR_OTHER_ASSET = 'other property'
-# ATTR_OTHER_LIABILITY = 'other_liability'
 ATTR_CREDIT = 'credit'
 ATTR_LOAN = 'loan'
 ATTR_REAL_ESTATE = 'real estate'
@@ -53,12 +54,14 @@ SENSOR_TYPES = {
     ATTR_MORTGAGE: ['MORTGAGE', 'Mortgage', True],
     ATTR_CASH: ['BANK', 'Cash', False],
     ATTR_OTHER_ASSET: ['OTHER_ASSETS', 'Other Asset', False],
-    # ATTR_OTHER_LIABILITY: ['OTHER_LIABILITIES', 'Other Liability', True],
     ATTR_CREDIT: ['CREDIT_CARD', 'Credit', True],
     ATTR_LOAN: ['LOAN', 'Loan', True],
     ATTR_VEHICLE: ['VEHICLE', 'Vehicle', False],
     ATTR_REAL_ESTATE: ['REAL_ESTATE', 'Real Estate', False],
 }
+
+ASSET_ACCOUNT_TYPES = [ATTR_INVESTMENT, ATTR_CASH, ATTR_OTHER_ASSET, ATTR_VEHICLE, ATTR_REAL_ESTATE]
+LIABILITY_ACCOUNT_TYPES = [ATTR_MORTGAGE, ATTR_CREDIT, ATTR_LOAN]
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_USERNAME): cv.string,
@@ -156,8 +159,8 @@ class MintNetWorthSensor(Entity):
 
         MintNetWorthSensor.last_used = time.time()
         active_accounts = [account for account in data if account['isActive'] == True and account['isAccountNotFound'] == False and account['isClosed'] == False]
-        asset_accounts = [account for account in data if account['isActive'] == True and account['isAccountNotFound'] == False and account['isClosed'] == False and account['currentBalance'] > 0]
-        liability_accounts = [account for account in data if account['isActive'] == True and account['isAccountNotFound'] == False and account['isClosed'] == False and account['currentBalance'] < 0]
+        asset_accounts = [account for account in data if account['isActive'] == True and account['isAccountNotFound'] == False and account['isClosed'] == False and account['accountType'] in ASSET_ACCOUNT_TYPES]
+        liability_accounts = [account for account in data if account['isActive'] == True and account['isAccountNotFound'] == False and account['isClosed'] == False and account['accountType'] in LIABILITY_ACCOUNT_TYPES]
 
         account_currency_overrides = self._config.get(CONF_ACCOUNT_CURRENCY_OVERRIDE)
 
