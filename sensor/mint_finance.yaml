@@ -6,8 +6,9 @@
     - bank
     - 'other property'
     - credit
+    - loan
     # - 'real estate'
-    # - vehicle
+    - vehicle
 
   account_currency_override:
     CAD: !secret mint_account_list
