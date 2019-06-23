@@ -1,13 +1,15 @@
 # My Home Assistant Configuration
 [![Build Status](https://travis-ci.com/sanghviharshit/.homeassistant.svg?token=b2FVcjMqgZdj9LXTgUWp&branch=master)](https://travis-ci.com/sanghviharshit/.homeassistant)
 
-My homeassistant configuration repository is heavily inspired by [CCOSTAN](https://github.com/CCOSTAN/Home-AssistantConfig)
+My [homeassistant](https://www.home-assistant.io) configuration repository is heavily inspired by [CCOSTAN](https://github.com/CCOSTAN/Home-AssistantConfig)
+
+> Home Assistant is open source home automation that puts local control and privacy first
 
 # Integrations
 
 This repository includes integrations for the following platforms.
 
-- Alexa, IFTTT, MQTT, TTS (Text to speech), Google cast, Android TV, Samsung TV, Apple TV, Kodi, Harmony, Google, Google Maps, Google Calendar, Android IP Camera, DuckDNS, Mailgun, Life360, Personal Capital, iCloud, Dark Sky, WAQI (Air Quality Index), Pihole, AirVisual, Lifx, Hyperion, Vantage, Tuya, Speedtest, Travis, Twitter, Mint, Lyft, Uber, Sonos, Plex, Spotify, USCIS, Crime Reports
+- Smartthings, Alexa, IFTTT, MQTT, TTS (Text to speech), Google cast, Android TV, Samsung TV, Apple TV, Kodi, Harmony, Google, Google Maps, Google Calendar, Android IP Camera, DuckDNS, Mailgun, Life360, Personal Capital, iCloud, Dark Sky, WAQI (Air Quality Index), Pihole, AirVisual, Lifx, Hyperion, Vantage, Tuya, Speedtest, Travis, Twitter, Mint, Lyft, Uber, Sonos, Plex, Spotify, USCIS, Crime Reports
 
 # Structure
 It is structured in separate directories for automations, sensors, binary sensors, custom components, device trackers, input boolean/number/select, lights, scrips, switches, scenes and sound files.
@@ -61,6 +63,7 @@ It is structured in separate directories for automations, sensors, binary sensor
   - Spotify Advertisement
   - System
   - USCIS
+  - Smartthings and Xiaomi temperature/humidity, motion, door/window contact, vibration, water leak
 - [Shell scripts](./shell_scripts)
   - Alexa Remote Control
   - Git
@@ -96,9 +99,10 @@ To install one of these custom components, use the [`custom_updater.install`](ht
 }
 ```
 
-## Mint Finance (https://www.mint.com/)
+## Mint
+Custom component for [Mint Finance](https://www.mint.com/)
 
-This currently only works in a non `HEADLESS` mode due to limitations of the dependency it uses. 
+This currently only works in a non `HEADLESS` mode due to limitations of the dependency it uses.
 
 Here is an example of a typical configuration:
 
@@ -127,11 +131,9 @@ sensor:
 
 
 # TODO:
-- Crime alerts
 - Dash buttons
-- Install home assistant on parent's phones and add automations
 - Embed https://www.windy.com/?43.643,-79.400,5 (Ref https://github.com/arsaboo/homeassistant-config)
 - Canada weather
 - Enercare graphs
 
-[![Analytics](https://ga-beacon.appspot.com/UA-83116503-1/.homeassistant/)](https://github.com/igrigorik/ga-beacon)
+[![Analytics](https://ga-beacon.appspot.com/UA-59542024-4/.homeassistant/)](https://github.com/igrigorik/ga-beacon)
